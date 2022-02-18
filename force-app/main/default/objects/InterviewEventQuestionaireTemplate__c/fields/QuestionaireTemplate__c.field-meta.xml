@@ -4,8 +4,8 @@
     <externalId>false</externalId>
     <label>QuestionaireTemplate</label>
     <referenceTo>QuestionaireTemplate__c</referenceTo>
-    <relationshipLabel>Questionaires</relationshipLabel>
-    <relationshipName>Questionaires</relationshipName>
+    <relationshipLabel>Interview Events</relationshipLabel>
+    <relationshipName>InterviewEvents</relationshipName>
     <relationshipOrder>1</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>
     <trackTrending>false</trackTrending>
