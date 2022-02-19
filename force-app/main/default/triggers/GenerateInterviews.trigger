@@ -95,7 +95,7 @@ trigger GenerateInterviews on  InterviewEventCandidate__c (after insert) {
                  interview.Questionaire__c = q.Id;
                  interview.Candidate__c = participant.Candidate__c;
                  interview.Interview_Event_Candidate__c = participant.Id;
-                 interview.Name = 'Interaction with '+ participant.Candidate_Name__c + '-' + q.Name;
+                // interview.Name = 'Interaction with '+ participant.Candidate_Name__c + '-' + q.Name;
                  interviewList.add(interview);
              }
          }
