@@ -1,8 +1,9 @@
-trigger GenerateInterviews on  InterviewEventCandidate__c (after insert) {
+trigger GenerateInterviews on  InterviewEventCandidate__c (after insert, after update) {
     
+    //If operation is update , Check if all the related interview are in created state, delete the data.
+    //Else throw an exception. Asking to manually delete those.
     //Get the Questionare template
  	 Map<ID, Set<String>> eventLevelMap = new Map<ID, Set<String>>();
-     Map<ID, Set<String>> candidateEventMap = new Map<ID, Set<String>>();
      for (InterviewEventCandidate__c participant: Trigger.new) {
          if (participant.InterviewEvent__c != Null){
              if (eventLevelMap.get(participant.InterviewEvent__c) != null)
@@ -16,11 +17,11 @@ trigger GenerateInterviews on  InterviewEventCandidate__c (after insert) {
              eventLevelMap.put(participant.InterviewEvent__c, levelSet);
          }
    }
-    
+
     Map<ID, Map<String, Set<Questionaire__c>>> eventLevelRoundMap = New Map<ID, Map<String, Set<Questionaire__c>>>();
     Map<String, Set<FeedbackItem__c>> feebackItemsMap = new Map<String, Set<FeedbackItem__c>>();
     for (Id eventId : eventLevelMap.keySet()) {
-        //Get all the questionaire template - Junction
+       //Get all the questionaire template - Junction
         List<InterviewEventQuestionaireTemplate__c> ieqts = [Select QuestionaireTemplate__c from InterviewEventQuestionaireTemplate__c where InterviewEvent__c=:eventId];
     	Set<String> qts = New Set<String>();
         for (InterviewEventQuestionaireTemplate__c ieqt : ieqts) {
