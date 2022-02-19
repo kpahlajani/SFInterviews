@@ -1,42 +1,36 @@
 trigger notifyAWSSlack on Event (after insert,after update) {
 
-
-List<Event> interactions = [Select Id from Event where Id in :Trigger.new];
- 
+List<Event> interactions =[SELECT Id, Owner.name, Owner.email, WhatId ,StartDateTime, EndDateTime, DurationInMinutes,(SELECT RelationId FROM EventRelations)
+                    , typeof what when Interview__c then Candidate__c,Candidate_Name__c,Code_Pair__c,Google_Meet__c end FROM Event WHERE Id in :Trigger.new and What.Type IN ('Interview__c')];
+                    
 if(interactions.size()==0)
  return;
  
-String eventType='NEW_INTERACTION';
-/*
-if(Trigger.isUpdate) {
-    Visit oldVisit = Trigger.oldMap.get(visits.get(0).Id);
+String eventType='NEW_INTERACTION'; 
+                    
+for(Event evt:interactions) {
     
-    System.debug(visits.get(0).Id+'::oldVisit.Visitor.Email:'+oldVisit.Visitor.Email);
+    Interview__c interview=(Interview__c) evt.what;
+
+    if(Trigger.isUpdate) {
+      eventType = 'UPDATED_INTERACTION';
+    }
     
-    if(oldVisit.VisitorId != visits.get(0).VisitorId){
-        eventType='NEW_INTERACTION';
-    }
-    else if(oldVisit.Status != visits.get(0).Status 
-           && (visits.get(0).Status=='InProgress' || visits.get(0).Status=='Completed')){
-        eventType=visits.get(0).Status == 'InProgress'?'START_VISIT':'END_VISIT';
-    }
-    else 
-        return; //no changes to publish
+    Map<String,String> mp =new Map<String,String>();
+    mp.put('eventType',eventType);
+    mp.put('email',evt.Owner.email);
+    mp.put('role',evt.getSObjects('EventRelations')==null?'Observer':'Main');
+    mp.put('startTime',string.valueofGmt(evt.StartDateTime));
+    mp.put('endTime',string.valueofGmt(evt.StartDateTime));
+    mp.put('duration',''+evt.DurationInMinutes); 
+    mp.put('candidateName',interview.get('Candidate_Name__c').toString());  
+    mp.put('candidateId',interview.get('Candidate__c').toString());
+    mp.put('meetingLink',interview.get('Google_Meet__c').toString());    
+    mp.put('codingLink',interview.get('Code_Pair__c').toString());        
+    
+    
+   // SajApx.myAWSCallout(mp);
+    
+
 }
-
-Map<String,String> mp =new Map<String,String>();
-mp.put('eventType',eventType);
-mp.put('visitOn',string.valueofGmt(visits.get(0).PlannedVisitStartTime));
-mp.put('email', visits.get(0).Visitor.Email);
-mp.put('visitTo', visits.get(0).Place.Name);
-mp.put('visitName', visits.get(0).Name);
-mp.put('visitId', visits.get(0).Id);
-mp.put('visitPriority', visits.get(0).VisitPriority);
-mp.put('Status', visits.get(0).Status);
-RetailStore rstore=visits.get(0).Place;
-mp.put('mapUrlParam', rstore.Street+' '+rstore.City+' '+' '+rstore.State+' '+rstore.Country+' '+rstore.PostalCode);
-
-
-SajApx.myAWSCallout(mp);
-*/
 }
