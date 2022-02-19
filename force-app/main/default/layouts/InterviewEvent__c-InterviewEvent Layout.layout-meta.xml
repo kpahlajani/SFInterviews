@@ -78,6 +78,8 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Candidate_Name__c</fields>
+        <fields>Candidate_Level__c</fields>
         <fields>Available_From__c</fields>
         <fields>Available_Till__c</fields>
         <relatedList>InterviewEventCandidate__c.InterviewEvent__c</relatedList>
@@ -93,7 +95,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1k000003ZmlX</masterLabel>
+        <masterLabel>00hJ0000006ahsj</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
