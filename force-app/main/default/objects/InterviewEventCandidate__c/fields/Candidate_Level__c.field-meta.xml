@@ -3,7 +3,7 @@
     <fullName>Candidate_Level__c</fullName>
     <externalId>false</externalId>
     <label>Candidate Level</label>
-    <required>false</required>
+    <required>true</required>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>

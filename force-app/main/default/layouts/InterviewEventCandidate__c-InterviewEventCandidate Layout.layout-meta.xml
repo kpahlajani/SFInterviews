@@ -22,6 +22,10 @@
                 <behavior>Edit</behavior>
                 <field>Google_Meet__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Candidate_Name__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -29,7 +33,7 @@
                 <field>Candidate__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Candidate_Level__c</field>
             </layoutItems>
             <layoutItems>

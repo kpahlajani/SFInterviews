@@ -97,7 +97,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>InterviewEventCandidate__c.Candidate_Level__c</field>
+        <field>InterviewEventCandidate__c.Candidate_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>InterviewEventCandidate__c.Code_Pair__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>InterviewEventCandidate__c.Google_Meet__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
