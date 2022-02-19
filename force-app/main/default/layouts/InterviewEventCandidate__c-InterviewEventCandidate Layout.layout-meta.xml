@@ -22,6 +22,10 @@
                 <behavior>Edit</behavior>
                 <field>Google_Meet__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Candidate_Name__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -74,6 +78,10 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Candidate_Name__c</fields>
+        <fields>Scheduled_Start_Time__c</fields>
+        <fields>Google_Meet__c</fields>
+        <fields>Status__c</fields>
         <relatedList>Interview__c.Interview_Event_Candidate__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
@@ -82,7 +90,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h17000009J5AG</masterLabel>
+        <masterLabel>00hJ0000006ahsh</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
