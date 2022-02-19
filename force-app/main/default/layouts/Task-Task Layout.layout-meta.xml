@@ -33,18 +33,7 @@
                 <behavior>Edit</behavior>
                 <field>Candidate__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Google_Meet__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Code_Pair__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Handshake_Information__c</field>
-            </layoutItems>
+
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
