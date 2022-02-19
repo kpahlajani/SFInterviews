@@ -20,10 +20,6 @@
                 <field>Candidate__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Candidate_Name__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Scheduled_Start_Time__c</field>
             </layoutItems>
