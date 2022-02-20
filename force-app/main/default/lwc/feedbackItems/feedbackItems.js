@@ -2,7 +2,6 @@ import { LightningElement, wire, api, track } from 'lwc';
 import { createRecord } from 'lightning/uiRecordApi';
 import  getFeedbackItems  from '@salesforce/apex/FeedbackItemsController.getFeedbackItems';
 import updateFeedbackItems  from '@salesforce/apex/FeedbackItemsController.updateFeedbackItems';
-import createFeedback from '@salesforce/apex/FeedbackItemsController.createFeedback';
 import { refreshApex } from '@salesforce/apex';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import FEEDBACK_ITEM_OBJECT from '@salesforce/schema/FeedbackItem__c';
@@ -14,7 +13,6 @@ import QUESTIONAIRE_ID_FIELD from '@salesforce/schema/FeedbackItem__c.Questionai
 const columns = [
     { label: 'Feedback Item Name', fieldName: 'Name', type: 'text' },
     { label: 'Comments', fieldName: 'Comments__c', type: 'text', wrapText: true, editable: true },
-    { label: 'Questionaire', fieldName: 'Questionaire_Name__c', type: 'text' },
     { label: 'Proficiency Level', fieldName: 'Proficiency_Level__c', type: 'text', editable: true }
     
 ];
@@ -71,8 +69,6 @@ export default class FeedbackItems extends LightningElement {
     }
     submitDetails() {
         this.isModalOpen = false;
-        //createFeedback('test1', 'test2', 'test3', '4', 'a0A0x000002hvmdEAA', 29);
-        //createFeedback(this.questionValue, this.commentValue, this.feedbackNameValue, this.proficiencyLevelValue, this.recordId, this.sortOrderValue);
         const fields = {};
         fields[NAME_FIELD.fieldApiName] = this.feedbackNameValue;
         fields[COMMENT_FIELD.fieldApiName] = this.commentValue;
