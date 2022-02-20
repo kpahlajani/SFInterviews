@@ -6,6 +6,10 @@
         <visible>false</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>FeedbackItemsController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>SFInterviewException</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -265,9 +269,6 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>InterviewEventCandidate__c-InterviewEventCandidate Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>InterviewEventQuestionaireTemplate__c-Interview Event Questionaire Template Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>InterviewEvent__c-InterviewEvent Layout</layout>

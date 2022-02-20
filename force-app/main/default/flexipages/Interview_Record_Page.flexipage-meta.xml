@@ -57,6 +57,16 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>feedbackItems</componentName>
+                <identifier>id4</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-e30a30a8-6913-4d50-a11e-4c7549148ca5</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
                 <componentName>force:detailPanel</componentName>
                 <identifier>force_detailPanel</identifier>
             </componentInstance>
@@ -96,6 +106,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>detailTab</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-e30a30a8-6913-4d50-a11e-4c7549148ca5</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Feedback Items</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>id7</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
