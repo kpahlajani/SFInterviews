@@ -91,6 +91,26 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Hiring_Panel_Member_Availability__c.Available_For_Entire_Event__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Hiring_Panel_Member_Availability__c.From__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Hiring_Panel_Member_Availability__c.Override_role__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Hiring_Panel_Member_Availability__c.To__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>InterviewEventCandidate__c.Available_From__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -112,6 +132,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>InterviewEventCandidate__c.Google_Meet__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>InterviewEventCandidate__c.Interview__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -176,22 +201,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>QuestionaireTemplate__c.Candidate_Level__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>QuestionaireTemplate__c.Description__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Questionaire__c.Description__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Questionaire__c.QuestionaireTemplate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -246,7 +261,13 @@
         <layout>HiringPanel__c-HiringPanel Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Hiring_Panel_Member_Availability__c-Hiring Panel Member Availability Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>InterviewEventCandidate__c-InterviewEventCandidate Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>InterviewEventQuestionaireTemplate__c-Interview Event Questionaire Template Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>InterviewEvent__c-InterviewEvent Layout</layout>
@@ -325,6 +346,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
         <object>HiringPanel__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Hiring_Panel_Member_Availability__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>

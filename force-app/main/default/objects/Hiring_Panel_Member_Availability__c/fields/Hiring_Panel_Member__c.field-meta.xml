@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>QuestionaireTemplate__c</fullName>
+    <fullName>Hiring_Panel_Member__c</fullName>
     <deleteConstraint>Restrict</deleteConstraint>
     <externalId>false</externalId>
-    <label>QuestionaireTemplate</label>
-    <referenceTo>QuestionaireTemplate__c</referenceTo>
-    <relationshipLabel>Questionaires</relationshipLabel>
-    <relationshipName>TemplateQuestionaires</relationshipName>
+    <label>Hiring Panel Member</label>
+    <referenceTo>HiringPanelMember__c</referenceTo>
+    <relationshipLabel>Hiring Panel Members Availability</relationshipLabel>
+    <relationshipName>Hiring_Panel_Members_Availability</relationshipName>
     <required>true</required>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
