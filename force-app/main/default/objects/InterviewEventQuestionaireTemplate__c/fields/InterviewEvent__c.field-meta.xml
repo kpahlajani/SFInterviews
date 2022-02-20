@@ -4,7 +4,7 @@
     <externalId>false</externalId>
     <label>Interview Event</label>
     <referenceTo>InterviewEvent__c</referenceTo>
-    <relationshipLabel>Interview Event Questionaires</relationshipLabel>
+    <relationshipLabel>Interview Event Questionaire Templates</relationshipLabel>
     <relationshipName>InterviewEventQuestionaires</relationshipName>
     <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>

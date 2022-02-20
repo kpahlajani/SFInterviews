@@ -6,6 +6,10 @@
         <visible>false</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>SFInterviewException</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>SlackAWSCallout</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -86,6 +90,26 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Hiring_Panel_Member_Availability__c.Available_For_Entire_Event__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Hiring_Panel_Member_Availability__c.From__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Hiring_Panel_Member_Availability__c.Override_role__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Hiring_Panel_Member_Availability__c.To__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>InterviewEventCandidate__c.Available_From__c</field>
         <readable>false</readable>
@@ -111,14 +135,9 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>InterviewEventCandidate__c.Code_Pair__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>InterviewEventCandidate__c.Google_Meet__c</field>
-        <readable>false</readable>
+        <editable>true</editable>
+        <field>InterviewEventCandidate__c.Interview__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -182,11 +201,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>QuestionaireTemplate__c.Candidate_Level__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>QuestionaireTemplate__c.Description__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -194,11 +208,6 @@
         <editable>true</editable>
         <field>Questionaire__c.Description__c</field>
         <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Questionaire__c.QuestionaireTemplate__c</field>
-        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -252,7 +261,13 @@
         <layout>HiringPanel__c-HiringPanel Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Hiring_Panel_Member_Availability__c-Hiring Panel Member Availability Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>InterviewEventCandidate__c-InterviewEventCandidate Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>InterviewEventQuestionaireTemplate__c-Interview Event Questionaire Template Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>InterviewEvent__c-InterviewEvent Layout</layout>
