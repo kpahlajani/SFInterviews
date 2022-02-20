@@ -36,7 +36,7 @@ trigger GenerateInterviews on  InterviewEventCandidate__c (after insert, after u
             qtLevelMap.put(qt.ID, qt.Candidate_Level__c);
         }
           //Get all the rounds for each questionaire template
-        List<Questionaire__c> roundQues = [Select Id, Name, QuestionaireTemplate__c from Questionaire__c where QuestionaireTemplate__c IN :qts];
+        List<Questionaire__c> roundQues = [Select Id, Name, QuestionaireTemplate__c, Sort_Order__c from Questionaire__c where QuestionaireTemplate__c IN :qts];
         Set<String> allLevelsForThisEvent = eventLevelMap.get(eventId);
         
         //Get All the FeebackItems for roundQues, and prepare map
@@ -94,6 +94,7 @@ trigger GenerateInterviews on  InterviewEventCandidate__c (after insert, after u
              {
                  Interview__c interview = new Interview__c();
                  interview.Questionaire__c = q.Id;
+                 interview.Order__c = q.Sort_Order__c;
                  interview.Candidate__c = participant.Candidate__c;
                  interview.Interview_Event_Candidate__c = participant.Id;
                  interview.Name = 'Interaction with '+ participant.Candidate_Name__c + '-' + q.Name;
@@ -109,6 +110,8 @@ trigger GenerateInterviews on  InterviewEventCandidate__c (after insert, after u
     		for (Interview__c interview : interviewList)
             {
                 Set<FeedbackItem__c> feebackTemplateItemsSet =  feebackItemsMap.get(interview.Questionaire__c);
+                if (feebackTemplateItemsSet == null)
+                    continue;
                 for (FeedbackItem__c fbi : feebackTemplateItemsSet)
                 {
                     FeedbackItem__c newFbi = fbi.clone(false, false, false, false);

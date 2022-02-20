@@ -6,6 +6,14 @@
         <visible>false</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>FeedbackItemsController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SFInterviewException</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>SlackAWSCallout</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -86,6 +94,26 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Hiring_Panel_Member_Availability__c.Available_For_Entire_Event__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Hiring_Panel_Member_Availability__c.From__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Hiring_Panel_Member_Availability__c.Override_role__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Hiring_Panel_Member_Availability__c.To__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>InterviewEventCandidate__c.Available_From__c</field>
         <readable>false</readable>
@@ -97,7 +125,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>InterviewEventCandidate__c.Candidate_Level__c</field>
+        <field>InterviewEventCandidate__c.Candidate_Name__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -109,6 +137,11 @@
         <editable>false</editable>
         <field>InterviewEventCandidate__c.Google_Meet__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>InterviewEventCandidate__c.Interview__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -172,11 +205,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>QuestionaireTemplate__c.Candidate_Level__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>QuestionaireTemplate__c.Description__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -184,11 +212,6 @@
         <editable>true</editable>
         <field>Questionaire__c.Description__c</field>
         <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Questionaire__c.QuestionaireTemplate__c</field>
-        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -240,6 +263,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>HiringPanel__c-HiringPanel Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Hiring_Panel_Member_Availability__c-Hiring Panel Member Availability Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>InterviewEventCandidate__c-InterviewEventCandidate Layout</layout>
@@ -377,6 +403,26 @@
         <object>QuestionaireTemplate__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+    <tabVisibilities>
+        <tab>HiringPanel__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>InterviewEvent__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>InterviewOrganizingCommittee__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>QuestionaireTemplate__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Questionaire__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
     <userLicense>Salesforce Platform</userLicense>
     <userPermissions>
         <enabled>true</enabled>
