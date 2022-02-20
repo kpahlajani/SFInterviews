@@ -97,11 +97,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>InterviewEventCandidate__c.Candidate_Level__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>InterviewEventCandidate__c.Code_Pair__c</field>
         <readable>false</readable>
     </fieldPermissions>
