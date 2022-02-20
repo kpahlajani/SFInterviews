@@ -4,7 +4,7 @@ public class SlackAWSCallout {
      {
           //long-running Apex code
 
-      String restAPIURL = 'https://ml8n0nzej1.execute-api.ap-south-1.amazonaws.com/slackRecruitEvent';  
+      String restAPIURL = 'https://2704u9iaye.execute-api.ap-south-1.amazonaws.com/asyncRecruitProcessor';
       
       HttpRequest httpRequest = new HttpRequest();  
       httpRequest.setMethod('POST');   
