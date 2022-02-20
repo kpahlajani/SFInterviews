@@ -6,6 +6,10 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>SFInterviewException</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>SlackAWSCallout</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -96,8 +100,8 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>InterviewEventCandidate__c.Candidate_Level__c</field>
+        <editable>false</editable>
+        <field>InterviewEventCandidate__c.Candidate_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
