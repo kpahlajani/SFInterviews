@@ -25,12 +25,13 @@ for(Event evt:interactions) {
     mp.put('duration',''+evt.DurationInMinutes); 
     mp.put('candidateName',interview.get('Candidate_Name__c').toString());  
     mp.put('candidateId',interview.get('Candidate__c').toString());
-    mp.put('meetingLink',interview.get('Google_Meet__c').toString());    
+    if (interview.get('Google_Meet__c') != null ) {
+     mp.put('meetingLink',interview.get('Google_Meet__c').toString());    
+    }
+    if (interview.get('Code_Pair__c') != null ) {
     mp.put('codingLink',interview.get('Code_Pair__c').toString());        
+    }
     
-    
-   // SajApx.myAWSCallout(mp);
-    
-
+    //SlackAWSCallout.myAWSCallout(mp);
 }
 }
