@@ -20,8 +20,15 @@ public class SlackTriggerHandler{
       
       for(String email:emails) {
           SlackAWSCallout.myAWSCallout(new Map<String,String>{'custom'=>'loadInteractions','email'=> email});
-      }
-         
+      }     
  }
+ 
+public static void refreshForInteractionOwners(List<Interview__c> triggerInterviews) {
+        if(triggerInterviews==null) 
+         return;
+
+        List<Event> events = [Select Id from Event where whatId in :triggerInterviews];
+        refreshForInteractionOwners(events);
+}
  
 }
