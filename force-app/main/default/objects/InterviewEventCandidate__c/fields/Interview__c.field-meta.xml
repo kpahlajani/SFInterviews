@@ -5,8 +5,8 @@
     <externalId>false</externalId>
     <label>Ongoing Interview</label>
     <referenceTo>Interview__c</referenceTo>
-    <relationshipLabel>Interview Event Candidate</relationshipLabel>
-    <relationshipName>Interview_Event_Candidate</relationshipName>
+    <relationshipLabel>Ongoing Interview Event Candidates</relationshipLabel>
+    <relationshipName>Ongoing_Interview_event_candidates</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
