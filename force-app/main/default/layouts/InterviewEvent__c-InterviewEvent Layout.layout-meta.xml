@@ -93,6 +93,9 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Member_Name__c</fields>
+        <fields>From__c</fields>
+        <fields>To__c</fields>
         <relatedList>Hiring_Panel_Member_Availability__c.Interview_Event__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
@@ -101,7 +104,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h8D000000J8w2</masterLabel>
+        <masterLabel>00hJ0000006XrdI</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
