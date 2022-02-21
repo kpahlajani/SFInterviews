@@ -108,6 +108,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Hiring_Panel_Member_Availability__c.Member_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Hiring_Panel_Member_Availability__c.Override_role__c</field>
         <readable>true</readable>

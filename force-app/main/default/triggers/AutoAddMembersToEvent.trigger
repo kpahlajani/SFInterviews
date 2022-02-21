@@ -2,26 +2,26 @@ trigger AutoAddMembersToEvent on ActivePanel__c (after insert) {
     
     //Get all the members of this Panel
     //Add all the members to this event with default availability as full time.
-	List<String> panelsGettingAdded = New List<String>();
+	Map<String, String> panelsGettingAdded = New Map<String, String>();
      for (ActivePanel__c panel: Trigger.new) {
         String panelId = panel.Hiring_Panel__c;
-        panelsGettingAdded.add(panelId);
+        String eventId = panel.InterviewEvent__c;
+        panelsGettingAdded.put(panelId,eventId);
    }
-    //Get all the members in these panels
-    List<HiringPanelMember__c> hpms = [Select HiringPanel__c, User__c, Default_Member_Role__c from HiringPanelMember__c where HiringPanel__c IN :panelsGettingAdded];
-	Map<String, Set<HiringPanelMember__c>> panelMemberMap = New Map<String, Set<HiringPanelMember__c>>();
+   
+        List<HiringPanelMember__c> hpms = [Select HiringPanel__c, User__c, Default_Member_Role__c from HiringPanelMember__c where HiringPanel__c IN :panelsGettingAdded.keySet()];
+		List<Hiring_Panel_Member_Availability__c> pmas = New List<Hiring_Panel_Member_Availability__c>();
+    	for(HiringPanelMember__c hpm : hpms)
+        {
+            //Create availability and add this member to the event
+            String eventId = panelsGettingAdded.get(hpm.HiringPanel__c);
+            Hiring_Panel_Member_Availability__c pma = new Hiring_Panel_Member_Availability__c ();
+            pma.Available_For_Entire_Event__c = true;
+            pma.Hiring_Panel_Member__c = hpm.Id;
+            pma.Interview_Event__c = eventId;
+            pmas.add(pma);
+		}
     
-    for (HiringPanelMember__c pm : hpms)
-    {
-        String panelId = pm.HiringPanel__c;
-        if (panelMemberMap.get(panelId) == null)
-         {
-			panelMemberMap.put(panelId, New Set<HiringPanelMember__c>());              
-         }
-        Set<HiringPanelMember__c> hpm = panelMemberMap.get(panelId);
-        hpm.add(pm);
-        panelMemberMap.put(panelId, hpm);
-    }
-    //Now  create availability
+    insert pmas;
     
 }

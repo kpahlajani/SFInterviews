@@ -1,6 +1,7 @@
-trigger GenerateInterviewsValidation on InterviewEventCandidate__c (before insert, before update) {
+trigger GenerateInterviewsValidation on InterviewEventCandidate__c (before insert) {
 Map<ID, Set<String>> eventLevelMap = new Map<ID, Set<String>>();
      Map<ID, Set<String>> candidateEventMap = new Map<ID, Set<String>>();
+     Map<ID, InterviewEventCandidate__c> oldMap = Trigger.oldMap;
      for (InterviewEventCandidate__c participant: Trigger.new) {
          if (participant.InterviewEvent__c != Null){
              if (eventLevelMap.get(participant.InterviewEvent__c) != null)
@@ -11,16 +12,11 @@ Map<ID, Set<String>> eventLevelMap = new Map<ID, Set<String>>();
              {
                  candidateEventMap.put(participant.Candidate__c, New Set<String>());
              }
-             Set<String> levelSet = eventLevelMap.get(participant.InterviewEvent__c);
              Set<String> eventSet = candidateEventMap.get(participant.Candidate__c);
               if (eventSet == null)
                  eventSet = new Set<String>();
-             if (levelSet == null)
-                 levelSet = new Set<String>();
-             levelSet.add(participant.Candidate_Level__c);
              eventSet.add(participant.InterviewEvent__c);
              candidateEventMap.put(participant.Candidate__c, eventSet);
-             eventLevelMap.put(participant.InterviewEvent__c, levelSet);
          }
    }
     

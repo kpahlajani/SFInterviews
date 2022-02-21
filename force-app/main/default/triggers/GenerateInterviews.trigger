@@ -1,4 +1,4 @@
-trigger GenerateInterviews on  InterviewEventCandidate__c (after insert, after update) {
+trigger GenerateInterviews on  InterviewEventCandidate__c (after insert ) {
     
     //If operation is update , Check if all the related interview are in created state, delete the data.
     //Else throw an exception. Asking to manually delete those.
