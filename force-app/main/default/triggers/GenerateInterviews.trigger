@@ -123,7 +123,6 @@ trigger GenerateInterviews on  InterviewEventCandidate__c (after insert ) {
             }
     
     		insert allFeedbackItems;
-    
-    		
+	
     
 }

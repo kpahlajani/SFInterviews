@@ -14,6 +14,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ScheduleAnInterview</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>SlackAWSCallout</apexClass>
         <enabled>true</enabled>
     </classAccesses>

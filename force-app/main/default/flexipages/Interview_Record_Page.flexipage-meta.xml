@@ -57,6 +57,17 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>force:detailPanel</componentName>
+                <identifier>force_detailPanel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <mode>Replace</mode>
+        <name>detailTabContent</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
                 <componentName>feedbackItems</componentName>
                 <identifier>id4</identifier>
             </componentInstance>
@@ -67,12 +78,37 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>force:detailPanel</componentName>
-                <identifier>force_detailPanel</identifier>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p&gt;&lt;b&gt;Handshake Information for subsequent interactions !!&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText1</identifier>
             </componentInstance>
         </itemInstances>
-        <mode>Replace</mode>
-        <name>detailTabContent</name>
+        <name>Facet-43246f9d-5435-4c0d-b5de-3d3e43a5bf57</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p&gt;&lt;b&gt;Problems discussed as part of this interaction !!&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-lg2vrgwy4p</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -120,6 +156,34 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>id7</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-43246f9d-5435-4c0d-b5de-3d3e43a5bf57</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Handshake Information</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab1</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-lg2vrgwy4p</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Problems Discussed</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab2</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
