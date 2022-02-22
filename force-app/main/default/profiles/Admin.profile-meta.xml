@@ -6,6 +6,10 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>DragAndDropComponentHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>FeedbackItemsController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -153,7 +157,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>InterviewEventCandidate__c.Interview__c</field>
+        <field>InterviewEventCandidate__c.Ongoing_Interview__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>InterviewEventCandidate__c.Previous_Interview__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -282,6 +291,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>InterviewEventCandidate__c-InterviewEventCandidate Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>InterviewEventQuestionaireTemplate__c-Interview Event Questionaire Template Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>InterviewEvent__c-InterviewEvent Layout</layout>
