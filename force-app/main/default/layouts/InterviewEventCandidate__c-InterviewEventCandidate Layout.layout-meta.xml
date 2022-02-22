@@ -32,7 +32,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Hire_Status__c</field>
+                <field>Aggregated_Score__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -98,10 +98,6 @@
         <fields>Status__c</fields>
         <fields>Order__c</fields>
         <relatedList>Interview__c.Interview_Event_Candidate__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>Hired_Candidate__c.Interview_Event_Candidate__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
