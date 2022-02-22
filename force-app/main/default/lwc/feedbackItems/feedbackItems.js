@@ -27,11 +27,13 @@ export default class FeedbackItems extends LightningElement {
 
     @track isModalOpen = false;
 
+    feedbackItemFields = [NAME_FIELD, COMMENT_FIELD, PROFICIENCY_LEVEL_FIELD];
+
     feedbackItemId;
     
     commentValue;
     feedbackNameValue;
-    proficiencyLevelValue;
+    value;
 
     @wire(getFeedbackItems, {recordId: '$recordId'})
     feedbackItemsData;
@@ -72,7 +74,7 @@ export default class FeedbackItems extends LightningElement {
         const fields = {};
         fields[NAME_FIELD.fieldApiName] = this.feedbackNameValue;
         fields[COMMENT_FIELD.fieldApiName] = this.commentValue;
-        fields[PROFICIENCY_LEVEL_FIELD.fieldApiName] = this.proficiencyLevelValue;
+        fields[PROFICIENCY_LEVEL_FIELD.fieldApiName] = this.value;
         fields[INTERVIEW_ID_FIELD.fieldApiName] = this.recordId;
         fields[QUESTIONAIRE_ID_FIELD.fieldApiName] = this.questionaireId;
         const recordInput = { apiName: FEEDBACK_ITEM_OBJECT.objectApiName, fields };
@@ -96,14 +98,23 @@ export default class FeedbackItems extends LightningElement {
     }
 
     handleCommentblur(event) {
-        this.commentValue = event.target.value;//this.template.querySelector("Comment").value;
+        this.commentValue = event.target.value;
     }
 
     handleFeedbackNameValueblur(event) {
-        this.feedbackNameValue = event.target.value;//this.template.querySelector("lightning-input").value;
+        this.feedbackNameValue = event.target.value;
     }
 
     handleProficiencyLevelblur(event) {
-        this.proficiencyLevelValue = event.target.value;//this.template.querySelector("lightning-input").value;
+        this.value = event.detail.value;
+    }
+
+    get options() {
+        return [
+            { label: '1', value: '1' },
+            { label: '2', value: '2' },
+            { label: '3', value: '3' },
+            { label: '4', value: '4' },
+        ];
     }
 }

@@ -1,0 +1,8 @@
+<template>
+    <!--<lightning-textarea label="Current Problems Discussed" value={currentProblemsDiscussed} onchange={handleCurrentProblemsDiscussed} onblur={saveCurrentProblemsDiscussed}></lightning-textarea>
+    <lightning-textarea disabled value={previousProblemsDiscussed} label="Previous Problems Discussed"></lightning-textarea>-->
+    <p>Current Problems Discussed</p>
+    <lightning-input-rich-text value={currentProblemsDiscussedValue} onblur={saveCurrentProblemsDiscussed}></lightning-input-rich-text>
+    <p>Previous Problems Discussed</p>
+    <lightning-input-rich-text disabled value={previousProblemsDiscussedValue} ></lightning-input-rich-text>
+</template>
