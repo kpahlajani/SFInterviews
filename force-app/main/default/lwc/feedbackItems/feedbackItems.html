@@ -18,13 +18,20 @@
                     </button>
                     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Feedback</h2>
                 </header>
-                <!-- Modal/Popup Box LWC body starts here -->
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                    <lightning-input type="text" data-id="Comment" label="Comment" onchange={handleCommentblur}></lightning-input>
-                    <lightning-input type="text" data-id="Feedback" label="Feedback Name" onchange={handleFeedbackNameValueblur}></lightning-input>
-                    <lightning-input type="Number" data-id="Proficiency" label="Proficiency Level" onchange={handleProficiencyLevelblur}></lightning-input>
+                    <lightning-input type="text" label="Feedback Name" onchange={handleFeedbackNameValueblur}></lightning-input>
+                    <lightning-combobox
+                        name="progress"
+                        label="Proficiency Level"
+                        value=""
+                        placeholder="Enter Proficiency Level"
+                        options={options}
+                        onchange={handleProficiencyLevelblur} 
+                        required>
+                    </lightning-combobox>
+                    <!--<lightning-input type="Number" label="Proficiency Level" onchange={handleProficiencyLevelblur}></lightning-input>-->
+                    <lightning-textarea label="Comment" onchange={handleCommentblur}></lightning-textarea>
                 </div>
-                <!-- Modal/Popup Box LWC footer starts here -->
                 <footer class="slds-modal__footer">
                     <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
                     <button class="slds-button slds-button_brand" onclick={submitDetails} title="OK">OK</button>

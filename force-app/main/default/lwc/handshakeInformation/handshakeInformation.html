@@ -1,0 +1,9 @@
+<template>
+    <!--<lightning-textarea value={currentHandshakeInformationValue} label="Current Handshake Information" onchange={handleCurrentHandshakeInformation} onblur={saveCurrentHandshakeInformation}></lightning-textarea>
+    <lightning-textarea disabled value={previousHandshakeInformationValue} label="Previous Handshake Information" ></lightning-textarea>-->
+    <p>Current Handshake Information</p>
+    <lightning-input-rich-text value={currentHandshakeInformationValue} onblur={saveCurrentHandshakeInformation}></lightning-input-rich-text>
+    <p>Previous Handshake Information</p>
+    <lightning-input-rich-text disabled value={previousHandshakeInformationValue} ></lightning-input-rich-text>
+
+</template>

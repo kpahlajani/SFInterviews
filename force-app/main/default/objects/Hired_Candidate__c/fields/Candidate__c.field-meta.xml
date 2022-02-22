@@ -5,7 +5,7 @@
     <externalId>false</externalId>
     <label>Candidate</label>
     <referenceTo>Account</referenceTo>
-    <relationshipName>Hired_Candidate_Pools</relationshipName>
+    <relationshipName>Hired_Candidates</relationshipName>
     <required>true</required>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>

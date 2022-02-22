@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Evaluation In Progress</fullName>
+        <default>false</default>
+        <label>Evaluation In Progress</label>
+    </customValue>
+    <customValue>
+        <fullName>Hired</fullName>
+        <default>false</default>
+        <label>Hired</label>
+    </customValue>
+    <customValue>
+        <fullName>Debrief</fullName>
+        <default>true</default>
+        <label>Debrief</label>
+    </customValue>
+    <customValue>
+        <fullName>Loop Cut</fullName>
+        <default>false</default>
+        <label>Loop Cut</label>
+    </customValue>
+    <customValue>
+        <fullName>No Show</fullName>
+        <default>false</default>
+        <label>No Show</label>
+    </customValue>
+    <masterLabel>Hire Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
