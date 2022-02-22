@@ -3,8 +3,8 @@ import taskData from '@salesforce/apex/DragAndDropComponentHandler.getAllTask';
 import updateTask from '@salesforce/apex/DragAndDropComponentHandler.updateTask';
 
 export default class DragAndDropComponent extends LightningElement {
-    @track taskNewList = [];
-    @track taskInProgressList = [];
+    @track codingList = [];
+    @track designList = [];
     @track taskCompletedList = [];
     @track dropTaskId;
 
@@ -14,34 +14,23 @@ export default class DragAndDropComponent extends LightningElement {
 
     getTaskData(){
         taskData().then(result =>{
-            let taskNewData = [];
-            let taskInProgressData = [];
-            let taskCompletedData = [];
+            let codingCandidatesData = [];
+            let designCandidatesData = [];
             for(let i = 0; i < result.length; i++){
                 let task = new Object();
                 task.Id = result[i].Id;
-                task.Subject = result[i].Subject;
-                task.Status = result[i].Status;
-                task.Description = result[i].Description;
-                task.WhoId = '/'+result[i].WhoId;
-                task.WhatId = '/'+result[i].WhatId;
-                if(result[i].WhoId !== undefined){
-                    task.ContactName = result[i].Who.Name;
-                }
-                if(result[i].WhatId !== undefined){
-                    task.AccountName = result[i].What.Name;
-                }
-                if(task.Status === 'Not Started'){
-                    taskNewData.push(task);
-                }else if(task.Status !== 'Not Started' && task.Status !== 'Completed'){
-                    taskInProgressData.push(task);
-                }else if(task.Status === 'Completed'){
-                    taskCompletedData.push(task);
+                task.Name = result[i].Name;
+                task.CandidateName = result[i].Candidate_Name__c;
+                task.Candidate_Level__c = result[i].Candidate_Level__c;
+                task.InterviewName = result[i].Interview__r.Name;
+                if(task.InterviewName === 'Coding'){
+                    codingCandidatesData.push(task);
+                }else if(task.InterviewName == 'System Design'){
+                    designCandidatesData.push(task);
                 }
             }
-            this.taskNewList = taskNewData;
-            this.taskInProgressList = taskInProgressData;
-            this.taskCompletedList = taskCompletedData;
+            this.codingList = codingCandidatesData;
+            this.designList = designCandidatesData;
         }).catch(error => {
             window.alert('$$$Test1:'+ error);
         })
@@ -68,11 +57,9 @@ export default class DragAndDropComponent extends LightningElement {
         const columnUsed = event.target.id;
         let taskNewStatus;
         if(columnUsed.includes('InProgress')){
-            taskNewStatus = 'In Progress';
+            taskNewStatus = 'System Design';
         }else if(columnUsed.includes('newTask')){
-            taskNewStatus = 'Not Started';
-        }else if(columnUsed.includes('completed')){
-            taskNewStatus = 'Completed';
+            taskNewStatus = 'Coding';
         }
         //window.alert(columnUsed + ' & '+ taskNewStatus);
         this.updateTaskStatus(this.dropTaskId, taskNewStatus);
@@ -101,7 +88,7 @@ export default class DragAndDropComponent extends LightningElement {
     }
 
     updateTaskStatus(taskId, taskNewStatus){
-        updateTask({newTaskId: taskId, newStatus: taskNewStatus}).then(result =>{
+        updateTask({interviewCanidateId: taskId, newInterview: taskNewStatus}).then(result =>{
             this.getTaskData();
         }).catch(error =>{
             window.alert('$$$Test2:'+ JSON.stringify(error));
