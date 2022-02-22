@@ -5,7 +5,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
     @track columns = [{
             label: 'Id',
             fieldName: 'Id',
-            type: 'text',
+            type: 'url',
             sortable: true
         },
         {
@@ -45,7 +45,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
                 let candidates = [];
                 data.forEach(record => {
                 let candidate = {};
-                candidate.Id = record.Id;
+                candidate.Id = '/'+record.Id;
                 candidate.Candidate_Name__c = record.Candidate_Name__c;
                 candidate.Current_Status__c = record.Current_Status__c;
                 candidate.Aggregated_Score__c = record.Aggregated_Score__c;
