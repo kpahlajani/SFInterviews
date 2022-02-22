@@ -14,7 +14,15 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>HandshakeInformationController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>InterviewCandidatesGridHelper</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ProblemsDiscussedController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -111,6 +119,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>HiringPanelMember__c.Email__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>HiringPanelMember__c.To__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -181,6 +194,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>InterviewEventCandidate__c.Hire_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>InterviewEventCandidate__c.Ongoing_Interview__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -238,6 +256,11 @@
         <editable>true</editable>
         <field>Interview__c.Overall_Rating__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Interview__c.Problems_Discussed__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -471,6 +494,10 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <tabVisibilities>
+        <tab>Hired_Candidate__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>HiringPanel__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
@@ -489,6 +516,14 @@
     <tabVisibilities>
         <tab>Questionaire__c</tab>
         <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Scrum_Team_Template__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Scrum_Team__c</tab>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Salesforce</userLicense>
     <userPermissions>
