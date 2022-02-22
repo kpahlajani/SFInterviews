@@ -467,6 +467,10 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <tabVisibilities>
+        <tab>Hired_Candidate__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>HiringPanel__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
@@ -485,6 +489,14 @@
     <tabVisibilities>
         <tab>Questionaire__c</tab>
         <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Scrum_Team_Template__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Scrum_Team__c</tab>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Salesforce</userLicense>
     <userPermissions>

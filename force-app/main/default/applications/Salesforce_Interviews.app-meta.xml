@@ -32,12 +32,16 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Salesforce Interviews</label>
     <navType>Standard</navType>
-    <tabs>InterviewOrganizingCommittee__c</tabs>    
+    <tabs>InterviewOrganizingCommittee__c</tabs>
     <tabs>HiringPanel__c</tabs>
     <tabs>InterviewEvent__c</tabs>
-    <tabs>Questionaire__c</tabs>     
+    <tabs>Questionaire__c</tabs>
     <tabs>standard-Event</tabs>
     <tabs>standard-Account</tabs>
+    <tabs>QuestionaireTemplate__c</tabs>
+    <tabs>Hired_Candidate__c</tabs>
+    <tabs>Scrum_Team_Template__c</tabs>
+    <tabs>Scrum_Team__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Salesforce_Interviews_UtilityBar</utilityBar>
 </CustomApplication>
