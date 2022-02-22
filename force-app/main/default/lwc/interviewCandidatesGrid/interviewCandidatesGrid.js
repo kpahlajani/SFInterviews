@@ -25,6 +25,12 @@ export default class InterviewCandidatesGrid extends LightningElement {
             fieldName: 'Ongoing_Interview',
             type: 'text',
             sortable: true
+        },
+        {
+            label: 'Aggregated Score',
+            fieldName: 'Aggregated_Score__c',
+            type: 'number',
+            sortable: true
         }
     ];
  
@@ -42,7 +48,10 @@ export default class InterviewCandidatesGrid extends LightningElement {
                 candidate.Id = record.Id;
                 candidate.Candidate_Name__c = record.Candidate_Name__c;
                 candidate.Current_Status__c = record.Current_Status__c;
+                candidate.Aggregated_Score__c = record.Aggregated_Score__c;
+                if(record.Ongoing_Interview__r!=null){
                 candidate.Ongoing_Interview = record.Ongoing_Interview__r.Name;
+                }
 
                 candidates.push(candidate);
             });
