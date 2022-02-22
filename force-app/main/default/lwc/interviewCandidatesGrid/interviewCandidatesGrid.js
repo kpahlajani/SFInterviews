@@ -2,10 +2,12 @@ import { LightningElement ,api, wire, track} from 'lwc';
 import getCandidatesList from '@salesforce/apex/InterviewCandidatesGridHelper.getCandidatesList';
 export default class InterviewCandidatesGrid extends LightningElement {
     @api recordId;
-    @track columns = [{
+    @track columns = [
+        {
             label: 'Id',
-            fieldName: 'Id',
+            fieldName: 'ICName',
             type: 'url',
+            typeAttributes: {label: { fieldName: 'Name' }, target: '_blank'},
             sortable: true
         },
         {
@@ -45,7 +47,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
                 let candidates = [];
                 data.forEach(record => {
                 let candidate = {};
-                candidate.Id = '/'+record.Id;
+                candidate.ICName = '/'+record.Id;
                 candidate.Candidate_Name__c = record.Candidate_Name__c;
                 candidate.Current_Status__c = record.Current_Status__c;
                 candidate.Aggregated_Score__c = record.Aggregated_Score__c;
