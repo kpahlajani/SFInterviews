@@ -278,6 +278,9 @@
         <layout>Event-Event Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>EventInterviewSchedule__c-EventInterview Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>FeedbackItem__c-Feedback Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
