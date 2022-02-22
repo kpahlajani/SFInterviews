@@ -92,6 +92,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Hired_Candidate__c.Employee_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Hired_Candidate__c.Interview_Event_Candidate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Hired_Candidate__c.Onboarding_Completed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>HiringPanelMember__c.To__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -154,6 +169,11 @@
         <editable>false</editable>
         <field>InterviewEventCandidate__c.Google_Meet__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>InterviewEventCandidate__c.Hire_Status__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -284,6 +304,9 @@
         <layout>FeedbackItem__c-Feedback Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Hired_Candidate__c-Hired Candidate Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>HiringPanelMember__c-HiringPanelMember Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -317,7 +340,19 @@
         <layout>Questionaire__c-Questionaire Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Scrum_Team_Template__c-Team Allocation Template Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Scrum_Team__c-Scrum Team Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Task-Task Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Team_Allocation_Template_Items__c-Team Allocation Template Item Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Team_Assignment__c-Team Assignment Layout</layout>
     </layoutAssignments>
     <loginIpRanges>
         <endAddress>255.255.255.255</endAddress>
@@ -432,6 +467,10 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <tabVisibilities>
+        <tab>Hired_Candidate__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>HiringPanel__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
@@ -450,6 +489,14 @@
     <tabVisibilities>
         <tab>Questionaire__c</tab>
         <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Scrum_Team_Template__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Scrum_Team__c</tab>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Salesforce Platform</userLicense>
     <userPermissions>
