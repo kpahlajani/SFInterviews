@@ -1,0 +1,6 @@
+Id,Available_From__c,Available_Till__c,Candidate_Level__c,Candidate_Name__c,Candidate__c,Code_Pair__c,Current_Status__c,Google_Meet__c,Hire_Status__c,InterviewEvent__c,Name,Ongoing_Interview__c,Previous_Interview__c,Candidate__r.Name,InterviewEvent__r.Name,Ongoing_Interview__r.Name,Previous_Interview__r.Name
+a098D000000NEXkQAO,,,3,Ridhima Seth,0018D000006pMNIQA2,,Waiting,,,a0B8D000000YnYVUA0,IEC-00004,,,Ridhima Seth,Lateral Hiring,,
+a098D000000NEXfQAO,,,3,Amit Panda,0018D000006pMNJQA2,,Waiting,,,a0B8D000000YnYVUA0,IEC-00003,,,Amit Panda,Lateral Hiring,,
+a098D000000NEXaQAO,,,2,Gaurav Kaushik,0018D000006pMNKQA2,,Waiting,,,a0B8D000000YnYVUA0,IEC-00002,,,Gaurav Kaushik,Lateral Hiring,,
+a098D000000NEXVQA4,,,2,Amit Kumar Gupta,0018D000006pMNLQA2,,Waiting,,,a0B8D000000YnYVUA0,IEC-00001,,,Amit Kumar Gupta,Lateral Hiring,,
+a098D000000NEXQQA4,,,1,Manful Ram,0018D000006pMNMQA2,,Waiting,,,a0B8D000000YnYVUA0,IEC-00000,,,Manful Ram,Lateral Hiring,,
