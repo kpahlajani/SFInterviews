@@ -5,7 +5,7 @@
     <externalId>false</externalId>
     <label>Interview Event Candidate</label>
     <referenceTo>InterviewEventCandidate__c</referenceTo>
-    <relationshipName>Hired_Candidate_Pools</relationshipName>
+    <relationshipName>Interview_Event_candidates</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>

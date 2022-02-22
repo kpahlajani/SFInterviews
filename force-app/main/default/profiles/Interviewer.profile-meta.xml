@@ -304,7 +304,7 @@
         <layout>FeedbackItem__c-Feedback Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Hired_Candidate__c-Hired Candidate Pool Layout</layout>
+        <layout>Hired_Candidate__c-Hired Candidate Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>HiringPanelMember__c-HiringPanelMember Layout</layout>
