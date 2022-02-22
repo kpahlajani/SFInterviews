@@ -172,6 +172,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>InterviewEventCandidate__c.Hire_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>InterviewEventCandidate__c.Ongoing_Interview__c</field>
         <readable>true</readable>
     </fieldPermissions>
