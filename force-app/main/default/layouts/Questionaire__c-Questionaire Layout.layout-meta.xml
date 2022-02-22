@@ -11,12 +11,16 @@
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>QuestionaireTemplate__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Sort_Order__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Interaction_Duration_In_Mins__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

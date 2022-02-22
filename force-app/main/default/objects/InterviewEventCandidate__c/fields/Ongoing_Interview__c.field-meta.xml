@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ongoing_Interview__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Ongoing Interview</label>
+    <referenceTo>Interview__c</referenceTo>
+    <relationshipLabel>Ongoing Interview Event Candidates</relationshipLabel>
+    <relationshipName>Ongoing_Interview_event_candidates</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
