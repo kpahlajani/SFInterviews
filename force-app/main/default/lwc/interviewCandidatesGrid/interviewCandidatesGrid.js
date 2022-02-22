@@ -1,6 +1,7 @@
 import { LightningElement ,api, wire, track} from 'lwc';
 import getCandidatesList from '@salesforce/apex/InterviewCandidatesGridHelper.getCandidatesList';
 export default class InterviewCandidatesGrid extends LightningElement {
+    @api recordId;
     @track columns = [{
             label: 'Id',
             fieldName: 'Id',
@@ -29,7 +30,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
  
     @track error;
     @track candidateList ;
-    @wire(getCandidatesList)
+    @wire(getCandidatesList,{$recordId})
     wiredAccounts({
         error,
         data
