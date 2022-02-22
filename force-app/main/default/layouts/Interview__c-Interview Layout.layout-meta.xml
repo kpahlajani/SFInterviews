@@ -245,13 +245,21 @@
             <quickActionName>FeedItem.QuestionPost</quickActionName>
         </quickActionListItems>
     </quickActionList>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Is_Template__c</fields>
+        <fields>Questionaire__c</fields>
+        <fields>Proficiency_Level__c</fields>
+        <fields>Comments__c</fields>
+        <relatedList>FeedbackItem__c.Interview__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hJ0000006XrdK</masterLabel>
+        <masterLabel>00h17000009J5AK</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
