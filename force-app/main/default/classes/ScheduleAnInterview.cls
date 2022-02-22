@@ -1,10 +1,6 @@
 public with sharing class ScheduleAnInterview {
 
-    public static Id getSelectedInterviewRoundForCandidate(Id interviewEventCandidate, Id questionaireId)
-    {
-        return '';
-    }
-        
+    
 
     private static boolean checkInterviewerAvailability(Id userId)
     {

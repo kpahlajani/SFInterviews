@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Interview__c</fullName>
+    <fullName>Previous_Interview__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Ongoing Interview</label>
+    <label>Previous Interview</label>
     <referenceTo>Interview__c</referenceTo>
-    <relationshipLabel>Ongoing Interview Event Candidates</relationshipLabel>
-    <relationshipName>Ongoing_Interview_event_candidates</relationshipName>
+    <relationshipLabel>Interview Event Candidate (Previous Interview)</relationshipLabel>
+    <relationshipName>Interview_Event_Candidate</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
