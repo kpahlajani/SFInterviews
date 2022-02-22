@@ -32,15 +32,19 @@ public with sharing class ScheduleAnInterview {
                	throw new SFInterviewException('Invalid Interview Id');
         }
         InterviewEventCandidate__c iec = [Select Id, InterviewEvent__c  from InterviewEventCandidate__c where Id=:interviewEventCandidate];
-		List<HiringPanelMember__c > hiringPanelMembersObj = [Select Id, User__c, User_Name__c from HiringPanelMember__c  where Id IN :hiringPanelMembers];
+		List<HiringPanelMember__c > hiringPanelMembersObj = [Select Id, Email__c, User__c, User_Name__c from HiringPanelMember__c  where Id IN :hiringPanelMembers];
         if (hiringPanelMembersObj == null || hiringPanelMembersObj.isEmpty())
         {
            throw new SFInterviewException('Panel member not found');
         }
         Map<Id, String> panelMemberIdNameMap = new Map<Id, String>();
+        List<String> emailAddresses = New List<String>();
+        List<String> userNames = New List<String>();
         for (HiringPanelMember__c member: hiringPanelMembersObj)
         {
             panelMemberIdNameMap.put(member.Id, member.User_Name__c);
+            emailAddresses.add(member.Email__c);
+            userNames.add(member.User_Name__c);
         }
         //Get panel members to be assigned to this interview
 		//Check for the availability of these members
@@ -67,18 +71,16 @@ public with sharing class ScheduleAnInterview {
         e.EndDateTime = availabilityCheckTo;
         insert e;
         //Add rest of the members as observers
-       
-        //EventRelation er1 = new EventRelation();
-        //er1.EventId = e.Id;
-        //er1.RelationId = interview.Id;
-        //EventRelation er2 = new EventRelation();
-       // er2.EventId = e.Id;
-       // er2.IsInvitee = true;
-        //er2.IsWhat = false;
-       // er2.RelationId = contacts.get(1).Id;
-        //insert er1;
-        //Assign this event to the primary 
-        //Add all other hiring panel members as attendees in the event
+       List<EventRelation> attendees = New List<EventRelation>();
+        for (Integer index=1; index<hiringPanelMembersObj.size(); index++)
+        {
+            EventRelation attendee = new EventRelation();
+            attendee.EventId = e.Id;
+            attendee.RelationId = hiringPanelMembersObj.get(1).User__c;
+            attendees.add(attendee);
+        }
+        insert attendees;
+        SendEmail(userNames,'Hello','Hello',emailAddresses);
         //Make an entry for each hiring panel member in EventInterviewSchedule__c
         //Change corresponding interview status to scheduled.
         //Send an email to attendees.
@@ -105,17 +107,15 @@ public with sharing class ScheduleAnInterview {
     }
         
     
-    public static void SendEmail(String userName, String subject, String body) {
-     List<User> lstcon=[Select id from User where Username=:userName];
+    public static void SendEmail(List<String> userNames, String subject, String body, List<String> emailAddresses) {
+     List<User> lstcon=[Select id from User where Username IN :userNames];
      List<Id> lstids= new List<Id>();
      for(User c:lstcon) {
       lstids.add(c.id);
      }
      Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
      mail.setSaveAsActivity(false);
-     List<String> emailAddress = New List<String>();
-     emailAddress.add('kpahlajani@salesforce.com');
-     mail.setToAddresses(emailAddress);
+     mail.setToAddresses(emailAddresses);
      mail.setSenderDisplayName('Recruiter Admin');
      mail.setPlainTextBody(body);
      Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
