@@ -14,6 +14,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>InterviewCandidatesGridHelper</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>SFInterviewException</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -146,6 +150,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>InterviewEventCandidate__c.Aggregated_Score__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>InterviewEventCandidate__c.Available_From__c</field>
         <readable>false</readable>
@@ -169,11 +178,6 @@
         <editable>false</editable>
         <field>InterviewEventCandidate__c.Google_Meet__c</field>
         <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>InterviewEventCandidate__c.Hire_Status__c</field>
-        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -467,10 +471,6 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <tabVisibilities>
-        <tab>Hired_Candidate__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
         <tab>HiringPanel__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
@@ -489,14 +489,6 @@
     <tabVisibilities>
         <tab>Questionaire__c</tab>
         <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Scrum_Team_Template__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Scrum_Team__c</tab>
-        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Salesforce</userLicense>
     <userPermissions>
