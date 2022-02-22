@@ -4,7 +4,7 @@
     <deleteConstraint>Restrict</deleteConstraint>
     <externalId>false</externalId>
     <label>Hired Candidate</label>
-    <referenceTo>Hired_Candidate_Pool__c</referenceTo>
+    <referenceTo>Hired_Candidate__c</referenceTo>
     <relationshipLabel>Team Assignments</relationshipLabel>
     <relationshipName>Team_Assignments</relationshipName>
     <required>true</required>
