@@ -57,17 +57,6 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>force:detailPanel</componentName>
-                <identifier>force_detailPanel</identifier>
-            </componentInstance>
-        </itemInstances>
-        <mode>Replace</mode>
-        <name>detailTabContent</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
                 <componentName>feedbackItems</componentName>
                 <identifier>id4</identifier>
             </componentInstance>
@@ -78,37 +67,32 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>decorate</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;b&gt;Handshake Information for subsequent interactions !!&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText1</identifier>
+                <componentName>handshakeInformation</componentName>
+                <identifier>id5</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-43246f9d-5435-4c0d-b5de-3d3e43a5bf57</name>
+        <name>Facet-e30a30a8-6913-4d50-a11e-4c7549148ca6</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>decorate</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;b&gt;Problems discussed as part of this interaction !!&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText2</identifier>
+                <componentName>problemsDiscussed</componentName>
+                <identifier>id6</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-lg2vrgwy4p</name>
+        <name>Facet-e30a30a8-6913-4d50-a11e-4c7549148ca7</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>force:detailPanel</componentName>
+                <identifier>force_detailPanel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <mode>Replace</mode>
+        <name>detailTabContent</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -162,28 +146,28 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-43246f9d-5435-4c0d-b5de-3d3e43a5bf57</value>
+                    <value>Facet-e30a30a8-6913-4d50-a11e-4c7549148ca6</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
                     <value>Handshake Information</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab1</identifier>
+                <identifier>id8</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
+         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-lg2vrgwy4p</value>
+                    <value>Facet-e30a30a8-6913-4d50-a11e-4c7549148ca7</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
                     <value>Problems Discussed</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab2</identifier>
+                <identifier>id9</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
