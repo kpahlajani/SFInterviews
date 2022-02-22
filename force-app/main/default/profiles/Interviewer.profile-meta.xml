@@ -92,6 +92,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Hired_Candidate_Pool__c.Employee_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Hired_Candidate_Pool__c.Interview_Event_Candidate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Hired_Candidate_Pool__c.Onboarding_Complted__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>HiringPanelMember__c.To__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -284,6 +299,9 @@
         <layout>FeedbackItem__c-Feedback Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Hired_Candidate_Pool__c-Hired Candidate Pool Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>HiringPanelMember__c-HiringPanelMember Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -317,7 +335,19 @@
         <layout>Questionaire__c-Questionaire Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Scrum_Team_Template__c-Team Allocation Template Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Scrum_Team__c-Scrum Team Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Task-Task Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Team_Allocation_Template_Items__c-Team Allocation Template Item Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Team_Assignment__c-Team Assignment Layout</layout>
     </layoutAssignments>
     <loginIpRanges>
         <endAddress>255.255.255.255</endAddress>
