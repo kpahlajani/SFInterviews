@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Interview Event Candidate --></label>
+    <name>Interview_Event_Candidate__c</name>
+    <relationshipLabel><!-- Hired Candidat --></relationshipLabel>
+</CustomFieldTranslation>
