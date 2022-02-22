@@ -78,6 +78,16 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>interviewCandidatesGrid</componentName>
+                <identifier>c_interviewCandidatesGrid1</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-b5bcec93-3b95-460c-ad77-ca2f4ed061e7</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
                     <value>relatedTabContent</value>
@@ -120,6 +130,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>id7</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-b5bcec93-3b95-460c-ad77-ca2f4ed061e7</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Candidate Dashboard</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab1</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
