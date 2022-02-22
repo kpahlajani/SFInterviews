@@ -30,7 +30,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
  
     @track error;
     @track candidateList ;
-    @wire(getCandidatesList,{$recordId})
+    @wire(getCandidatesList,{recordId: '$recordId'})
     wiredAccounts({
         error,
         data
