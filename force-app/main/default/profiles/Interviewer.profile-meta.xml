@@ -96,17 +96,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Hired_Candidate_Pool__c.Employee_Name__c</field>
+        <field>Hired_Candidate__c.Employee_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Hired_Candidate_Pool__c.Interview_Event_Candidate__c</field>
+        <field>Hired_Candidate__c.Interview_Event_Candidate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Hired_Candidate_Pool__c.Onboarding_Complted__c</field>
+        <field>Hired_Candidate__c.Onboarding_Completed__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -308,7 +308,7 @@
         <layout>FeedbackItem__c-Feedback Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Hired_Candidate_Pool__c-Hired Candidate Pool Layout</layout>
+        <layout>Hired_Candidate__c-Hired Candidate Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>HiringPanelMember__c-HiringPanelMember Layout</layout>
