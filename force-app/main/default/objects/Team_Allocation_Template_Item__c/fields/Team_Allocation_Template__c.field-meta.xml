@@ -4,8 +4,8 @@
     <externalId>false</externalId>
     <label>Team Allocation Template</label>
     <referenceTo>Scrum_Team_Template__c</referenceTo>
-    <relationshipLabel>Team Allocation Template Items</relationshipLabel>
-    <relationshipName>Team_Allocation_Template_Items</relationshipName>
+    <relationshipLabel>Team Allocation Templates</relationshipLabel>
+    <relationshipName>Team_Allocation_Templates</relationshipName>
     <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>
     <trackTrending>false</trackTrending>
