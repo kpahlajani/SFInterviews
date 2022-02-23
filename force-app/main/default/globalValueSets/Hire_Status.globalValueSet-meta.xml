@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
+        <fullName>Evaluation Pending</fullName>
+        <default>true</default>
+        <label>Evaluation Pending</label>
+    </customValue>
+    <customValue>
         <fullName>Evaluation In Progress</fullName>
         <default>false</default>
         <label>Evaluation In Progress</label>
@@ -12,7 +17,7 @@
     </customValue>
     <customValue>
         <fullName>Debrief</fullName>
-        <default>true</default>
+        <default>false</default>
         <label>Debrief</label>
     </customValue>
     <customValue>
