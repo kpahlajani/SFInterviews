@@ -153,13 +153,13 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>EventInterviewSchedule</label>
+    <label>Event Interview Schedule</label>
     <nameField>
-        <label>EventInterview Name</label>
+        <label>EventInterviewSchedule Name</label>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
-    <pluralLabel>EventInterviewSchedules</pluralLabel>
+    <pluralLabel>Event Interview Schedules</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

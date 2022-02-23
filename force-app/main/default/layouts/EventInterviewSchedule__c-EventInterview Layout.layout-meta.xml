@@ -34,6 +34,10 @@
                 <behavior>Required</behavior>
                 <field>Hiring_Panel_Member__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Interviewer_Name__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
