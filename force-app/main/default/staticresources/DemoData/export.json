@@ -88,8 +88,13 @@
         {
             "operation": "Upsert",
             "externalId": "Name",
-            "query": "SELECT Id,Team_Allocation_Template__c,Size__c,GUS_URL__c FROM Scrum_Team__c"
-        }                  
+            "query": "SELECT Id,Name,Team_Allocation_Template__c,Size__c,GUS_URL__c FROM Scrum_Team__c"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "query": "SELECT Id,Name,Allocation_Status__c,Candidate__c,Candidate_Level__c FROM Hired_Candidate__c"
+        }                   
     ],
     "promptOnMissingParentObjects": false,
     "promptOnIssuesInCSVFiles": false
