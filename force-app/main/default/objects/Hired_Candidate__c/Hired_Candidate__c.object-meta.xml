@@ -155,11 +155,12 @@
     <externalSharingModel>Private</externalSharingModel>
     <label>Hired Candidate</label>
     <nameField>
-        <label>Hired Candidate Pool Name</label>
-        <type>Text</type>
+        <displayFormat>Hired-{0000}</displayFormat>
+        <label>Hired Candidate Name</label>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Hired Candidates</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts></searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
