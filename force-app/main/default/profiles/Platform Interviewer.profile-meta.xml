@@ -381,7 +381,7 @@
         <layout>Task-Task Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Team_Allocation_Template_Items__c-Team Allocation Template Item Layout</layout>
+        <layout>Team_Allocation_Template_Item__c-Team Allocation Template Item Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Team_Assignment__c-Team Assignment Layout</layout>
