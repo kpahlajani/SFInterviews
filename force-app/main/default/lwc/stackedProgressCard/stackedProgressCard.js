@@ -3,6 +3,7 @@ import { updateRecord } from 'lightning/uiRecordApi';
 import HANDSHAKE_INFORMATION_FIELD from '@salesforce/schema/Interview__c.Handshake_Information__c';
 import ID_FIELD from '@salesforce/schema/Interview__c.Id';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import getPrviousHandshakeInformation from '@salesforce/apex/HandshakeInformationController.getPrviousHandshakeInformation';
 
 
 export default class HandshakeInformation extends LightningElement {

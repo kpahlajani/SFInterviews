@@ -1,5 +1,11 @@
 import { LightningElement ,api, wire, track} from 'lwc';
 import getCandidatesList from '@salesforce/apex/InterviewCandidatesGridHelper.getCandidatesList';
+
+const actions = [
+    { label: 'Show Candidate Info', name: 'show_candidate_info' },
+    { label: 'Show Recent Interviews', name: 'show_recent_interviews' },
+];
+
 export default class InterviewCandidatesGrid extends LightningElement {
     @api recordId;
     @track columns = [
@@ -33,11 +39,23 @@ export default class InterviewCandidatesGrid extends LightningElement {
             fieldName: 'Aggregated_Score__c',
             type: 'number',
             sortable: true
+        },
+        { 
+            type: 'action', 
+            typeAttributes: { 
+                rowActions: actions 
+            } 
         }
     ];
  
     @track error;
     @track candidateList ;
+    
+    @track candidateInfoRow={};
+    @track recentInterviewRow={};
+
+    @track candidateInfoModal = false;
+    @track recentInterviewModal = false;
     @wire(getCandidatesList,{recordId: '$recordId'})
     wiredAccounts({
         error,
@@ -64,5 +82,36 @@ export default class InterviewCandidatesGrid extends LightningElement {
         }
     }
 
+    handleRowAction(event) {
+        const actionName = event.detail.action.name;
+        const row = event.detail.row;
+        switch (actionName) {
+            case 'show_candidate_info':
+                this.showCandidateInfoModal(row);
+                break;
+            case 'show_recent_interviews':
+                this.showRecentInterviewsModal(row);
+                break;
+            default:
+        }
+    }
+
+    showCandidateInfoModal(row) {
+        this.candidateInfoModal=true;
+        this.candidateInfoRow=row;
+    }
+
+    showRecentInterviewsModal(row){
+        this.recentInterviewModal=true;
+        this.recentInterviewRow=row;
+    }
+
+    closeCandidateInfoModal(){
+        this.candidateInfoModal=false;
+    }
+
+    closeRecentInterviewModal() {
+        this.recentInterviewModal=false;
+    }
    
 }
