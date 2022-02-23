@@ -2,7 +2,7 @@
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
         <fullName>Created</fullName>
-        <default>false</default>
+        <default>true</default>
         <label>Created</label>
     </customValue>
     <customValue>
@@ -18,10 +18,10 @@
     <customValue>
         <fullName>Execution</fullName>
         <default>false</default>
-        <label>Execution</label>
+        <label>Execution In Progress</label>
     </customValue>
     <customValue>
-        <fullName>Execution Completed</fullName>
+        <fullName>Completed</fullName>
         <default>false</default>
         <label>Execution Completed</label>
     </customValue>

@@ -50,6 +50,5 @@ trigger UpdateInterviewOverallRating on FeedbackItem__c (after insert, after upd
         interview.Overall_Rating__c = ''+Math.ceil(finalScore);
         interviewsToUpdate.add(interview);
     }
-    
 
 }
