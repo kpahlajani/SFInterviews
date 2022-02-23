@@ -376,7 +376,7 @@
         <layout>Task-Task Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Team_Allocation_Template_Items__c-Team Allocation Template Item Layout</layout>
+        <layout>Team_Allocation_Template_Item__c-Team Allocation Template Item Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Team_Assignment__c-Team Assignment Layout</layout>
@@ -562,7 +562,7 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>Team_Allocation_Template_Items__c</object>
+        <object>Team_Allocation_Template_Item__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>

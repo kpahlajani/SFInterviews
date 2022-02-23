@@ -53,7 +53,7 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Team_Allocation_Template_Items__c.Team_Allocation_Template__c</relatedList>
+        <relatedList>Team_Allocation_Template_Item__c.Team_Allocation_Template__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

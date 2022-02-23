@@ -55,5 +55,4 @@ trigger UpdateInterviewOverallRating on FeedbackItem__c (after insert, after upd
         interviewsToUpdate.add(interview);
     }
     update interviewsToUpdate;
-
 }
