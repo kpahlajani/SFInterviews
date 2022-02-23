@@ -9,7 +9,6 @@ export default class HandshakeInformation extends LightningElement {
 
     @api recordId;
 
-    //@wire(getPrviousHandshakeInformation, {recordId: '$recordId'})
     handshakeInformation;
 
     get previousHandshakeInformationValue() {
