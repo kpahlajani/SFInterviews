@@ -27,25 +27,27 @@ public with sharing class ScheduleAnInterview {
     
     public static void scheduleInterview(Id interviewEventCandidate, Id interviewId, DateTime availabilityCheckFrom, DateTime availabilityCheckTo, List<Id> hiringPanelMembers)
     {
-        Interview__c interview = [Select Id, Name from Interview__c where Id=:interviewId];
+        Interview__c interview = [Select Id, Name , Status__c from Interview__c where Id=:interviewId];
         if (interview == null)
         {
                	throw new SFInterviewException('Invalid Interview Id');
         }
-        InterviewEventCandidate__c iec = [Select Id, InterviewEvent__c  from InterviewEventCandidate__c where Id=:interviewEventCandidate];
+        if (interview.Status__c != 'Planned')
+        {
+               	throw new SFInterviewException('Interview cannot be scheduled.Interview must be in planning state.');
+        }
+        InterviewEventCandidate__c iec = [Select Id, InterviewEvent__c, Candidate_Name__c  from InterviewEventCandidate__c where Id=:interviewEventCandidate];
 		List<HiringPanelMember__c > hiringPanelMembersObj = [Select Id, Email__c, User__c, User_Name__c from HiringPanelMember__c  where Id IN :hiringPanelMembers];
         if (hiringPanelMembersObj == null || hiringPanelMembersObj.isEmpty())
         {
            throw new SFInterviewException('Panel member not found');
         }
         Map<Id, String> panelMemberIdNameMap = new Map<Id, String>();
-        List<String> emailAddresses = New List<String>();
-        List<String> userNames = New List<String>();
+        Map<String, String> userNames = New Map<String, String>();
         for (HiringPanelMember__c member: hiringPanelMembersObj)
         {
             panelMemberIdNameMap.put(member.Id, member.User_Name__c);
-            emailAddresses.add(member.Email__c);
-            userNames.add(member.User_Name__c);
+            userNames.put(member.User_Name__c, member.Email__c);
         }
         //Get panel members to be assigned to this interview
 		//Check for the availability of these members
@@ -71,20 +73,44 @@ public with sharing class ScheduleAnInterview {
         e.StartDateTime = availabilityCheckFrom;
         e.EndDateTime = availabilityCheckTo;
         insert e;
-        //Add rest of the members as observers
+       //Add rest of the members as observers
        List<EventRelation> attendees = New List<EventRelation>();
         for (Integer index=1; index<hiringPanelMembersObj.size(); index++)
         {
             EventRelation attendee = new EventRelation();
             attendee.EventId = e.Id;
-            attendee.RelationId = hiringPanelMembersObj.get(1).User__c;
+            attendee.RelationId = hiringPanelMembersObj.get(index).User__c;
             attendees.add(attendee);
         }
         insert attendees;
-        SendEmail(userNames,'Hello','Hello',emailAddresses);
+        
         //Make an entry for each hiring panel member in EventInterviewSchedule__c
+        List<EventInterviewSchedule__c> schedules = new List<EventInterviewSchedule__c>();
+        for (Integer index=0; index<hiringPanelMembersObj.size(); index++)
+        {
+           EventInterviewSchedule__c schedule = new EventInterviewSchedule__c();
+           schedule.Interview__c = interview.Id;
+           schedule.From__c = availabilityCheckFrom;
+           schedule.To__c = availabilityCheckTo;
+           schedule.Hiring_Panel_Member__c = hiringPanelMembersObj.get(index).Id;
+           schedule.Interview_Event__c = iec.InterviewEvent__c;
+           schedule.Status__c = 'Scheduled';
+ 		   schedules.add(schedule);
+        }
+        insert schedules;
         //Change corresponding interview status to scheduled.
+		interview.Status__c='Scheduled';
+        update interview;
+
         //Send an email to attendees.
+        String Subject = 'Interaction Scheduled with '+ iec.Candidate_Name__c;
+        String body = 'Hello $USERNAME,\n\n'+'You have been invited for interation with '+ iec.Candidate_Name__c+'.\n'+
+            'Please login to your salesforce account '+
+            'to accept the invite.\n'+
+            'Please navigate to following URL to access all interview details.\n'+
+            URL.getSalesforceBaseUrl().toExternalForm()+'/'+interviewId;
+        //SendEmail(userNames,subject,body);
+        
     }
     
     public static void reScheduleInterview(Id interviewEventCandidate, Id interviewId, DateTime availabilityCheckFrom, DateTime availabilityCheckTo, List<Id> hiringPanelMembers)
@@ -108,18 +134,21 @@ public with sharing class ScheduleAnInterview {
     }
         
     
-    public static void SendEmail(List<String> userNames, String subject, String body, List<String> emailAddresses) {
-     List<User> lstcon=[Select id from User where Username IN :userNames];
-     List<Id> lstids= new List<Id>();
-     for(User c:lstcon) {
-      lstids.add(c.id);
-     }
-     Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-     mail.setSaveAsActivity(false);
-     mail.setToAddresses(emailAddresses);
-     mail.setSenderDisplayName('Recruiter Admin');
-     mail.setPlainTextBody(body);
-     Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
+    public static void SendEmail(Map<String, String> userNamesEmailMap, String subject, String body) {
+         for (String userName : userNamesEmailMap.keySet())
+         {
+             String emailBody = body;
+             emailBody = emailBody.replace('$USERNAME', userName);
+             String emailAddress = userNamesEmailMap.get(userName);
+             List<String> emailAddresses = new List<String>();
+             emailAddresses.add(emailAddress);
+             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+             mail.setSaveAsActivity(false);
+             mail.setToAddresses(emailAddresses);
+             mail.setSenderDisplayName('Recruiter Admin');
+             mail.setPlainTextBody(emailBody);
+             Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
+         }
     }
     
 
