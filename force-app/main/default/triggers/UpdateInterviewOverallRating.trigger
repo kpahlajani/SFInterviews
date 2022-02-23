@@ -14,7 +14,7 @@ trigger UpdateInterviewOverallRating on FeedbackItem__c (after insert, after upd
     }
     //Create map of Interviews to Feedback Items
     Map<String, Set<FeedbackItem__c>> interviewFeedbackItemMap = New Map<String, Set<FeedbackItem__c>>();
-    List<FeedbackItem__c> allFeedbackItems = [Select Id, Interview__c , Proficiency_Level__c from FeedbackItem__c where Interview__c IN :allInterviews];
+    List<FeedbackItem__c> allFeedbackItems = [Select Id, Comments__c,Interview__c , Proficiency_Level__c from FeedbackItem__c where Interview__c IN :allInterviews];
     for (FeedbackItem__c fi : allFeedbackItems)
     {
         if (interviewFeedbackItemMap.get(fi.Interview__c) == null)
@@ -37,8 +37,11 @@ trigger UpdateInterviewOverallRating on FeedbackItem__c (after insert, after upd
         Integer totalScore = 0;
         for(FeedbackItem__c fi : feedbackItems)
         {
-            if (fi.Comments__c !=null && fi.Proficiency_Level__c != null)
+            if (fi.Proficiency_Level__c != null)
+            {
+                System.debug('Considering this item');
                 capturedItems++;
+            }
             if (fi.Proficiency_Level__c != null)
             {
             	totalScore+=Integer.valueOf(fi.Proficiency_Level__c);
@@ -47,8 +50,9 @@ trigger UpdateInterviewOverallRating on FeedbackItem__c (after insert, after upd
         if (capturedItems != 1)
             capturedItems--;
         Double finalScore = (Double)totalScore/capturedItems;
-        interview.Overall_Rating__c = ''+Math.ceil(finalScore);
+        System.debug('Overall Score is ' + finalScore);
+        interview.Overall_Rating__c = ''+Integer.valueOf(''+Math.ceil(finalScore));
         interviewsToUpdate.add(interview);
     }
-
+    update interviewsToUpdate;
 }
