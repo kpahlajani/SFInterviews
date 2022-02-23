@@ -1,0 +1,83 @@
+
+  
+{
+    "objects": [
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "master": true,
+            "query": "SELECT Id, Name FROM Profile"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "master": true,
+            "query": "SELECT Id,Username,LastName,FirstName,Name,Email,IsActive,TimeZoneSidKey,UserRoleId,ProfileId FROM User"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "master": true,
+            "query": "Select Name from Account"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "query": "SELECT Hiring_Panel__c,Id,InterviewEvent__c,Name from ActivePanel__c"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "master": true,
+            "query": "SELECT Id, Name FROM HiringPanel__c"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "query": "SELECT Default_Member_Role__c,From__c,HiringPanel__c,Id,Name,To__c,User_Name__c,User__c FROM HiringPanelMember__c"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "query": "SELECT ExpectedEndDateAndTime__c,ExpectedStartDateAndTime__c,Id,Interview_Organizing_Committee__c,Name,ParentInterviewEvent__c,State__c FROM InterviewEvent__c"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "query": "SELECT Available_From__c,Available_Till__c,Candidate_Level__c,Candidate_Name__c,Candidate__c,Code_Pair__c,Current_Status__c,Google_Meet__c,Hire_Status__c,Id,InterviewEvent__c,Name,Ongoing_Interview__c,Previous_Interview__c FROM InterviewEventCandidate__c"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "query": "SELECT Id,InterviewEvent__c,Name,QuestionaireTemplate__c,Schedule_Gap__c FROM InterviewEventQuestionaireTemplate__c"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "master": true,
+            "query": "SELECT Id,Name,ParentOrganizingCommittee__c FROM InterviewOrganizingCommittee__c"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "query": "SELECT Description__c,Id,Interaction_Duration_In_Mins__c,Name,QuestionaireTemplate__c,Sort_Order__c FROM Questionaire__c"
+        },
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "master": true,
+            "query": "SELECT Candidate_Level__c,Description__c,Id,Name FROM QuestionaireTemplate__c"
+        }
+        ,
+        {
+            "operation": "Upsert",
+            "externalId": "Name",
+            "master": true,
+            "query": "SELECT Comments__c,Id,Interview__c,Is_Template__c,Name,Proficiency_Level__c,Questionaire__c FROM FeedbackItem__c"
+        }        
+
+       
+    ],
+    "promptOnMissingParentObjects": false,
+    "promptOnIssuesInCSVFiles": false
+}

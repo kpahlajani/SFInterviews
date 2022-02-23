@@ -79,6 +79,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>EventInterviewSchedule__c.Interviewer_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>FeedbackItem__c.Comments__c</field>
         <readable>false</readable>
     </fieldPermissions>
