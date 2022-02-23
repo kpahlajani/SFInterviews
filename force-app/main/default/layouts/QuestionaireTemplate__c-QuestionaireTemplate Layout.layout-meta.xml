@@ -15,8 +15,12 @@
                 <field>Description__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Candidate_Level__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Cut_off_Score__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
