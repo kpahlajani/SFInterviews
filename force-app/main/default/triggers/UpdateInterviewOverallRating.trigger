@@ -40,11 +40,8 @@ trigger UpdateInterviewOverallRating on FeedbackItem__c (after insert, after upd
             if (fi.Proficiency_Level__c != null)
             {
                 System.debug('Considering this item');
+              	totalScore+=Integer.valueOf(fi.Proficiency_Level__c);
                 capturedItems++;
-            }
-            if (fi.Proficiency_Level__c != null)
-            {
-            	totalScore+=Integer.valueOf(fi.Proficiency_Level__c);
             }
         }
         if (capturedItems != 1)
