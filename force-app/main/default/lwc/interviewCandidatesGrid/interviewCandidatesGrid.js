@@ -56,11 +56,11 @@ export default class InterviewCandidatesGrid extends LightningElement {
                 candidate.ICName = '/'+record.Id;
                 candidate.Candidate_Name__c = record.Candidate_Name__c;
                 candidate.Current_Candidate_Level__c = record.Candidate_Level__c;
-                candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Scheduled_Start_Time__c;
                 candidate.Current_Status__c = record.Current_Status__c;
                 candidate.Aggregated_Score__c = record.Aggregated_Score__c;
                 if(record.Ongoing_Interview__r!=null){
                     candidate.Ongoing_Interview = record.Ongoing_Interview__r.Name;
+                    candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Scheduled_Start_Time__c;
                 }
 
                 candidates.push(candidate);
