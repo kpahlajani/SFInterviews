@@ -18,6 +18,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>InterviewCandidatesGridHelper</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ProblemsDiscussedController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -120,6 +124,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>HiringPanelMember__c.Email__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>HiringPanelMember__c.To__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -156,6 +165,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Hiring_Panel_Member_Availability__c.To__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>InterviewEventCandidate__c.Aggregated_Score__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
