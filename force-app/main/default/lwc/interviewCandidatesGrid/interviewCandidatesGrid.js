@@ -55,7 +55,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
                 let candidate = {};
                 candidate.ICName = '/'+record.Id;
                 candidate.Candidate_Name__c = record.Candidate_Name__c;
-                candidate.Current_Candidate_Level__c = record.Candidate_Level__c;
+                candidate.Candidate_Level__c = record.Candidate_Level__c;
                 candidate.Current_Status__c = record.Current_Status__c;
                 candidate.Aggregated_Score__c = record.Aggregated_Score__c;
                 if(record.Ongoing_Interview__r!=null){
