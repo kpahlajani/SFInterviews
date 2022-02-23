@@ -155,10 +155,10 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>Team Allocation Template Item</label>
     <nameField>
-        <label>Team Allocation Template Items Name</label>
+        <label>Team Allocation Template Item Name</label>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Team Allocation Template Items</pluralLabel>
+    <pluralLabel>Team Allocation Template Item</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>

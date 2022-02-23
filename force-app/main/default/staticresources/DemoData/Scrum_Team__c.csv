@@ -1,0 +1,5 @@
+Id,Team_Allocation_Template__c,Size__c,GUS_URL__c,Name,Team_Allocation_Template__r.Name
+a0I8D000000HUNDUA4,a0H8D000001quxnUAA,8,https://gus.lightning.force.com/lightning/r/ADM_Scrum_Team__c/a00B000000AThFjIAL/view,GV-Calyx,Development Team
+a0I8D000000HUNNUA4,a0H8D000001quxnUAA,12,https://gus.lightning.force.com/lightning/r/ADM_Scrum_Team__c/a00AH000000imWlYAI/view,Industries RCG Offline App,Development Team
+a0I8D000000HUN8UAO,a0H8D000001quxnUAA,10,https://gus.lightning.force.com/lightning/r/ADM_Scrum_Team__c/a00B0000008fpEDIAY/view,RE-Jarvis,Development Team
+a0I8D000000HUNIUA4,a0H8D000001quxnUAA,10,https://gus.lightning.force.com/lightning/r/ADM_Scrum_Team__c/a00AH000000imWgYAI/view,Industries Mobile Offline Client,Development Team
