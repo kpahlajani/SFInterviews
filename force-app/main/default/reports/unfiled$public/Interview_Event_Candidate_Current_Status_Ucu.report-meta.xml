@@ -29,15 +29,6 @@
     <columns>
         <field>InterviewEvent__c.InterviewEventCandidate__r$Name</field>
     </columns>
-    <filter>
-        <criteriaItems>
-            <column>InterviewEvent__c$Id</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>a0B8D000000YnYV</value>
-        </criteriaItems>
-    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
