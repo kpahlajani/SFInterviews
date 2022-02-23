@@ -1,5 +1,6 @@
 public with sharing class ScheduleAnInterview {
     
+    
     public static Set<Id> getAllAvailableInterviewers(DateTime availabilityCheckFrom, DateTime availabilityCheckTo, Id eventId)
     {
         List<Id> availableInterviewers = New List<Id>();

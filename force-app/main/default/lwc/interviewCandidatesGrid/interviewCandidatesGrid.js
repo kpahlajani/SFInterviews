@@ -1,5 +1,6 @@
 import { LightningElement ,api, wire, track} from 'lwc';
 import getCandidatesList from '@salesforce/apex/InterviewCandidatesGridHelper.getCandidatesList';
+//import getAllAvailableInterviewers from '@salesforce/apex/ScheduleAnInterview.getAllAvailableInterviewers';
 export default class InterviewCandidatesGrid extends LightningElement {
     @api recordId;
     @track columns = [
@@ -64,5 +65,73 @@ export default class InterviewCandidatesGrid extends LightningElement {
         }
     }
 
+    selectedCandidates = [];
+    startDateTime;
+    endDateTime;
+    availableInterviewers;
+    getSelectedRows(event) {
+        const selectedRows = event.detail.selectedRows;
+
+        // Display that fieldName of the selected rows
+        for (let i = 0; i < selectedRows.length; i++) {
+            this.selectedCandidates[i] = selectedRows[i].Id;
+        }
+    }
+
+    @track isScheduleCandidatesModalOpen = false;
+
+    opneScheduleCandidatesModal() {
+        this.isScheduleCandidatesModalOpen = true;
+    }
+    closeScheduleCandidatesModal() {
+        this.isScheduleCandidatesModalOpen = false;
+        this.selectedCandidates = [];
+        this.picklistValue = '';
+        this.items = [];
+        this.startDateTime = '';
+        this.endDateTime = '';
+    }
+
+    handleStartDateTime(event) {
+        //let a = event.target.value;
+        this.startDateTime = event.target.value;
+        this.getInterviewerList();
+    }
+
+    handleEndDateTime(event) {
+        //let b = event.target.value;
+        this.endDateTime = event.target.value;
+        this.getInterviewerList();
+    }
+
+    getInterviewerList() {
+        if(this.startDateTime !== undefined && this.endDateTime !== undefined) {
+           this.availableInterviewers ;//= getAllAvailableInterviewers({availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, eventId : this.recordId});
+            this.getValues();
+        }
+    }
+
+    @track items = []; //this will hold key, value pair
+    picklistValue = ''; //initialize combo box value
+
+    @track chosenValue = '';
+
+    getValues() {
+        if (this.availableInterviewers) {
+            let temp = [];
+            for(let i=0; i<this.availableInterviewers.length; i++)  {
+                const option = {
+                    label: this.availableInterviewers[i],
+                    value: this.availableInterviewers[i]
+                };
+                temp[i] = option;                                  
+            }  
+            this.items = temp;              
+        } 
+    }
+
+    handleValueChange(event) {
+        this.picklistValue = event.detail.value;
+    }
    
 }
