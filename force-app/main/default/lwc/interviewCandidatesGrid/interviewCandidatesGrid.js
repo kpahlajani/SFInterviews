@@ -37,7 +37,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
         {
             label: 'Aggregated Score',
             fieldName: 'Aggregated_Score__c',
-            type: 'number',
+            type: 'text',
             sortable: true
         }
     ];
