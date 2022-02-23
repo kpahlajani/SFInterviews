@@ -11,9 +11,9 @@
         <label>Partially Allocated</label>
     </customValue>
     <customValue>
-        <fullName>UnAllocated</fullName>
+        <fullName>Unallocated</fullName>
         <default>false</default>
-        <label>UnAllocated</label>
+        <label>Unallocated</label>
     </customValue>
     <masterLabel>Allocation Status</masterLabel>
     <sorted>false</sorted>
