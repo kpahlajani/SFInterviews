@@ -68,16 +68,6 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>eventDashboardMain</componentName>
-                <identifier>id4</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-e30a30a8-6913-4d50-a11e-4c7549148ca4</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
                 <componentName>interviewCandidatesGrid</componentName>
                 <identifier>c_interviewCandidatesGrid1</identifier>
             </componentInstance>
@@ -122,25 +112,11 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-e30a30a8-6913-4d50-a11e-4c7549148ca4</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Planner</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>id7</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
                     <value>Facet-b5bcec93-3b95-460c-ad77-ca2f4ed061e7</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
-                    <value>Candidate Dashboard</value>
+                    <value>Planner</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab1</identifier>
