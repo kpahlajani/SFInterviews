@@ -4,8 +4,8 @@
     <decisions>
         <name>DeleteDecision</name>
         <label>DeleteDecision</label>
-        <locationX>661</locationX>
-        <locationY>715</locationY>
+        <locationX>361</locationX>
+        <locationY>556</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Delete</name>
@@ -103,6 +103,9 @@
         <label>Delete Obsolete Recommendations</label>
         <locationX>532</locationX>
         <locationY>979</locationY>
+        <connector>
+            <targetReference>wwr</targetReference>
+        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Hired_Candidate__c</field>
@@ -231,8 +234,8 @@
     <recordUpdates>
         <name>Update_Status_to_Allocated</name>
         <label>Update Status to Allocated</label>
-        <locationX>1053</locationX>
-        <locationY>802</locationY>
+        <locationX>866</locationX>
+        <locationY>457</locationY>
         <connector>
             <targetReference>Get_Reco_to_Delete</targetReference>
         </connector>
@@ -257,17 +260,51 @@
         <label>Screen</label>
         <locationX>1213</locationX>
         <locationY>659</locationY>
-        <allowBack>true</allowBack>
+        <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
+        <allowPause>false</allowPause>
         <connector>
             <targetReference>AssignTeam</targetReference>
         </connector>
         <fields>
-            <name>display</name>
-            <fieldText>&lt;p&gt;Do you want to allocate &lt;b&gt;{!GetHiredCandidate.Employee_Name__c} &lt;/b&gt;as&lt;b&gt; {!Level}  &lt;/b&gt;with&lt;b&gt; {!InvolvementPercent}% capacity &lt;/b&gt;to team&lt;b&gt; &quot;{!GetTeam.Name}&quot; &lt;/b&gt;?&lt;/p&gt;</fieldText>
+            <name>Screen_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Screen_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>display</name>
+                    <fieldText>&lt;p&gt;Do you want to allocate &lt;b&gt;{!GetHiredCandidate.Employee_Name__c} &lt;/b&gt;as&lt;b&gt; {!Level}  &lt;/b&gt;with&lt;b&gt; {!InvolvementPercent}% capacity &lt;/b&gt;to team&lt;b&gt; &quot;{!GetTeam.Name}&quot; &lt;/b&gt;?&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>12</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+        </fields>
+        <nextOrFinishButtonLabel>Yes</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>wwr</name>
+        <label>w</label>
+        <locationX>674</locationX>
+        <locationY>1103</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>success</name>
+            <fieldText>&lt;p&gt;Allocation is successful. Thank you.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
+        <nextOrFinishButtonLabel>Finish</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>

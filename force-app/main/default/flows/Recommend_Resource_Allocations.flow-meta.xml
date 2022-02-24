@@ -21,7 +21,7 @@
     </actionCalls>
     <apiVersion>54.0</apiVersion>
     <interviewLabel>Recommend Resource Allocations {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Generate Resource Allocation Recommendations</label>
+    <label>AutoLaunch Resource Allocation Recommendations</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
