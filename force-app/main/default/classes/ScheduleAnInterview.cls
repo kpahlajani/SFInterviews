@@ -103,16 +103,6 @@ public with sharing class ScheduleAnInterview {
         //Change corresponding interview status to scheduled.
 		interview.Status__c='Scheduled';
         update interview;
-
-        //Send an email to attendees.
-        String Subject = 'Interaction Scheduled with '+ iec.Candidate_Name__c;
-        String body = 'Hello $USERNAME,\n\n'+'You have been invited for interation with '+ iec.Candidate_Name__c+'.\n'+
-            'Please login to your salesforce account '+
-            'to accept the invite.\n'+
-            'Please navigate to following URL to access all interview details.\n'+
-            URL.getSalesforceBaseUrl().toExternalForm()+'/'+interviewId;
-        //SendEmail(userNames,subject,body);
-        
     }
     
     public static void reScheduleInterview(Id interviewEventCandidate, Id interviewId, DateTime availabilityCheckFrom, DateTime availabilityCheckTo, List<Id> hiringPanelMembers)
@@ -133,24 +123,6 @@ public with sharing class ScheduleAnInterview {
         if (interviewerSchedule == null || interviewerSchedule.isEmpty())
            return true;
     	return false;
-    }
-        
-    
-    public static void SendEmail(Map<String, String> userNamesEmailMap, String subject, String body) {
-         for (String userName : userNamesEmailMap.keySet())
-         {
-             String emailBody = body;
-             emailBody = emailBody.replace('$USERNAME', userName);
-             String emailAddress = userNamesEmailMap.get(userName);
-             List<String> emailAddresses = new List<String>();
-             emailAddresses.add(emailAddress);
-             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-             mail.setSaveAsActivity(false);
-             mail.setToAddresses(emailAddresses);
-             mail.setSenderDisplayName('Recruiter Admin');
-             mail.setPlainTextBody(emailBody);
-             Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
-         }
     }
     
     @AuraEnabled
