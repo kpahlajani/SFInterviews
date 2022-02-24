@@ -13,10 +13,7 @@ public with sharing class ScheduleAnInterview {
         }
         //For all of these interviewers check in EventInterviewSchedule
         List<EventInterviewSchedule__c> currentScheduleSnapshot = [Select Id, Hiring_Panel_Member__c, From__c, To__c, Interview_Event__c , Interview__c	, Status__c from EventInterviewSchedule__c 
-                                                               where Hiring_Panel_Member__c  IN :memberRoleMap.keySet() and 
-                                                               ( Status__c ='Scheduled' OR Status__c ='InProgress') and 
-                                                               ((From__c >= :availabilityCheckFrom and From__c <= :availabilityCheckTo) OR
-                                                               (To__c >= :availabilityCheckFrom and To__c <= :availabilityCheckTo))];
+                                                               where Hiring_Panel_Member__c  IN :memberRoleMap.keySet() and  Status__c  in ('Scheduled','InProgress') and From__c <= :availabilityCheckTo and To__c >= :availabilityCheckFrom ];
 
         // Filter the results
         // Remove the members from the map which are already part of this snapshot

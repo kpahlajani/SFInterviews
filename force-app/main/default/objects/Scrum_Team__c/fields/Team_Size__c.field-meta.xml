@@ -3,10 +3,8 @@
     <fullName>Team_Size__c</fullName>
     <externalId>false</externalId>
     <label>Team Size</label>
-    <precision>3</precision>
-    <required>true</required>
-    <scale>0</scale>
+    <summaryForeignKey>Team_Assignment__c.Scrum_Team__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
     <trackTrending>false</trackTrending>
-    <type>Number</type>
-    <unique>false</unique>
+    <type>Summary</type>
 </CustomField>

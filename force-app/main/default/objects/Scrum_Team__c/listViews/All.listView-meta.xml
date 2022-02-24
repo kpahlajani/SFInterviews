@@ -3,8 +3,9 @@
     <fullName>All</fullName>
     <columns>NAME</columns>
     <columns>GUS_URL__c</columns>
-    <columns>Size__c</columns>
     <columns>Team_Allocation_Template__c</columns>
+    <columns>Expected_Team_Size__c</columns>
+    <columns>Team_Size__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>
