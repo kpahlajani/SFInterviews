@@ -218,6 +218,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>InterviewEventCandidate__c.Start_Time__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>InterviewEvent__c.ParentInterviewEvent__c</field>
         <readable>false</readable>

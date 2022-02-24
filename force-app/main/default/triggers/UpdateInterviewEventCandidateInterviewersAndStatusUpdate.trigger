@@ -34,7 +34,7 @@ trigger UpdateInterviewEventCandidateInterviewersAndStatusUpdate on Interview__c
     
     //Now get schedule for all of these interviews
     
-    List<EventInterviewSchedule__c> availableSchedules = [Select Id, Status__c, Hiring_Panel_Member__r.User_Name__c ,Interview__c, Interview__r.Interview_Event_Candidate__c from EventInterviewSchedule__c where Interview__c IN :interviewMap.keySet()];
+    List<EventInterviewSchedule__c> availableSchedules = [Select Id, From__c, Status__c, Hiring_Panel_Member__r.User_Name__c ,Interview__c, Interview__r.Interview_Event_Candidate__c from EventInterviewSchedule__c where Interview__c IN :interviewMap.keySet()];
     Map<String, Set<EventInterviewSchedule__c>> allInterviewSchedules = New Map<String, Set<EventInterviewSchedule__c>>();
     List<InterviewEventCandidate__c> iecs = [Select Id, Ongoing_Interview__c from InterviewEventCandidate__c where Id IN :iecIds];
     Map<String, InterviewEventCandidate__c> iecsMap = New Map<String, InterviewEventCandidate__c>();
@@ -93,6 +93,7 @@ trigger UpdateInterviewEventCandidateInterviewersAndStatusUpdate on Interview__c
                 String user = schedule.Hiring_Panel_Member__r.User_Name__c;
                 System.debug('User getting assigned is ........'+user);
                 interviewers.add(user);
+                candidate.Start_Time__c = schedule.From__c;
                // interviewers.remove(null);
             }
             string interviewersStr = string.join(interviewers,',');
