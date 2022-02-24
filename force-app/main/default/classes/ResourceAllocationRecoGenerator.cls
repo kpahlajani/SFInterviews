@@ -68,43 +68,54 @@ global class ResourceAllocationRecoGenerator {
         description='This function returns recommendations for the resources to allocate to a team.')
      global static List<List<Recommendation>> getResources(List<ResourceRecommendationGenerateRequest> inputRequests){
         List<List<Recommendation>> outputs = new List<List<Recommendation>>();
+         
+        List<Hired_Candidate__c> availableResources=[SELECT Id,Name,Candidate__c,Allocation_Status__c,tolabel(Candidate_Level__c),Employee_Name__c FROM Hired_Candidate__c 
+                                                        where Allocation_Status__c in ('Partially Allocated','Unallocated') and Onboarding_Completed__c=true ];    
+         
+
+        Map<String,List<Hired_Candidate__c>> availableMap = new   Map<String,List<Hired_Candidate__c>>();
+        for(Hired_Candidate__c hc:availableResources){
+             if(hc.Allocation_Status__c=='Unallocated'){
+                 if(!availableMap.containsKey(hc.Candidate_Level__c+'|100')) 
+                     availableMap.put(hc.Candidate_Level__c+'|100',new List<Hired_Candidate__c>());
+                 
+                 availableMap.get(hc.Candidate_Level__c+'|100').add(hc);
+             }
+             // available for partial allocation too
+             if(!availableMap.containsKey(hc.Candidate_Level__c+'|50')) 
+                 availableMap.put(hc.Candidate_Level__c+'|50',new List<Hired_Candidate__c>());
+             
+             availableMap.get(hc.Candidate_Level__c+'|50').add(hc);
+        }   
+         
+        String availedKey = null;
         
         for (ResourceRecommendationGenerateRequest inputRequest : inputRequests)
         {
           Map<String,ResourceShortage> shortages = getShortages(inputRequest.teamId);
-            
-          List<Hired_Candidate__c> availableResources=[SELECT Id,Name,Candidate__c,Allocation_Status__c,tolabel(Candidate_Level__c),Employee_Name__c FROM Hired_Candidate__c 
-                                                        where Allocation_Status__c in ('Partially Allocated','Unallocated') and Onboarding_Completed__c=true ]; 
-           
-          Map<String,List<Hired_Candidate__c>> availableMap = new   Map<String,List<Hired_Candidate__c>>();
-          for(Hired_Candidate__c hc:availableResources){
-              if(hc.Allocation_Status__c=='Unallocated'){
-                 if(!availableMap.containsKey(hc.Candidate_Level__c+'|100')) 
-                   availableMap.put(hc.Candidate_Level__c+'|100',new List<Hired_Candidate__c>());
-
-                availableMap.get(hc.Candidate_Level__c+'|100').add(hc);
-              }
-             // available for partial allocation too
-            if(!availableMap.containsKey(hc.Candidate_Level__c+'|50')) 
-              availableMap.put(hc.Candidate_Level__c+'|50',new List<Hired_Candidate__c>());
-
-            availableMap.get(hc.Candidate_Level__c+'|50').add(hc);
+          system.debug('Available Resource:'+availableMap.keySet());   
+          Set<Id> existingTeamMemberIds= new Set<Id>();
+          for(Team_Assignment__c ta:[SELECT  Hired_Candidate__c  FROM Team_Assignment__c where Scrum_Team__c=:inputRequest.teamId]){
+              existingTeamMemberIds.add(ta.Hired_Candidate__c);                
           }
-           
-           system.debug('Available Resource:'+availableMap.keySet());
-           List<Recommendation> recs = new List<Recommendation>(); 
-           for (String key: shortages.keySet()) {
+            
+          List<Recommendation> recs = new List<Recommendation>(); 
+          availedKey=null; 
+          for (String key: shortages.keySet()) {
 
                 if(availableMap.containsKey(key)){
                     ResourceShortage shortage=shortages.get(key);
                     
                     for (Hired_Candidate__c hc:availableMap.get(key)) {
-                        if(shortage.count==0)
+                        if(shortage.count==0 || existingTeamMemberIds.contains(hc.Id))
                             continue;
+
+                        availedKey=key;
                         shortage.count--;
+                        existingTeamMemberIds.add(hc.Id);
                         Recommendation rec = new Recommendation(
                             Name = hc.Employee_Name__c,
-                            Description = 'Fill Shortage of '+shortage.level+' with Allocation '+shortage.Involvement_Percent+'%',
+                            Description = 'Fill '+shortage.level+'- '+shortage.Involvement_Percent+'%  Allocation Shortage',
                             Hired_Candidate__c = hc.Id, 
                             Involvement_Percent__c = shortage.Involvement_Percent,
                             Employee_Title__c  = shortage.level,
@@ -115,9 +126,13 @@ global class ResourceAllocationRecoGenerator {
                         );
                         recs.add(rec);
                     }
-                }
+              }
             }
-            outputs.add(recs);
+            
+          outputs.add(recs);
+          if(availedKey !=null){
+              availableMap.remove(availedKey);                  
+          }
             
         }
         return outputs; 
