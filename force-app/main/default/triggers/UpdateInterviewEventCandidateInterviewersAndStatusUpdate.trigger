@@ -36,7 +36,7 @@ trigger UpdateInterviewEventCandidateInterviewersAndStatusUpdate on Interview__c
     
     List<EventInterviewSchedule__c> availableSchedules = [Select Id, Status__c, Hiring_Panel_Member__r.User_Name__c ,Interview__c, Interview__r.Interview_Event_Candidate__c from EventInterviewSchedule__c where Interview__c IN :interviewMap.keySet()];
     Map<String, Set<EventInterviewSchedule__c>> allInterviewSchedules = New Map<String, Set<EventInterviewSchedule__c>>();
-    List<InterviewEventCandidate__c> iecs = [Select Id from InterviewEventCandidate__c where Id IN :iecIds];
+    List<InterviewEventCandidate__c> iecs = [Select Id, Ongoing_Interview__c from InterviewEventCandidate__c where Id IN :iecIds];
     Map<String, InterviewEventCandidate__c> iecsMap = New Map<String, InterviewEventCandidate__c>();
     for (InterviewEventCandidate__c iec : iecs)
     {
@@ -77,6 +77,15 @@ trigger UpdateInterviewEventCandidateInterviewersAndStatusUpdate on Interview__c
         {
             System.debug('Candidate to be updated .......');
             candidate.Current_Status__c = iecStatusMap.get(iecId);
+            if (candidate.Current_Status__c == 'Scheduled' || candidate.Current_Status__c == 'InProgress')
+            {
+                Id ongoingInterview = candidate.Ongoing_Interview__c;
+                if (ongoingInterview != null)
+                {
+                   candidate.Previous_Interview__c = ongoingInterview;
+                }
+                candidate.Ongoing_Interview__c = interviewId;
+            }
             System.debug('Updated the status of the candidate as .......'+iecStatusMap.get(iecId));
             List<String> interviewers = New List<String>();
             for (EventInterviewSchedule__c schedule : interviewSchedules)
