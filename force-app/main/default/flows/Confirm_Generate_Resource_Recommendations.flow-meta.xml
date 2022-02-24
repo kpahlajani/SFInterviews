@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Get_Resource_Recommendations</name>
+        <label>Get Resource Recommendations</label>
+        <locationX>50</locationX>
+        <locationY>638</locationY>
+        <actionName>ResourceAllocationRecoGenerator</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Persist_Recommendations</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>teamId</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
     <apiVersion>54.0</apiVersion>
     <decisions>
         <name>Yes_No</name>
@@ -44,6 +63,13 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
+    <recordCreates>
+        <name>Persist_Recommendations</name>
+        <label>Persist Recommendations</label>
+        <locationX>50</locationX>
+        <locationY>758</locationY>
+        <inputReference>Get_Resource_Recommendations</inputReference>
+    </recordCreates>
     <recordLookups>
         <name>get_team</name>
         <label>get team</label>
@@ -78,9 +104,25 @@
             <targetReference>Yes_No</targetReference>
         </connector>
         <fields>
-            <name>confirm</name>
-            <fieldText>&lt;p&gt;Do you want to generate recommendations for resource allocation for this team &lt;b&gt;{!get_team.Name}&lt;/b&gt; ?&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
+            <name>Confirmation_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Confirmation_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>confirm</name>
+                    <fieldText>&lt;p&gt;Do you want to generate recommendations for resource allocation for this team &lt;b&gt;{!get_team.Name}&lt;/b&gt; ?&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>12</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
         </fields>
         <nextOrFinishButtonLabel>Generate</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
@@ -91,17 +133,34 @@
         <label>display</label>
         <locationX>50</locationX>
         <locationY>518</locationY>
-        <allowBack>true</allowBack>
+        <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Generate_Recommendations</targetReference>
+            <targetReference>Get_Resource_Recommendations</targetReference>
         </connector>
         <fields>
-            <name>test</name>
-            <fieldText>&lt;p&gt;Thank You. Your recommendations will be generated asynchronously.&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
+            <name>display_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>display_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>test</name>
+                    <fieldText>&lt;p&gt;Thank You. Your recommendations will be generated asynchronously.&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>12</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
         </fields>
+        <nextOrFinishButtonLabel>Finish</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
@@ -113,24 +172,6 @@
         </connector>
     </start>
     <status>Active</status>
-    <subflows>
-        <name>Generate_Recommendations</name>
-        <label>Generate Recommendations</label>
-        <locationX>50</locationX>
-        <locationY>638</locationY>
-        <connector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Yes_No</targetReference>
-        </connector>
-        <flowName>Recommend_Resource_Allocations</flowName>
-        <inputAssignments>
-            <name>recordId</name>
-            <value>
-                <elementReference>recordId</elementReference>
-            </value>
-        </inputAssignments>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </subflows>
     <variables>
         <name>recordId</name>
         <dataType>String</dataType>
