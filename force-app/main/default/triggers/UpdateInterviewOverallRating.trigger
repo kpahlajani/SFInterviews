@@ -47,8 +47,12 @@ trigger UpdateInterviewOverallRating on FeedbackItem__c (after insert, after upd
         if (capturedItems != 1)
             capturedItems--;
         Double finalScore = (Double)totalScore/capturedItems;
+        //This needs to be fixed.
         System.debug('Overall Score is ' + finalScore);
-        interview.Overall_Rating__c = ''+Integer.valueOf(''+Math.ceil(finalScore));
+        if (finalScore !=0)
+        	interview.Overall_Rating__c = ''+Integer.valueOf(''+Math.ceil(finalScore));
+        else
+          	interview.Overall_Rating__c = '';
         interviewsToUpdate.add(interview);
     }
     update interviewsToUpdate;

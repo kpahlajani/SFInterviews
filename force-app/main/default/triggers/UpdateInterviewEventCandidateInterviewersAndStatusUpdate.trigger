@@ -63,6 +63,9 @@ trigger UpdateInterviewEventCandidateInterviewersAndStatusUpdate on Interview__c
         String iecId = interviewMap.get(interviewId).Interview_Event_Candidate__c;
         InterviewEventCandidate__c candidate = iecsMap.get(iecId);
         Set<EventInterviewSchedule__c> interviewSchedules = allInterviewSchedules.get(interviewId);
+        //when EIC is created , interviews are generated without interviewers , hence return if there are no schedules available.
+        if (interviewSchedules == null || interviewSchedules.isEmpty())
+            continue;
         if (candidate != null)
         {
             candidate.Current_Status__c = iecStatusMap.get(iecId);
