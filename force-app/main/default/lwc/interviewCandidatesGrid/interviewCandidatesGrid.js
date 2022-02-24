@@ -1,5 +1,6 @@
 import { LightningElement ,api, wire, track} from 'lwc';
 import getCandidatesList from '@salesforce/apex/InterviewCandidatesGridHelper.getCandidatesList';
+import getUpdatedCandidatesList from '@salesforce/apex/InterviewCandidatesGridHelper.getUpdatedCandidatesList';
 import getAllAvailableInterviewers from '@salesforce/apex/ScheduleAnInterview.getAllAvailableInterviewers';
 import getInterviewRoundsForEventCandidate from '@salesforce/apex/ScheduleAnInterview.getInterviewRoundsForEventCandidate';
 import scheduleInterview from '@salesforce/apex/ScheduleAnInterview.scheduleInterview';
@@ -38,16 +39,17 @@ export default class InterviewCandidatesGrid extends LightningElement {
             sortable: true
         },
         {
-            label: 'Scheduled/Actual Start time',
+            label: 'Start time',
             fieldName: 'Scheduled_Start_Time',
             type: 'text',
             sortable: true
         },
         {
-            label: 'On Going Interview',
+            label: 'Interview Round',
             fieldName: 'Ongoing_Interview',
             type: 'text',
-            sortable: true
+            sortable: true,
+            wrapText: true
         },
         {
             label: 'Aggregated Score',
@@ -59,7 +61,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
             label: 'Interviewers',
             fieldName: 'Current_Interviewers__c',
             type: 'text',
-            sortable: true
+            sortable: true,
+            wrapText: true
         },
         {
             type: 'action',
@@ -75,7 +78,19 @@ export default class InterviewCandidatesGrid extends LightningElement {
         data
     }) {
         if (data) {
-                let candidates = [];
+            this.prepareCandidateList(data);    
+        } else if (error) {
+            this.error = error;
+        }
+    }
+
+    async refreshCandidateList() {
+        let temp = await getUpdatedCandidatesList({recordId: this.recordId});
+        this.prepareCandidateList(temp);
+    }
+
+    prepareCandidateList(data) {
+        let candidates = [];
                 data.forEach(record => {
                 let candidate = {};
                 candidate.ICName = '/'+record.Id;
@@ -93,12 +108,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
                 candidates.push(candidate);
             });
             this.candidateList = candidates;
-                
-        } else if (error) {
-            this.error = error;
-        }
     }
-
     selectedCandidates = [];
     selectedCandidate;
     startDateTime;
