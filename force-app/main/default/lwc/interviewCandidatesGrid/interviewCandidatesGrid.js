@@ -1,16 +1,20 @@
 import { LightningElement ,api, wire, track} from 'lwc';
 import getCandidatesList from '@salesforce/apex/InterviewCandidatesGridHelper.getCandidatesList';
 import getAllAvailableInterviewers from '@salesforce/apex/ScheduleAnInterview.getAllAvailableInterviewers';
-import getInterviewRounds from '@salesforce/apex/ScheduleAnInterview.getInterviewRoundsForEventCandidate';
+import getInterviewRoundsForEventCandidate from '@salesforce/apex/ScheduleAnInterview.getInterviewRoundsForEventCandidate';
 import scheduleInterview from '@salesforce/apex/ScheduleAnInterview.scheduleInterview';
 import getScheduledRoundForEventCandidate from '@salesforce/apex/ScheduleAnInterview.getScheduledRoundForEventCandidate';
 import getInterviewDetailsByInterviewId from '@salesforce/apex/ScheduleAnInterview.getInterviewDetailsByInterviewId';
+import { updateRecord } from 'lightning/uiRecordApi';
+import CURRENT_STATUS_FIELD from '@salesforce/schema/InterviewEventCandidate__c.Current_Status__c';
+import ID_FIELD from '@salesforce/schema/InterviewEventCandidate__c.Id';
 export default class InterviewCandidatesGrid extends LightningElement {
     @api recordId;
 
     actions = [
         { label: 'Schedule', name: 'Schedule' },
         { label: 'Reschedule', name: 'Reschedule'},
+        { label: 'Update Status', name: 'UpdateStatus'},
     ];
 
     @track columns = [
@@ -18,7 +22,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
             label: 'Candidate Name',
             fieldName: 'ICName',
             type: 'url',
-            typeAttributes: {label: { fieldName: 'Candidate_Name__c' }, target: '_blank'},
+            typeAttributes: {label: { fieldName: 'Candidate_Name__c' }},
             sortable: true
         },
         {
@@ -34,14 +38,14 @@ export default class InterviewCandidatesGrid extends LightningElement {
             sortable: true
         },
         {
-            label: 'On Going Interview',
-            fieldName: 'Ongoing_Interview',
+            label: 'Scheduled/Actual Start time',
+            fieldName: 'Scheduled_Start_Time',
             type: 'text',
             sortable: true
         },
         {
-            label: 'start time',
-            fieldName: 'Scheduled_Start_Time',
+            label: 'On Going Interview',
+            fieldName: 'Ongoing_Interview',
             type: 'text',
             sortable: true
         },
@@ -51,6 +55,12 @@ export default class InterviewCandidatesGrid extends LightningElement {
             type: 'text',
             sortable: true
         },
+        /*{
+            label: 'Interviewers',
+            fieldName: 'Aggregated_Score__c',
+            type: 'text',
+            sortable: true
+        },*/
         {
             type: 'action',
             typeAttributes: { rowActions: this.actions },
@@ -68,7 +78,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
                 let candidates = [];
                 data.forEach(record => {
                 let candidate = {};
-                candidate.ICName = record.Id;
+                candidate.ICName = '/'+record.Id;
                 candidate.Candidate_Name__c = record.Candidate_Name__c;
                 candidate.Candidate_Level__c = record.Candidate_Level__c;
                 candidate.Current_Status__c = record.Current_Status__c;
@@ -163,13 +173,15 @@ export default class InterviewCandidatesGrid extends LightningElement {
     handleRowAction(event) {
         const actionName = event.detail.action.name;
         const row = event.detail.row;
-        this.selectedCandidate = row.ICName;
+        this.selectedCandidate = row.ICName.split('/')[1];
         switch (actionName) {
             case 'Schedule':
                 this.opneScheduleCandidatesModal();
                 break;
             case 'Reschedule':
                 this.opneReScheduleCandidatesModal();
+            case 'UpdateStatus':
+                this.updateInterviewEventCandidateStatus();
             default:
         }
     }
@@ -251,5 +263,54 @@ export default class InterviewCandidatesGrid extends LightningElement {
         this.startDateTimeValue = undefined;
         this.endDateTimeValue = undefined;
         this.selectedCandidate = undefined;
+    }
+
+    get statusOptions() {
+        return [
+            { label: 'Waiting', value: 'Waiting' },
+            { label: 'Scheduled', value: 'Scheduled' },
+            { label: 'Loop Cut', value: 'Loop Cut' },
+            { label: 'No Show	', value: 'No Show' },
+            { label: 'In Progress', value: 'In Progress'}
+        ];
+    }
+
+    isChangeStatusModalOpened = false;
+    currentStatus;
+    updateStatus(event) {
+        this.currentStatus = event.target.value;
+    }
+
+    closeStatusChangeModal() {
+        this.isChangeStatusModalOpened = false;
+    }
+
+    submitStatusChangeModal(){
+        this.isChangeStatusModalOpened = false;
+        this.updateCurrentStatus();
+    }    
+    
+    updateInterviewEventCandidateStatus() {
+        this.isChangeStatusModalOpened = true;
+    }
+
+    updateCurrentStatus() {
+        const fields = {};
+        fields[CURRENT_STATUS_FIELD.fieldApiName] = this.currentStatus;
+        fields[ID_FIELD.fieldApiName] = this.selectedCandidate;
+
+        const recordInput = { fields };
+        updateRecord(recordInput)
+                .then(() => {
+                })
+                .catch(error => {
+                    this.dispatchEvent(
+                        new ShowToastEvent({
+                            title: 'Error creating record',
+                            message: error.body.message,
+                            variant: 'error'
+                        })
+                    );
+                });
     }
 }
