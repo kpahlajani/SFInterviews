@@ -14,6 +14,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>GetTeamAllocationRecommendations</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>HandshakeInformationController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -23,6 +27,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>ProblemsDiscussedController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ResourceAllocationRecoGenerator</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -120,6 +128,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Hired_Candidate__c.Onboarding_Completed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Hired_Candidate__c.Percentage_Allocated__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -289,6 +302,41 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Recommendation.Employee_Title__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Recommendation.Hired_Candidate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Recommendation.Involvement_Percent__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Recommendation.Scrum_Team__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Scrum_Team_Template__c.Template_Team_Size__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Scrum_Team__c.Expected_Team_Size__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Scrum_Team__c.Team_Size__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Task.ActivityDate</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -315,6 +363,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Task.WhoId</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Team_Assignment__c.Hired_Candidate_Level__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>
@@ -529,6 +582,10 @@
     <tabVisibilities>
         <tab>Scrum_Team__c</tab>
         <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>standard-Recommendation</tab>
+        <visibility>Hidden</visibility>
     </tabVisibilities>
     <userLicense>Salesforce Platform</userLicense>
     <userPermissions>

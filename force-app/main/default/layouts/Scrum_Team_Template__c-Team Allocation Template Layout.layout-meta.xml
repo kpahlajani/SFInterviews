@@ -11,8 +11,8 @@
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Team_Size__c</field>
+                <behavior>Readonly</behavior>
+                <field>Template_Team_Size__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -55,7 +55,6 @@
     <relatedLists>
         <fields>NAME</fields>
         <fields>GUS_URL__c</fields>
-        <fields>Size__c</fields>
         <relatedList>Scrum_Team__c.Team_Allocation_Template__c</relatedList>
     </relatedLists>
     <relatedLists>

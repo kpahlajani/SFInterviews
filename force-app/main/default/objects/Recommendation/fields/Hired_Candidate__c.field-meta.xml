@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hired_Candidate__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Hired Candidate</label>
+    <referenceTo>Hired_Candidate__c</referenceTo>
+    <relationshipLabel>Recommendations</relationshipLabel>
+    <relationshipName>Recommendations</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

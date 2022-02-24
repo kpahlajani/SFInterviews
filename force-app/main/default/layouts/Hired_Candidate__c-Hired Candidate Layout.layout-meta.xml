@@ -36,6 +36,10 @@
                 <behavior>Edit</behavior>
                 <field>Onboarding_Completed__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Percentage_Allocated__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
@@ -70,8 +74,9 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Scrum_Team__c</fields>
+        <fields>Scrum_Team__c.NAME</fields>
         <fields>Involvement_Percent__c</fields>
+        <fields>Hired_Candidate_Level__c</fields>
         <relatedList>Team_Assignment__c.Hired_Candidate__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
@@ -80,7 +85,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1F000006tQmB</masterLabel>
+        <masterLabel>00h17000009C5Sz</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
