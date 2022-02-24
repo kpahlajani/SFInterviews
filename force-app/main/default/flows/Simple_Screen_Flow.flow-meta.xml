@@ -265,7 +265,7 @@
         </connector>
         <fields>
             <name>display</name>
-            <fieldText>&lt;p&gt;Do you want to assign &lt;b&gt;{!GetHiredCandidate.Employee_Name__c} &lt;/b&gt;as&lt;b&gt; {!Level}  &lt;/b&gt;for&lt;b&gt; {!InvolvementPercent}% &lt;/b&gt;to team&lt;b&gt; &quot;{!GetTeam.Name}&quot; &lt;/b&gt;?&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Do you want to allocate &lt;b&gt;{!GetHiredCandidate.Employee_Name__c} &lt;/b&gt;as&lt;b&gt; {!Level}  &lt;/b&gt;with&lt;b&gt; {!InvolvementPercent}% capacity &lt;/b&gt;to team&lt;b&gt; &quot;{!GetTeam.Name}&quot; &lt;/b&gt;?&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>

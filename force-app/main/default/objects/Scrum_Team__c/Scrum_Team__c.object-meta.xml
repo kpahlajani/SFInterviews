@@ -147,7 +147,7 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>Scrum_Team_Compact_Layout</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -165,7 +165,16 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Scrum Teams</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <customTabListAdditionalFields>Team_Size__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Expected_Team_Size__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Team_Allocation_Template__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>GUS_URL__c</customTabListAdditionalFields>
+        <searchResultsAdditionalFields>Team_Size__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Expected_Team_Size__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Team_Allocation_Template__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>GUS_URL__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

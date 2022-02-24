@@ -48,7 +48,7 @@
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
-    <label>Salesforce Interviews</label>
+    <label>Salesforce Recruit</label>
     <navType>Standard</navType>
     <tabs>InterviewOrganizingCommittee__c</tabs>
     <tabs>HiringPanel__c</tabs>
