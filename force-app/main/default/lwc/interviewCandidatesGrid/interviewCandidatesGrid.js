@@ -1,24 +1,45 @@
 import { LightningElement ,api, wire, track} from 'lwc';
 import getCandidatesList from '@salesforce/apex/InterviewCandidatesGridHelper.getCandidatesList';
+import getAllAvailableInterviewers from '@salesforce/apex/ScheduleAnInterview.getAllAvailableInterviewers';
+import getInterviewRoundsForEventCandidate from '@salesforce/apex/ScheduleAnInterview.getInterviewRoundsForEventCandidate';
+import scheduleInterview from '@salesforce/apex/ScheduleAnInterview.scheduleInterview';
+import getScheduledRoundForEventCandidate from '@salesforce/apex/ScheduleAnInterview.getScheduledRoundForEventCandidate';
+import getInterviewDetailsByInterviewId from '@salesforce/apex/ScheduleAnInterview.getInterviewDetailsByInterviewId';
+import { updateRecord } from 'lightning/uiRecordApi';
+import CURRENT_STATUS_FIELD from '@salesforce/schema/InterviewEventCandidate__c.Current_Status__c';
+import ID_FIELD from '@salesforce/schema/InterviewEventCandidate__c.Id';
 export default class InterviewCandidatesGrid extends LightningElement {
     @api recordId;
+
+    actions = [
+        { label: 'Schedule', name: 'Schedule' },
+        { label: 'Reschedule', name: 'Reschedule'},
+        { label: 'Update Status', name: 'UpdateStatus'},
+    ];
+
     @track columns = [
         {
-            label: 'Id',
+            label: 'Candidate Name',
             fieldName: 'ICName',
             type: 'url',
-            typeAttributes: {label: { fieldName: 'Name' }, target: '_blank'},
+            typeAttributes: {label: { fieldName: 'Candidate_Name__c' }},
             sortable: true
         },
         {
-            label: 'Candidate Name',
-            fieldName: 'Candidate_Name__c',
+            label: 'Level',
+            fieldName: 'Candidate_Level__c',
             type: 'text',
             sortable: true
         },
         {
             label: 'Current Status',
             fieldName: 'Current_Status__c',
+            type: 'text',
+            sortable: true
+        },
+        {
+            label: 'Scheduled/Actual Start time',
+            fieldName: 'Scheduled_Start_Time',
             type: 'text',
             sortable: true
         },
@@ -31,9 +52,19 @@ export default class InterviewCandidatesGrid extends LightningElement {
         {
             label: 'Aggregated Score',
             fieldName: 'Aggregated_Score__c',
-            type: 'number',
+            type: 'text',
             sortable: true
-        }
+        },
+        /*{
+            label: 'Interviewers',
+            fieldName: 'Aggregated_Score__c',
+            type: 'text',
+            sortable: true
+        },*/
+        {
+            type: 'action',
+            typeAttributes: { rowActions: this.actions },
+        },
     ];
  
     @track error;
@@ -49,10 +80,14 @@ export default class InterviewCandidatesGrid extends LightningElement {
                 let candidate = {};
                 candidate.ICName = '/'+record.Id;
                 candidate.Candidate_Name__c = record.Candidate_Name__c;
+                candidate.Candidate_Level__c = record.Candidate_Level__c;
                 candidate.Current_Status__c = record.Current_Status__c;
                 candidate.Aggregated_Score__c = record.Aggregated_Score__c;
                 if(record.Ongoing_Interview__r!=null){
-                candidate.Ongoing_Interview = record.Ongoing_Interview__r.Name;
+                    candidate.Ongoing_Interview = record.Ongoing_Interview__r.Name;
+                }
+                if(record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Scheduled_Start_Time__c!=null){
+                    candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Scheduled_Start_Time__c.substring(11,16);
                 }
 
                 candidates.push(candidate);
@@ -64,5 +99,218 @@ export default class InterviewCandidatesGrid extends LightningElement {
         }
     }
 
+    selectedCandidates = [];
+    selectedCandidate;
+    startDateTime;
+    endDateTime;
+    availableInterviewers = new Map();
+    options;
+    roundName;
+    @track isScheduleCandidatesModalOpen = false;
+
+    opneScheduleCandidatesModal() {
+        this.isScheduleCandidatesModalOpen = true;
+        this.getInterviewRounds();
+    }
+    closeScheduleCandidatesModal() {
+        this.isScheduleCandidatesModalOpen = false;
+        this.selectedCandidates = [];
+        this.picklistValue = '';
+        this.items = [];
+        this.startDateTime = undefined;
+        this.endDateTime = undefined;
+        this.selectedCandidate = undefined;
+    }
+
+    handleStartDateTime(event) {
+        this.startDateTime = event.target.value;
+        if(this.startDateTime !== undefined && this.endDateTime !== undefined)
+        this.getInterviewerList();
+    }
+
+    handleEndDateTime(event) {
+        this.endDateTime = event.target.value;
+        if(this.startDateTime !== undefined && this.endDateTime !== undefined)
+        this.getInterviewerList();
+    }
+
+    async getInterviewerList() {
+        if(this.startDateTime !== undefined && this.endDateTime !== undefined) {
+            this.availableInterviewers = await getAllAvailableInterviewers({availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, eventId : this.recordId});
+            this.getValues();
+        }
+    }
+
+    @track items = []; //this will hold key, value pair
+    picklistValue = ''; //initialize combo box value
+    @track options = [];
+    @track chosenValue = '';
+
+    getValues() {
+        if (this.availableInterviewers) {
+            let temp = [];
+            let i=0;
+            for (const [key, value] of Object.entries(this.availableInterviewers)) {
+                const option = {
+                    label: value,
+                    value: key
+                };
+                temp[i++] = option;
+            } 
+            this.items = temp;              
+        } 
+    }
+
+    handleValueChange(event) {
+        this.picklistValue = event.detail.value;
+    }
+
+    submitDetails() {
+        scheduleInterview({interviewId : this.roundName, availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, hiringPanelMembers : this.picklistValue})
+        this.closeScheduleCandidatesModal();
+    }
    
+    handleRowAction(event) {
+        const actionName = event.detail.action.name;
+        const row = event.detail.row;
+        this.selectedCandidate = row.ICName.split('/')[1];
+        switch (actionName) {
+            case 'Schedule':
+                this.opneScheduleCandidatesModal();
+                break;
+            case 'Reschedule':
+                this.opneReScheduleCandidatesModal();
+            case 'UpdateStatus':
+                this.updateInterviewEventCandidateStatus();
+            default:
+        }
+    }
+    
+
+    async getInterviewRounds() {
+        let temp = await getInterviewRoundsForEventCandidate({interviewEventCandidate : this.selectedCandidate});
+        let temp1 = [];
+        for(let i=0; i<temp.length; i++)  {
+            const option = {
+                label: temp[i].Questionaire__r.Name,
+                value: temp[i].Id
+            };
+            temp1[i] = option;                                  
+        }  
+        this.options = temp1;     
+    }
+
+    handleRoundName(event) {
+        this.roundName = event.target.value;
+    }
+
+    isReScheduleCandidatesModalOpen;
+    startDateTimeValue;
+    endDateTimeValue;
+    resheduledInterviewId;
+    @track rescheduleRoundOptions = [];
+
+    opneReScheduleCandidatesModal() {
+        this.isReScheduleCandidatesModalOpen = true;
+        this.getScheduledRoundForEventCandidate();
+    }
+
+    async getScheduledRoundForEventCandidate() {
+        let temp = await getScheduledRoundForEventCandidate({interviewEventCandidate : this.selectedCandidate});
+        let temp1 = [];
+        for(let i=0; i<temp.length; i++)  {
+            const option = {
+                label: temp[i].Questionaire__r.Name,
+                value: temp[i].Id
+            };
+            temp1[i] = option;                                  
+        }  
+        this.rescheduleRoundOptions = temp1;
+    }
+
+    async getRoundDetails(event) {
+        let temp = await getInterviewDetailsByInterviewId({interviewId : event.target.value});
+        this.startDateTimeValue = temp.StartDateTime;
+        this.endDateTimeValue = temp.EndDateTime;
+        this.resheduledInterviewId = temp.Id;
+        this.availableInterviewers = await getAllAvailableInterviewers({availabilityCheckFrom : this.startDateTimeValue, availabilityCheckTo : this.endDateTimeValue, eventId : this.recordId});
+        this.getValues();
+    }
+
+    
+    submitRescheduleDetails() {
+        scheduleInterview({interviewId : this.resheduledInterviewId, availabilityCheckFrom : this.startDateTimeValue, availabilityCheckTo : this.endDateTimeValue, hiringPanelMembers : this.picklistValue});
+        this.closeRe
+    }
+
+    handleStartDateTimeValue(event) {
+        this.startDateTimeValue = event.target.value;
+        if(this.startDateTimeValue !== undefined && this.endDateTimeValue !== undefined)
+        this.getInterviewerList();
+    }
+
+    handleEndDateTimeValue(event) {
+        this.endDateTime = event.target.value;
+        if(this.startDateTimeValue !== undefined && this.endDateTimeValue !== undefined)
+        this.getRescheduledInterviewerList();
+    }
+
+    closeReScheduleCandidatesModal() {
+        this.isReScheduleCandidatesModalOpen = false;
+        this.selectedCandidates = [];
+        this.picklistValue = '';
+        this.rescheduleRoundOptions = [];
+        this.startDateTimeValue = undefined;
+        this.endDateTimeValue = undefined;
+        this.selectedCandidate = undefined;
+    }
+
+    get statusOptions() {
+        return [
+            { label: 'Waiting', value: 'Waiting' },
+            { label: 'Scheduled', value: 'Scheduled' },
+            { label: 'Loop Cut', value: 'Loop Cut' },
+            { label: 'No Show	', value: 'No Show' },
+            { label: 'In Progress', value: 'In Progress'}
+        ];
+    }
+
+    isChangeStatusModalOpened = false;
+    currentStatus;
+    updateStatus(event) {
+        this.currentStatus = event.target.value;
+    }
+
+    closeStatusChangeModal() {
+        this.isChangeStatusModalOpened = false;
+    }
+
+    submitStatusChangeModal(){
+        this.isChangeStatusModalOpened = false;
+        this.updateCurrentStatus();
+    }    
+    
+    updateInterviewEventCandidateStatus() {
+        this.isChangeStatusModalOpened = true;
+    }
+
+    updateCurrentStatus() {
+        const fields = {};
+        fields[CURRENT_STATUS_FIELD.fieldApiName] = this.currentStatus;
+        fields[ID_FIELD.fieldApiName] = this.selectedCandidate;
+
+        const recordInput = { fields };
+        updateRecord(recordInput)
+                .then(() => {
+                })
+                .catch(error => {
+                    this.dispatchEvent(
+                        new ShowToastEvent({
+                            title: 'Error creating record',
+                            message: error.body.message,
+                            variant: 'error'
+                        })
+                    );
+                });
+    }
 }

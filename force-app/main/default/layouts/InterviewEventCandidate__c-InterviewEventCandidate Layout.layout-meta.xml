@@ -100,7 +100,7 @@
         <fields>NAME</fields>
         <fields>Candidate_Name__c</fields>
         <fields>Status__c</fields>
-        <fields>Order__c</fields>
+        <fields>Overall_Rating__c</fields>
         <relatedList>Interview__c.Interview_Event_Candidate__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
@@ -109,7 +109,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0t000003xqs5</masterLabel>
+        <masterLabel>00h2D0000026uDj</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
