@@ -55,12 +55,12 @@ export default class InterviewCandidatesGrid extends LightningElement {
             type: 'text',
             sortable: true
         },
-        /*{
+        {
             label: 'Interviewers',
-            fieldName: 'Aggregated_Score__c',
+            fieldName: 'Current_Interviewers__c',
             type: 'text',
             sortable: true
-        },*/
+        },
         {
             type: 'action',
             typeAttributes: { rowActions: this.actions },
@@ -88,8 +88,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
                 }
                 if(record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Scheduled_Start_Time__c!=null){
                     candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Scheduled_Start_Time__c.substring(11,16);
-                }
-
+                } 
+                candidate.Current_Interviewers__c = record.Current_Interviewers__c;
                 candidates.push(candidate);
             });
             this.candidateList = candidates;
