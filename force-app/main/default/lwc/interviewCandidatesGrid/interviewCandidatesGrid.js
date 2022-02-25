@@ -6,7 +6,6 @@ import getInterviewRoundsForEventCandidate from '@salesforce/apex/ScheduleAnInte
 import scheduleInterview from '@salesforce/apex/ScheduleAnInterview.scheduleInterview';
 import getScheduledRoundForEventCandidate from '@salesforce/apex/ScheduleAnInterview.getScheduledRoundForEventCandidate';
 import getInterviewDetailsByInterviewId from '@salesforce/apex/ScheduleAnInterview.getInterviewDetailsByInterviewId';
-import endInterviewEvent from '@salesforce/apex/ScheduleAnInterview.endInterviewEvent';
 import { updateRecord } from 'lightning/uiRecordApi';
 import CURRENT_STATUS_FIELD from '@salesforce/schema/InterviewEventCandidate__c.Current_Status__c';
 import ID_FIELD from '@salesforce/schema/InterviewEventCandidate__c.Id';
@@ -334,35 +333,5 @@ export default class InterviewCandidatesGrid extends LightningElement {
                         })
                     );
                 });
-    }
-    isEndEventModalOpened = false;
-    closeEndEventModal() {
-        this.isEndEventModalOpened = false;
-    }
-
-    openEndEventModal() {
-        this.isEndEventModalOpened = true;
-    }
-
-    async endInterviewEvent() {
-        let state = await endInterviewEvent({recordId : this.recordId});
-        this.closeEndEventModal();
-        if(state == false) {
-            this.dispatchEvent(
-                new ShowToastEvent({
-                    title: 'Atleast one interview is in progress',
-                    message: 'Atleast one interview is in progress',
-                    variant: 'error'
-                })
-            );
-        } else {
-            this.dispatchEvent(
-                new ShowToastEvent({
-                    title: 'Interview event closed',
-                    message: 'Interview event closed',
-                    variant: 'success'
-                })
-            );
-        }
     }
 }
