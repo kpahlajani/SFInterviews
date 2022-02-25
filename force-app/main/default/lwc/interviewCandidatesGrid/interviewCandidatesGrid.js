@@ -17,7 +17,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
 
     actions = [
         { label: 'Schedule', name: 'Schedule' },
-        { label: 'Reschedule', name: 'Reschedule'},
+        //{ label: 'Reschedule', name: 'Reschedule'},
         { label: 'Update Status', name: 'UpdateStatus'},
     ];
 
@@ -291,11 +291,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
 
     get statusOptions() {
         return [
-            { label: 'Waiting', value: 'Waiting' },
-            { label: 'Scheduled', value: 'Scheduled' },
             { label: 'Loop Cut', value: 'Loop Cut' },
-            { label: 'No Show	', value: 'No Show' },
-            { label: 'In Progress', value: 'In Progress'}
+            { label: 'No Show	', value: 'No Show' }
         ];
     }
 
