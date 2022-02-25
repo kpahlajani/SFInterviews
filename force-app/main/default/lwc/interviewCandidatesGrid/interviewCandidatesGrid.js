@@ -1,13 +1,5 @@
 import { LightningElement ,api, wire, track} from 'lwc';
 import getCandidatesList from '@salesforce/apex/InterviewCandidatesGridHelper.getCandidatesList';
-<<<<<<< HEAD
-
-const actions = [
-    { label: 'Show Candidate Info', name: 'show_candidate_info' },
-    { label: 'Show Recent Interviews', name: 'show_recent_interviews' },
-];
-
-=======
 import getUpdatedCandidatesList from '@salesforce/apex/InterviewCandidatesGridHelper.getUpdatedCandidatesList';
 import getAllAvailableInterviewers from '@salesforce/apex/ScheduleAnInterview.getAllAvailableInterviewers';
 import getInterviewRoundsForEventCandidate from '@salesforce/apex/ScheduleAnInterview.getInterviewRoundsForEventCandidate';
@@ -17,16 +9,23 @@ import getInterviewDetailsByInterviewId from '@salesforce/apex/ScheduleAnIntervi
 import { updateRecord } from 'lightning/uiRecordApi';
 import CURRENT_STATUS_FIELD from '@salesforce/schema/InterviewEventCandidate__c.Current_Status__c';
 import ID_FIELD from '@salesforce/schema/InterviewEventCandidate__c.Id';
->>>>>>> bb7c7a8d0837c640ca610974251bea4d83f86805
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+
 export default class InterviewCandidatesGrid extends LightningElement {
     @api recordId;
 
     actions = [
         { label: 'Schedule', name: 'Schedule' },
-        { label: 'Reschedule', name: 'Reschedule'},
+        //{ label: 'Reschedule', name: 'Reschedule'},
         { label: 'Update Status', name: 'UpdateStatus'},
     ];
 
+    connectedCallback() {  
+        this._interval = setInterval(() => {  
+            this.refreshCandidateList();
+        }, 2000); 
+    }
+    
     @track columns = [
         {
             label: 'Candidate Name',
@@ -50,7 +49,11 @@ export default class InterviewCandidatesGrid extends LightningElement {
         {
             label: 'Start time',
             fieldName: 'Scheduled_Start_Time',
-            type: 'text',
+            type: 'date',
+            typeAttributes:{
+                hour: "2-digit",
+                minute: "2-digit"
+            },
             sortable: true
         },
         {
@@ -66,14 +69,6 @@ export default class InterviewCandidatesGrid extends LightningElement {
             type: 'text',
             sortable: true
         },
-<<<<<<< HEAD
-        { 
-            type: 'action', 
-            typeAttributes: { 
-                rowActions: actions 
-            } 
-        }
-=======
         {
             label: 'Interviewers',
             fieldName: 'Current_Interviewers__c',
@@ -85,17 +80,10 @@ export default class InterviewCandidatesGrid extends LightningElement {
             type: 'action',
             typeAttributes: { rowActions: this.actions },
         },
->>>>>>> bb7c7a8d0837c640ca610974251bea4d83f86805
     ];
  
     @track error;
     @track candidateList ;
-    
-    @track candidateInfoRow={};
-    @track recentInterviewRow={};
-
-    @track candidateInfoModal = false;
-    @track recentInterviewModal = false;
     @wire(getCandidatesList,{recordId: '$recordId'})
     wiredAccounts({
         error,
@@ -125,8 +113,10 @@ export default class InterviewCandidatesGrid extends LightningElement {
                 if(record.Ongoing_Interview__r!=null){
                     candidate.Ongoing_Interview = record.Ongoing_Interview__r.Name;
                 }
-                if(record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Scheduled_Start_Time__c!=null){
-                    candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Scheduled_Start_Time__c.substring(11,16);
+                if((record.Current_Status__c == 'In Progress' || record.Current_Status__c == 'Completed') && record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Actual_Start_Time__c!=null){
+                    candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Actual_Start_Time__c;
+                } else if(record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Scheduled_Start_Time__c!=null){
+                    candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Scheduled_Start_Time__c;
                 } 
                 candidate.Current_Interviewers__c = record.Current_Interviewers__c;
                 candidates.push(candidate);
@@ -175,38 +165,6 @@ export default class InterviewCandidatesGrid extends LightningElement {
         }
     }
 
-<<<<<<< HEAD
-    handleRowAction(event) {
-        const actionName = event.detail.action.name;
-        const row = event.detail.row;
-        switch (actionName) {
-            case 'show_candidate_info':
-                this.showCandidateInfoModal(row);
-                break;
-            case 'show_recent_interviews':
-                this.showRecentInterviewsModal(row);
-                break;
-            default:
-        }
-    }
-
-    showCandidateInfoModal(row) {
-        this.candidateInfoModal=true;
-        this.candidateInfoRow=row;
-    }
-
-    showRecentInterviewsModal(row){
-        this.recentInterviewModal=true;
-        this.recentInterviewRow=row;
-    }
-
-    closeCandidateInfoModal(){
-        this.candidateInfoModal=false;
-    }
-
-    closeRecentInterviewModal() {
-        this.recentInterviewModal=false;
-=======
     @track items = []; //this will hold key, value pair
     picklistValue = ''; //initialize combo box value
     @track options = [];
@@ -231,11 +189,10 @@ export default class InterviewCandidatesGrid extends LightningElement {
         this.picklistValue = event.detail.value;
     }
 
-    submitDetails() {
-        scheduleInterview({interviewId : this.roundName, availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, hiringPanelMembers : this.picklistValue})
+    async submitDetails() {
+        await scheduleInterview({interviewId : this.roundName, availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, hiringPanelMembers : this.picklistValue})
         this.closeScheduleCandidatesModal();
         this.refreshCandidateList();
->>>>>>> bb7c7a8d0837c640ca610974251bea4d83f86805
     }
    
     handleRowAction(event) {
@@ -309,8 +266,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
     }
 
     
-    submitRescheduleDetails() {
-        scheduleInterview({interviewId : this.resheduledInterviewId, availabilityCheckFrom : this.startDateTimeValue, availabilityCheckTo : this.endDateTimeValue, hiringPanelMembers : this.picklistValue});
+    async submitRescheduleDetails() {
+        await scheduleInterview({interviewId : this.resheduledInterviewId, availabilityCheckFrom : this.startDateTimeValue, availabilityCheckTo : this.endDateTimeValue, hiringPanelMembers : this.picklistValue});
         this.closeReScheduleCandidatesModal();
         this.refreshCandidateList();
     }
@@ -339,11 +296,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
 
     get statusOptions() {
         return [
-            { label: 'Waiting', value: 'Waiting' },
-            { label: 'Scheduled', value: 'Scheduled' },
             { label: 'Loop Cut', value: 'Loop Cut' },
-            { label: 'No Show	', value: 'No Show' },
-            { label: 'In Progress', value: 'In Progress'}
+            { label: 'No Show	', value: 'No Show' }
         ];
     }
 

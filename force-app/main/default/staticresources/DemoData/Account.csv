@@ -1,49 +1,48 @@
-Id,Name
-0018D000006rRmBQAU,Sample Account for Entitlements
-0018D000006pMNDQA2,Hemanth Sai Kumar Ravuri
-0018D000006pMNEQA2,Naga Raju Barri
-0018D000006pMNFQA2,Rohit Saraf
-0018D000006pMNGQA2,Nishtha Goel
-0018D000006pMNHQA2,Abhilasha Jain
-0018D000006pMNIQA2,Ridhima Seth
-0018D000006pMNJQA2,Amit Panda
-0018D000006pMNKQA2,Gaurav Kaushik
-0018D000006pMNLQA2,Amit Kumar Gupta
-0018D000006pMNMQA2,Manful Ram
-0018D000006pg98QAA,Akhil Orsu
-0018D000006pg9iQAA,Vatsala Jadia
-0018D000006pg9hQAA,Laxmi Narayan Patel
-0018D000006pg9gQAA,Ramalingam V
-0018D000006pg9fQAA,Nirbhay Singh
-0018D000006pg9eQAA,Prasanjit Sinha
-0018D000006pg9dQAA,Harish Sinha
-0018D000006pg9cQAA,Chakshu Bhatia
-0018D000006pg9bQAA,Sandeep Kumar Mishra
-0018D000006pg9aQAA,Swetha K
-0018D000006pg9ZQAQ,Deepa Anbalagan
-0018D000006pg9YQAQ,Shikher Singhal
-0018D000006pg9XQAQ,Vishal Guddodagi
-0018D000006pg9WQAQ,Santosh. M
-0018D000006pg9VQAQ,Anjali Aggarwal
-0018D000006pg9UQAQ,Shweta Singh Meena
-0018D000006pg9TQAQ,Naveen Lingineni
-0018D000006pg9SQAQ,Nirav Purohit
-0018D000006pg9RQAQ,Shivangi Agrawal
-0018D000006pg9QQAQ,Anjali Kali
-0018D000006pg9PQAQ,Nitesh Agarwral
-0018D000006pg9OQAQ,SHIVANGI GARG
-0018D000006pg9NQAQ,ShivamJindal
-0018D000006pg9MQAQ,Ashok Reddy Kommasani
-0018D000006pg9LQAQ,Maneesh Kumar Pandey
-0018D000006pg9KQAQ,Lori Shah
-0018D000006pg9JQAQ,Neha Gupta
-0018D000006pg9IQAQ,Ronak Jain
-0018D000006pg9HQAQ,Roushan Kumar
-0018D000006pg9GQAQ,Sanket Sharma
-0018D000006pg9FQAQ,Sunilkumargarrepally
-0018D000006pg9EQAQ,Ashok Rajpurohit
-0018D000006pg9DQAQ,Ankita Sawlani
-0018D000006pg9CQAQ,Kush Arora
-0018D000006pg9BQAQ,Ankit Goel
-0018D000006pg9AQAQ,Ashish Garg
-0018D000006pg99QAA,R.V.V PURUSHOTHAMA RAO
+Id,Name,Code_Pair_URL__c,Meeting_URL__c
+001J000002jBYTxIAO,Hemanth Sai Kumar Ravuri,https://hr.gs/fb75e52,https://meet.google.com/ubi-dxtf-aet
+001J000002jBYTyIAO,Naga Raju Barri,https://hr.gs/ea4bd79,https://meet.google.com/kum-xsre-mft
+001J000002jBYTzIAO,Rohit Saraf,https://hr.gs/e2b3ebf`,https://meet.google.com/vkn-qenn-bzx
+001J000002jBYU0IAO,Nishtha Goel,https://hr.gs/127a585,https://meet.google.com/kcm-truo-ngr
+001J000002jBYU1IAO,Abhilasha Jain,https://hr.gs/37e2c7e,https://meet.google.com/tha-xzpn-qij
+001J000002jBYU2IAO,Ridhima Seth,https://hr.gs/bf5899b,https://meet.google.com/pox-zivo-vrc
+001J000002jBYU3IAO,Amit Panda,https://hr.gs/083458f,https://meet.google.com/qrp-sgyq-nsm
+001J000002jBYU4IAO,Gaurav Kaushik,https://hr.gs/1d03cb8,https://meet.google.com/yxz-xnkv-mhb
+001J000002jBYU5IAO,Amit Kumar Gupta,https://hr.gs/215b631,https://meet.google.com/jpw-rthw-rdm
+001J000002jBYU6IAO,Manful Ram,https://hr.gs/a56fb72,https://meet.google.com/jpw-rthw-rdm
+001J000002jBYU7IAO,Akhil Orsu,,
+001J000002jBYU8IAO,Vatsala Jadia,,
+001J000002jBYU9IAO,Laxmi Narayan Patel,,
+001J000002jBYUAIA4,Ramalingam V,,
+001J000002jBYUBIA4,Nirbhay Singh,,
+001J000002jBYUCIA4,Prasanjit Sinha,,
+001J000002jBYUDIA4,Harish Sinha,,
+001J000002jBYUEIA4,Chakshu Bhatia,,
+001J000002jBYUFIA4,Sandeep Kumar Mishra,,
+001J000002jBYUGIA4,Swetha K,,
+001J000002jBYUHIA4,Deepa Anbalagan,,
+001J000002jBYUIIA4,Shikher Singhal,,
+001J000002jBYUJIA4,Vishal Guddodagi,,
+001J000002jBYUKIA4,Santosh. M,,
+001J000002jBYULIA4,Anjali Aggarwal,,
+001J000002jBYUMIA4,Shweta Singh Meena,,
+001J000002jBYUNIA4,Naveen Lingineni,,
+001J000002jBYUOIA4,Nirav Purohit,,
+001J000002jBYUPIA4,Shivangi Agrawal,,
+001J000002jBYUQIA4,Anjali Kali,,
+001J000002jBYURIA4,Nitesh Agarwral,,
+001J000002jBYUSIA4,SHIVANGI GARG,,
+001J000002jBYUTIA4,ShivamJindal,,
+001J000002jBYUUIA4,Ashok Reddy Kommasani,,
+001J000002jBYUVIA4,Maneesh Kumar Pandey,,
+001J000002jBYUWIA4,Lori Shah,,
+001J000002jBYUXIA4,Neha Gupta,,
+001J000002jBYUYIA4,Ronak Jain,,
+001J000002jBYUZIA4,Roushan Kumar,,
+001J000002jBYUaIAO,Sanket Sharma,,
+001J000002jBYUbIAO,Sunilkumargarrepally,,
+001J000002jBYUcIAO,Ashok Rajpurohit,,
+001J000002jBYUdIAO,Ankita Sawlani,,
+001J000002jBYUeIAO,Kush Arora,,
+001J000002jBYUfIAO,Ankit Goel,,
+001J000002jBYUgIAO,Ashish Garg,,
+001J000002jBYUhIAO,R.V.V PURUSHOTHAMA RAO,,
