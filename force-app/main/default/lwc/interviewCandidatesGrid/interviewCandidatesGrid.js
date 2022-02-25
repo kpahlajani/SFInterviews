@@ -104,7 +104,9 @@ export default class InterviewCandidatesGrid extends LightningElement {
                 if(record.Ongoing_Interview__r!=null){
                     candidate.Ongoing_Interview = record.Ongoing_Interview__r.Name;
                 }
-                if(record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Scheduled_Start_Time__c!=null){
+                if((record.Current_Status__c == 'In Progress' || record.Current_Status__c == 'Completed') && record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Actual_Start_Time__c!=null){
+                    candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Actual_Start_Time__c.substring(11,16);
+                } else if(record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Scheduled_Start_Time__c!=null){
                     candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Scheduled_Start_Time__c.substring(11,16);
                 } 
                 candidate.Current_Interviewers__c = record.Current_Interviewers__c;
