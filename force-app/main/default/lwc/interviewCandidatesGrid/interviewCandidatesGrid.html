@@ -28,8 +28,8 @@
                     onchange={handleRoundName} 
                     required>
                 </lightning-combobox>
-                 <lightning-input type="datetime" name="input1" data-id="startTime" label="Enter a Start date/time value" required onchange={handleStartDateTime}></lightning-input>
-                 <lightning-input type="datetime" name="input1" data-id="endTime" label="Enter a End date/time value" required onchange={handleEndDateTime}></lightning-input>
+                 <lightning-input type="datetime" name="input1" data-id="startTime" label="Enter a Start date/time value" value={startDateTime} required onchange={handleStartDateTime}></lightning-input>
+                 <lightning-input type="datetime" name="input1" data-id="endTime" label="Enter a End date/time value" value={endDateTime} required onchange={handleEndDateTime}></lightning-input>
                  <lightning-dual-listbox name="progress"
                             label="Interviewers"
                             source-label="Available"
