@@ -323,4 +323,10 @@ export default class InterviewCandidatesGrid extends LightningElement {
                     );
                 });
     }
+
+    connectedCallback() {  
+        this._interval = setInterval(() => {  
+            this.refreshCandidateList();
+        }, 5000); 
+    }
 }
