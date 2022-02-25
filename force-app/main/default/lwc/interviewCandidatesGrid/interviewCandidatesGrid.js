@@ -261,8 +261,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
     }
 
     
-    submitRescheduleDetails() {
-        scheduleInterview({interviewId : this.resheduledInterviewId, availabilityCheckFrom : this.startDateTimeValue, availabilityCheckTo : this.endDateTimeValue, hiringPanelMembers : this.picklistValue});
+    async submitRescheduleDetails() {
+        await scheduleInterview({interviewId : this.resheduledInterviewId, availabilityCheckFrom : this.startDateTimeValue, availabilityCheckTo : this.endDateTimeValue, hiringPanelMembers : this.picklistValue});
         this.closeReScheduleCandidatesModal();
         this.refreshCandidateList();
     }
