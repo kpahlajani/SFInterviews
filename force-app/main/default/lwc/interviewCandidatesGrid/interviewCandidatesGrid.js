@@ -21,6 +21,12 @@ export default class InterviewCandidatesGrid extends LightningElement {
         { label: 'Update Status', name: 'UpdateStatus'},
     ];
 
+    connectedCallback() {  
+        this._interval = setInterval(() => {  
+            this.refreshCandidateList();
+        }, 5000); 
+    }
+    
     @track columns = [
         {
             label: 'Candidate Name',
