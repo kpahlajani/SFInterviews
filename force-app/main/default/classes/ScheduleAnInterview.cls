@@ -167,4 +167,17 @@ public with sharing class ScheduleAnInterview {
         Event event = [Select Id, StartDateTime, EndDateTime from Event where WhatId = :interviewId limit 1];
         return event;
     }
+
+    @AuraEnabled
+    public static Boolean endInterviewEvent(Id recordId){
+        List<InterviewEventCandidate__c> interviewEventCandidates = 
+        [Select Id from InterviewEventCandidate__c WHERE InterviewEvent__c = :recordId and InterviewEventCandidate__c.Current_Status__c = 'In Progress'];
+        if(interviewEventCandidates.size() > 0) 
+            return false;
+        InterviewEvent__c interviewEvent = new InterviewEvent__c();
+        interviewEvent.Id = recordId;
+        interviewEvent.State__c = 'Closed';
+        update interviewEvent;
+        return true;
+    }
 }

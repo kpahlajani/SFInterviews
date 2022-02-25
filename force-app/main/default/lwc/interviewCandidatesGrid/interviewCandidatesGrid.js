@@ -6,9 +6,12 @@ import getInterviewRoundsForEventCandidate from '@salesforce/apex/ScheduleAnInte
 import scheduleInterview from '@salesforce/apex/ScheduleAnInterview.scheduleInterview';
 import getScheduledRoundForEventCandidate from '@salesforce/apex/ScheduleAnInterview.getScheduledRoundForEventCandidate';
 import getInterviewDetailsByInterviewId from '@salesforce/apex/ScheduleAnInterview.getInterviewDetailsByInterviewId';
+import endInterviewEvent from '@salesforce/apex/ScheduleAnInterview.endInterviewEvent';
 import { updateRecord } from 'lightning/uiRecordApi';
 import CURRENT_STATUS_FIELD from '@salesforce/schema/InterviewEventCandidate__c.Current_Status__c';
 import ID_FIELD from '@salesforce/schema/InterviewEventCandidate__c.Id';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+
 export default class InterviewCandidatesGrid extends LightningElement {
     @api recordId;
 
@@ -41,7 +44,11 @@ export default class InterviewCandidatesGrid extends LightningElement {
         {
             label: 'Start time',
             fieldName: 'Scheduled_Start_Time',
-            type: 'text',
+            type: 'date',
+            typeAttributes:{
+                hour: "2-digit",
+                minute: "2-digit"
+            },
             sortable: true
         },
         {
@@ -101,8 +108,10 @@ export default class InterviewCandidatesGrid extends LightningElement {
                 if(record.Ongoing_Interview__r!=null){
                     candidate.Ongoing_Interview = record.Ongoing_Interview__r.Name;
                 }
-                if(record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Scheduled_Start_Time__c!=null){
-                    candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Scheduled_Start_Time__c.substring(11,16);
+                if((record.Current_Status__c == 'In Progress' || record.Current_Status__c == 'Completed') && record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Actual_Start_Time__c!=null){
+                    candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Actual_Start_Time__c;
+                } else if(record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Scheduled_Start_Time__c!=null){
+                    candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Scheduled_Start_Time__c;
                 } 
                 candidate.Current_Interviewers__c = record.Current_Interviewers__c;
                 candidates.push(candidate);
@@ -175,8 +184,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
         this.picklistValue = event.detail.value;
     }
 
-    submitDetails() {
-        scheduleInterview({interviewId : this.roundName, availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, hiringPanelMembers : this.picklistValue})
+    async submitDetails() {
+        await scheduleInterview({interviewId : this.roundName, availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, hiringPanelMembers : this.picklistValue})
         this.closeScheduleCandidatesModal();
         this.refreshCandidateList();
     }
@@ -252,8 +261,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
     }
 
     
-    submitRescheduleDetails() {
-        scheduleInterview({interviewId : this.resheduledInterviewId, availabilityCheckFrom : this.startDateTimeValue, availabilityCheckTo : this.endDateTimeValue, hiringPanelMembers : this.picklistValue});
+    async submitRescheduleDetails() {
+        await scheduleInterview({interviewId : this.resheduledInterviewId, availabilityCheckFrom : this.startDateTimeValue, availabilityCheckTo : this.endDateTimeValue, hiringPanelMembers : this.picklistValue});
         this.closeReScheduleCandidatesModal();
         this.refreshCandidateList();
     }
@@ -328,5 +337,35 @@ export default class InterviewCandidatesGrid extends LightningElement {
                         })
                     );
                 });
+    }
+    isEndEventModalOpened = false;
+    closeEndEventModal() {
+        this.isEndEventModalOpened = false;
+    }
+
+    openEndEventModal() {
+        this.isEndEventModalOpened = true;
+    }
+
+    async endInterviewEvent() {
+        let state = await endInterviewEvent({recordId : this.recordId});
+        this.closeEndEventModal();
+        if(state == false) {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Atleast one interview is in progress',
+                    message: 'Atleast one interview is in progress',
+                    variant: 'error'
+                })
+            );
+        } else {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Interview event closed',
+                    message: 'Interview event closed',
+                    variant: 'success'
+                })
+            );
+        }
     }
 }

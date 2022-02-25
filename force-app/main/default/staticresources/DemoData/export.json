@@ -6,13 +6,7 @@
             "operation": "Upsert",
             "externalId": "Name",
             "master": true,
-            "query": "SELECT Id, Name FROM Profile"
-        },
-        {
-            "operation": "Upsert",
-            "externalId": "Name",
-            "master": true,
-            "query": "SELECT Id,Username,LastName,FirstName,Name,Email,IsActive,TimeZoneSidKey,UserRoleId,ProfileId FROM User"
+            "query": "SELECT Id,Username,LastName,FirstName,Name,Email,IsActive,TimeZoneSidKey,UserRoleId,ProfileId,Alias FROM User"
         },
         {
             "operation": "Upsert",
@@ -24,7 +18,7 @@
             "operation": "Upsert",
             "externalId": "Name",
             "master": true,
-            "query": "Select Name from Account"
+            "query": "Select Name,Code_Pair_URL__c,Meeting_URL__c from Account"
         },
         {
             "operation": "Upsert",
