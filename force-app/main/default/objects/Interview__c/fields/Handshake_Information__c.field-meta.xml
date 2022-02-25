@@ -4,5 +4,6 @@
     <externalId>false</externalId>
     <label>Handshake Information</label>
     <required>false</required>
+    <trackTrending>false</trackTrending>
     <type>TextArea</type>
 </CustomField>
