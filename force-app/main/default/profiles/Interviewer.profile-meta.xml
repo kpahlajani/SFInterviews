@@ -375,6 +375,11 @@
         <field>Team_Assignment__c.Hired_Candidate_Level__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>User.Grade__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Account-SF Candidate Layout</layout>
     </layoutAssignments>
@@ -446,6 +451,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Team_Assignment__c-Team Assignment Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>User-User Layout</layout>
     </layoutAssignments>
     <loginIpRanges>
         <endAddress>255.255.255.255</endAddress>

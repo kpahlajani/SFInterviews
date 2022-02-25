@@ -6,7 +6,7 @@
             "operation": "Upsert",
             "externalId": "Name",
             "master": true,
-            "query": "SELECT Id,Username,LastName,FirstName,Name,Email,IsActive,TimeZoneSidKey,UserRoleId,ProfileId,Alias FROM User"
+            "query": "SELECT Id,Username,LastName,FirstName,Name,Email,IsActive,TimeZoneSidKey,UserRoleId,ProfileId,Alias,Grade__c FROM User"
         },
         {
             "operation": "Upsert",
