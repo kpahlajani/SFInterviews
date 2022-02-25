@@ -184,8 +184,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
         this.picklistValue = event.detail.value;
     }
 
-    submitDetails() {
-        scheduleInterview({interviewId : this.roundName, availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, hiringPanelMembers : this.picklistValue})
+    async submitDetails() {
+        await scheduleInterview({interviewId : this.roundName, availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, hiringPanelMembers : this.picklistValue})
         this.closeScheduleCandidatesModal();
         this.refreshCandidateList();
     }
@@ -261,8 +261,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
     }
 
     
-    submitRescheduleDetails() {
-        scheduleInterview({interviewId : this.resheduledInterviewId, availabilityCheckFrom : this.startDateTimeValue, availabilityCheckTo : this.endDateTimeValue, hiringPanelMembers : this.picklistValue});
+    async submitRescheduleDetails() {
+        await scheduleInterview({interviewId : this.resheduledInterviewId, availabilityCheckFrom : this.startDateTimeValue, availabilityCheckTo : this.endDateTimeValue, hiringPanelMembers : this.picklistValue});
         this.closeReScheduleCandidatesModal();
         this.refreshCandidateList();
     }
