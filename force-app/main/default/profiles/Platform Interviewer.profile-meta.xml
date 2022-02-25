@@ -376,6 +376,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>
+        <layout>Account-SF Candidate Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>ActivePanel__c-ActivePanel Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
