@@ -1,4 +1,15 @@
 <template>
+<lightning-layout>
+    <lightning-layout-item padding="around-small" size="6">
+        <lightning-combobox data-name="columnsToSearch" label="Column to search" options={columnOptions}
+            value="Candidate_Name__c">
+        </lightning-combobox>
+    </lightning-layout-item>
+    <lightning-layout-item padding="around-small" size="6">
+        <lightning-input label="Search" type="search" placeholder="Text to search" value={searchKey} onchange={handleKeyChange}>
+        </lightning-input>
+    </lightning-layout-item>
+</lightning-layout>
  <template if:true={isScheduleCandidatesModalOpen}>
      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
          <div class="slds-modal__container">
@@ -118,15 +129,7 @@
 </template>
 <!--onrowselection={getSelectedRows}-->
     <template if:true={candidateList}>
-<<<<<<< HEAD
-        <lightning-datatable 
-            data={candidateList} 
-            columns={columns} 
-            key-field="Id"
-            onrowaction={handleRowAction}>
-=======
         <lightning-datatable data={candidateList} columns={columns} key-field="Id"  onrowaction={handleRowAction}>
->>>>>>> bb7c7a8d0837c640ca610974251bea4d83f86805
         </lightning-datatable>
     </template>
 

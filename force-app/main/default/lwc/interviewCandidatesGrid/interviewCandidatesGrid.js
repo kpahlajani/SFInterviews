@@ -3,6 +3,7 @@ import getCandidatesList from '@salesforce/apex/InterviewCandidatesGridHelper.ge
 import getUpdatedCandidatesList from '@salesforce/apex/InterviewCandidatesGridHelper.getUpdatedCandidatesList';
 import getAllAvailableInterviewers from '@salesforce/apex/ScheduleAnInterview.getAllAvailableInterviewers';
 import getInterviewRoundsForEventCandidate from '@salesforce/apex/ScheduleAnInterview.getInterviewRoundsForEventCandidate';
+import getCandidateListWithFilter from '@salesforce/apex/InterviewCandidatesGridHelper.getCandidateListWithFilter';
 import scheduleInterview from '@salesforce/apex/ScheduleAnInterview.scheduleInterview';
 import getScheduledRoundForEventCandidate from '@salesforce/apex/ScheduleAnInterview.getScheduledRoundForEventCandidate';
 import getInterviewDetailsByInterviewId from '@salesforce/apex/ScheduleAnInterview.getInterviewDetailsByInterviewId';
@@ -19,6 +20,27 @@ export default class InterviewCandidatesGrid extends LightningElement {
         //{ label: 'Reschedule', name: 'Reschedule'},
         { label: 'Update Status', name: 'UpdateStatus'},
     ];
+
+    searchKey='';
+    columnName='';
+    get columnOptions() {
+        return [
+            { label: 'Candidate Name', value: 'Candidate_Name__c' },
+            { label: 'Level', value: 'Candidate_Level__c' },
+            { label: 'Current Status', value: 'Current_Status__c' },
+            { label: 'Interview Round', value: 'Ongoing_Interview' },
+            { label: 'Interviewers', value: 'Current_Interviewers__c' },
+        ];
+    }
+
+    handleKeyChange(event) {
+        this.searchKey  = event.target.value;
+        this.columnName = this.template.querySelector("[data-name='columnsToSearch']").value;
+        if (this.columnName==='Candidate_Level__c') {
+            this.columnName = 'toLabel(Candidate_Level__c)';
+        }
+        this.refreshCandidateList();
+    }
 
     connectedCallback() {  
         this._interval = setInterval(() => {  
@@ -84,7 +106,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
  
     @track error;
     @track candidateList ;
-    @wire(getCandidatesList,{recordId: '$recordId'})
+    @wire(getCandidateListWithFilter,{recordId:'$recordId', searchKey:'$searchKey', columnName:'$columnName'})
     wiredAccounts({
         error,
         data
@@ -96,8 +118,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
         }
     }
 
-    async refreshCandidateList() {
-        let temp = await getUpdatedCandidatesList({recordId: this.recordId});
+    async refreshCandidateList() {   
+        let temp = await getUpdatedCandidatesList({recordId: this.recordId, searchKey:this.searchKey, columnName:this.columnName});
         this.prepareCandidateList(temp);
     }
 
