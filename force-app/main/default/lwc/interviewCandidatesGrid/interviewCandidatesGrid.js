@@ -178,6 +178,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
     submitDetails() {
         scheduleInterview({interviewId : this.roundName, availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, hiringPanelMembers : this.picklistValue})
         this.closeScheduleCandidatesModal();
+        this.refreshCandidateList();
     }
    
     handleRowAction(event) {
@@ -207,7 +208,10 @@ export default class InterviewCandidatesGrid extends LightningElement {
             };
             temp1[i] = option;                                  
         }  
-        this.options = temp1;     
+        this.options = temp1;   
+        this.startDateTime = new Date().toISOString();
+        this.endDateTime = new Date(new Date().getTime() + 90*60000).toISOString();  
+        this.getInterviewerList();
     }
 
     handleRoundName(event) {
@@ -250,7 +254,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
     
     submitRescheduleDetails() {
         scheduleInterview({interviewId : this.resheduledInterviewId, availabilityCheckFrom : this.startDateTimeValue, availabilityCheckTo : this.endDateTimeValue, hiringPanelMembers : this.picklistValue});
-        this.closeRe
+        this.closeReScheduleCandidatesModal();
+        this.refreshCandidateList();
     }
 
     handleStartDateTimeValue(event) {
@@ -312,6 +317,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
         const recordInput = { fields };
         updateRecord(recordInput)
                 .then(() => {
+                    this.refreshCandidateList();
                 })
                 .catch(error => {
                     this.dispatchEvent(
