@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Google_Meet__c</fullName>
+    <fullName>Employee_Title__c</fullName>
     <externalId>false</externalId>
-    <label>Google Meet</label>
+    <label>Employee Title</label>
+    <length>50</length>
     <required>false</required>
-    <type>Url</type>
+    <type>Text</type>
+    <unique>false</unique>
 </CustomField>

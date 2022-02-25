@@ -8,7 +8,7 @@
         <name>backgroundComponents</name>
         <type>Background</type>
     </flexiPageRegions>
-    <masterLabel>Salesforce Interviews UtilityBar</masterLabel>
+    <masterLabel>Salesforce Recruit UtilityBar</masterLabel>
     <template>
         <name>one:utilityBarTemplateDesktop</name>
         <properties>
