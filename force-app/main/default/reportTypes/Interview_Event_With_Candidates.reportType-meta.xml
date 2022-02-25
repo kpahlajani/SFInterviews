@@ -130,17 +130,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Code_Pair__c</field>
-            <table>InterviewEvent__c.InterviewEventCandidate__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Current_Status__c</field>
-            <table>InterviewEvent__c.InterviewEventCandidate__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Google_Meet__c</field>
             <table>InterviewEvent__c.InterviewEventCandidate__r</table>
         </columns>
         <columns>
@@ -159,5 +149,23 @@
             <table>InterviewEvent__c.InterviewEventCandidate__r</table>
         </columns>
         <masterLabel>Interview Event Candidates</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Current_Interviewers__c</field>
+            <table>InterviewEvent__c.InterviewEventCandidate__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Code_Pair__c</field>
+            <table>InterviewEvent__c.InterviewEventCandidate__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Meeting_URL__c</field>
+            <table>InterviewEvent__c.InterviewEventCandidate__r</table>
+        </columns>
+        <masterLabel>Interview Event Candidate</masterLabel>
     </sections>
 </ReportType>

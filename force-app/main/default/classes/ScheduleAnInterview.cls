@@ -1,32 +1,32 @@
 public with sharing class ScheduleAnInterview {
     
-    public static Set<Id> getAllAvailableInterviewers(DateTime availabilityCheckFrom, DateTime availabilityCheckTo, Id eventId)
+    @AuraEnabled
+    public static Map<Id, String> getAllAvailableInterviewers(DateTime availabilityCheckFrom, DateTime availabilityCheckTo, Id eventId)
     {
         List<Id> availableInterviewers = New List<Id>();
         //Get all the available interviewers for this event along with their default role.
-        List<Hiring_Panel_Member_Availability__c> allAvailableMembersForThisEvent = [Select Id,Hiring_Panel_Member__c, Override_role__c  from Hiring_Panel_Member_Availability__c where Interview_Event__c =:eventId];
+        List<Hiring_Panel_Member_Availability__c> allAvailableMembersForThisEvent = [Select Id,Hiring_Panel_Member__c, Member_Name__c, Override_role__c  from Hiring_Panel_Member_Availability__c where Interview_Event__c =:eventId];
         Map<Id, String> memberRoleMap = New Map<Id, String>();
         for (Hiring_Panel_Member_Availability__c hpma : allAvailableMembersForThisEvent)
         {
-            memberRoleMap.put(hpma.Hiring_Panel_Member__c, hpma.Override_role__c );
+            memberRoleMap.put(hpma.Hiring_Panel_Member__c, hpma.Member_Name__c );
         }
         //For all of these interviewers check in EventInterviewSchedule
         List<EventInterviewSchedule__c> currentScheduleSnapshot = [Select Id, Hiring_Panel_Member__c, From__c, To__c, Interview_Event__c , Interview__c	, Status__c from EventInterviewSchedule__c 
-                                                               where Hiring_Panel_Member__c  IN :memberRoleMap.keySet() and 
-                                                               ( Status__c ='Scheduled' OR Status__c ='InProgress') and 
-                                                               ((From__c >= :availabilityCheckFrom and From__c <= :availabilityCheckTo) OR
-                                                               (To__c >= :availabilityCheckFrom and To__c <= :availabilityCheckTo))];
+                                                               where Hiring_Panel_Member__c  IN :memberRoleMap.keySet() and  Status__c  in ('Scheduled','InProgress') and From__c <= :availabilityCheckTo and To__c >= :availabilityCheckFrom ];
 
         // Filter the results
         // Remove the members from the map which are already part of this snapshot
 		for (EventInterviewSchedule__c intwSchedule : currentScheduleSnapshot)
             memberRoleMap.remove(intwSchedule.Hiring_Panel_Member__c);
-        return memberRoleMap.keySet();
+        return memberRoleMap;
     }
     
-    public static void scheduleInterview(Id interviewEventCandidate, Id interviewId, DateTime availabilityCheckFrom, DateTime availabilityCheckTo, List<Id> hiringPanelMembers)
+    @AuraEnabled
+    public static void scheduleInterview(Id interviewId, DateTime availabilityCheckFrom, DateTime availabilityCheckTo, List<Id> hiringPanelMembers)
     {
-        Interview__c interview = [Select Id, Name , Status__c from Interview__c where Id=:interviewId];
+        Interview__c interview = [Select Id, Name , Status__c, Interview_Event_Candidate__c from Interview__c where Id=:interviewId];
+        Id interviewEventCandidate = interview.Interview_Event_Candidate__c;
         if (interview == null)
         {
                	throw new SFInterviewException('Invalid Interview Id');
@@ -50,7 +50,7 @@ public with sharing class ScheduleAnInterview {
         }
         //Get panel members to be assigned to this interview
 		//Check for the availability of these members
-		Set<Id> allAvailableMembersForThisEvent = getAllAvailableInterviewers(availabilityCheckFrom, availabilityCheckTo, iec.InterviewEvent__c);
+		Set<Id> allAvailableMembersForThisEvent = getAllAvailableInterviewers(availabilityCheckFrom, availabilityCheckTo, iec.InterviewEvent__c).keySet();
 		// Throw an exception if any of these members are unavailable
 		for (Id panelMemberId : hiringPanelMembers)
         {
@@ -150,5 +150,21 @@ public with sharing class ScheduleAnInterview {
          }
     }
     
+    @AuraEnabled
+    public static List<Interview__c> getInterviewRoundsForEventCandidate(Id interviewEventCandidate){
+        List<Interview__c> interviews = [Select Id, Questionaire__r.Name from Interview__c where Interview__c.Interview_Event_Candidate__c = :interviewEventCandidate and Status__c in ('Planned', 'Cancelled', 'Aborted') ];
+        return interviews;
+    }
 
+    @AuraEnabled
+    public static List<Interview__c> getScheduledRoundForEventCandidate(Id interviewEventCandidate){
+        List<Interview__c> interviews = [Select Id, Questionaire__r.Name from Interview__c where Interview__c.Interview_Event_Candidate__c = :interviewEventCandidate and Status__c in ('Scheduled') ];
+        return interviews;
+    }
+
+    @AuraEnabled
+    public static Event getInterviewDetailsByInterviewId(Id interviewId){
+        Event event = [Select Id, StartDateTime, EndDateTime from Event where WhatId = :interviewId limit 1];
+        return event;
+    }
 }

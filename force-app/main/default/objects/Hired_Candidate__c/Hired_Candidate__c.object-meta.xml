@@ -155,11 +155,18 @@
     <externalSharingModel>Private</externalSharingModel>
     <label>Hired Candidate</label>
     <nameField>
-        <label>Hired Candidate Pool Name</label>
-        <type>Text</type>
+        <displayFormat>Hired-{0000}</displayFormat>
+        <label>Hired Candidate Name</label>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Hired Candidates</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Candidate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Candidate_Level__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Allocation_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Onboarding_Completed__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Interview_Event_Candidate__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

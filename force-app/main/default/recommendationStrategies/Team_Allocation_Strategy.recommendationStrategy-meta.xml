@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecommendationStrategy xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contextRecordType>Scrum_Team__c</contextRecordType>
+    <invocableAction>
+        <label>Load Resource Recommendations</label>
+        <name>Load_Resource_Recommendations</name>
+        <action>ResourceAllocationRecoGenerator</action>
+        <argument>
+            <name>teamId</name>
+            <value>$Record.Id</value>
+        </argument>
+        <isGenerator>false</isGenerator>
+        <type>apex</type>
+    </invocableAction>
+    <label>Team Allocation Strategy</label>
+    <map>
+        <childNode>Load_Resource_Recommendations</childNode>
+        <label>Mapper to Flow</label>
+        <name>Mapper_to_Flow</name>
+        <mapExpression>
+            <expression>Hired_Candidate__c</expression>
+            <name>HiredCandidateId</name>
+            <type>Text</type>
+        </mapExpression>
+        <mapExpression>
+            <expression>Involvement_Percent__c</expression>
+            <name>InvolvementPercent</name>
+            <type>Integer</type>
+        </mapExpression>
+        <mapExpression>
+            <expression>Employee_Title__c</expression>
+            <name>Level</name>
+            <type>Text</type>
+        </mapExpression>
+        <mapExpression>
+            <expression>Scrum_Team__c</expression>
+            <name>ScrumTeamId</name>
+            <type>Text</type>
+        </mapExpression>
+    </map>
+    <union>
+        <childNode>Mapper_to_Flow</childNode>
+        <label>Output</label>
+        <name>Output_ebde462068a4497ea1230a431599a65c</name>
+    </union>
+</RecommendationStrategy>
