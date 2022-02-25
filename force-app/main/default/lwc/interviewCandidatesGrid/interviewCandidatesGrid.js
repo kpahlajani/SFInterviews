@@ -6,9 +6,12 @@ import getInterviewRoundsForEventCandidate from '@salesforce/apex/ScheduleAnInte
 import scheduleInterview from '@salesforce/apex/ScheduleAnInterview.scheduleInterview';
 import getScheduledRoundForEventCandidate from '@salesforce/apex/ScheduleAnInterview.getScheduledRoundForEventCandidate';
 import getInterviewDetailsByInterviewId from '@salesforce/apex/ScheduleAnInterview.getInterviewDetailsByInterviewId';
+import endInterviewEvent from '@salesforce/apex/ScheduleAnInterview.endInterviewEvent';
 import { updateRecord } from 'lightning/uiRecordApi';
 import CURRENT_STATUS_FIELD from '@salesforce/schema/InterviewEventCandidate__c.Current_Status__c';
 import ID_FIELD from '@salesforce/schema/InterviewEventCandidate__c.Id';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+
 export default class InterviewCandidatesGrid extends LightningElement {
     @api recordId;
 
@@ -101,7 +104,9 @@ export default class InterviewCandidatesGrid extends LightningElement {
                 if(record.Ongoing_Interview__r!=null){
                     candidate.Ongoing_Interview = record.Ongoing_Interview__r.Name;
                 }
-                if(record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Scheduled_Start_Time__c!=null){
+                if((record.Current_Status__c == 'In Progress' || record.Current_Status__c == 'Completed') && record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Actual_Start_Time__c!=null){
+                    candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Actual_Start_Time__c.substring(11,16);
+                } else if(record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Scheduled_Start_Time__c!=null){
                     candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Scheduled_Start_Time__c.substring(11,16);
                 } 
                 candidate.Current_Interviewers__c = record.Current_Interviewers__c;
@@ -328,5 +333,35 @@ export default class InterviewCandidatesGrid extends LightningElement {
                         })
                     );
                 });
+    }
+    isEndEventModalOpened = false;
+    closeEndEventModal() {
+        this.isEndEventModalOpened = false;
+    }
+
+    openEndEventModal() {
+        this.isEndEventModalOpened = true;
+    }
+
+    async endInterviewEvent() {
+        let state = await endInterviewEvent({recordId : this.recordId});
+        this.closeEndEventModal();
+        if(state == false) {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Atleast one interview is in progress',
+                    message: 'Atleast one interview is in progress',
+                    variant: 'error'
+                })
+            );
+        } else {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Interview event closed',
+                    message: 'Interview event closed',
+                    variant: 'success'
+                })
+            );
+        }
     }
 }
