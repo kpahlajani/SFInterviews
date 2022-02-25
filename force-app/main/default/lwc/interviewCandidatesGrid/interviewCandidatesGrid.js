@@ -184,8 +184,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
         this.picklistValue = event.detail.value;
     }
 
-    submitDetails() {
-        scheduleInterview({interviewId : this.roundName, availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, hiringPanelMembers : this.picklistValue})
+    async submitDetails() {
+        await scheduleInterview({interviewId : this.roundName, availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, hiringPanelMembers : this.picklistValue})
         this.closeScheduleCandidatesModal();
         this.refreshCandidateList();
     }
