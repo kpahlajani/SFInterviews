@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Code_Pair__c</fullName>
+    <fullName>Meeting_URL__c</fullName>
     <externalId>false</externalId>
-    <label>Code Pair</label>
+    <label>Meeting URL</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <type>Url</type>
 </CustomField>

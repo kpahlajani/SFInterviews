@@ -28,15 +28,6 @@
     <columns>
         <field>CUST_ID</field>
     </columns>
-    <filter>
-        <criteriaItems>
-            <column>FK_CUSTENT_ID</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>a0B8D000000YnYV</value>
-        </criteriaItems>
-    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

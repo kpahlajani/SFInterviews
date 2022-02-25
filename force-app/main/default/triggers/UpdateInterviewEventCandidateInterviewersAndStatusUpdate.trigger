@@ -23,7 +23,10 @@ trigger UpdateInterviewEventCandidateInterviewersAndStatusUpdate on Interview__c
     {
         if(interview.Status__c  == 'InProgress' || interview.Status__c  == 'Scheduled')
          {
-            iecStatusMap.put(interview.Interview_Event_Candidate__c, interview.Status__c);
+            String status = 'Scheduled';
+            if (interview.Status__c =='InProgress')
+				status = 'In Progress';
+                iecStatusMap.put(interview.Interview_Event_Candidate__c, status);
          }else
          {
             iecStatusMap.put(interview.Interview_Event_Candidate__c, 'Waiting');
@@ -36,7 +39,7 @@ trigger UpdateInterviewEventCandidateInterviewersAndStatusUpdate on Interview__c
     
     List<EventInterviewSchedule__c> availableSchedules = [Select Id, Status__c, Hiring_Panel_Member__r.User_Name__c ,Interview__c, Interview__r.Interview_Event_Candidate__c from EventInterviewSchedule__c where Interview__c IN :interviewMap.keySet()];
     Map<String, Set<EventInterviewSchedule__c>> allInterviewSchedules = New Map<String, Set<EventInterviewSchedule__c>>();
-    List<InterviewEventCandidate__c> iecs = [Select Id from InterviewEventCandidate__c where Id IN :iecIds];
+    List<InterviewEventCandidate__c> iecs = [Select Id,Ongoing_Interview__c from InterviewEventCandidate__c where Id IN :iecIds];
     Map<String, InterviewEventCandidate__c> iecsMap = New Map<String, InterviewEventCandidate__c>();
     for (InterviewEventCandidate__c iec : iecs)
     {
@@ -89,7 +92,14 @@ trigger UpdateInterviewEventCandidateInterviewersAndStatusUpdate on Interview__c
             string interviewersStr = string.join(interviewers,',');
                             System.debug('User getting assigned is .......Final String.'+interviewersStr);
             candidate.Current_Interviewers__c = interviewersStr;
-        }
+            Id ongoingInterview = candidate.Ongoing_Interview__c;
+            if (ongoingInterview != null)
+            {
+               candidate.Previous_Interview__c = ongoingInterview;
+            }
+            //Set New ongoing interview
+            candidate.Ongoing_Interview__c = interviewId;
+       }
         candidatesToBeUpdated.add(candidate);
     }
     update candidatesToBeUpdated;

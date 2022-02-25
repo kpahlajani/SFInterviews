@@ -1,18 +1,13 @@
 Id,Comments__c,Interview__c,Is_Template__c,Name,Proficiency_Level__c,Questionaire__c,Interview__r.Name,Questionaire__r.Name
 a048D000000vm3LQAQ,,,true,Code Quality,,a0G8D000000I3IbUAK,,Coding and Problem solving
 a048D000000vm3MQAQ,,,true,Code Quality,,a0G8D000000I3IaUAK,,LLD + Coding
-a048D000000vm3NQAQ,,,true,Code Quality,,,,
 a048D000000vm3OQAQ,,,true,Design Quality,,a0G8D000000I3IVUA0,,System Design
 a048D000000vm3PQAQ,,,true,Alignment To Core Values,,a0G8D000000I3IYUA0,,HM Discussion
 a048D000000vm3QQAQ,,,true,Code Quality,,a0G8D000000I3IXUA0,,Coding Discussion
 a048D000000vm3RQAQ,,,true,Code Execution,,a0G8D000000I3IXUA0,,Coding Discussion
-a048D000000vm3cQAA,,,true,Alignment To core Values,,,,
 a048D000000vm3dQAA,,,true,Design Scalability,,a0G8D000000I3IaUAK,,LLD + Coding
 a048D000000vm3lQAA,,,true,Current Project,,a0G8D000000I3IYUA0,,HM Discussion
-a048D000000vm3mQAA,,,true,Current Project,,,,
 a048D000000vm3nQAA,,,true,Code execution,,a0G8D000000I3IbUAK,,Coding and Problem solving
 a048D000000vm3oQAA,,,true,Communicaton,,a0G8D000000I3IYUA0,,HM Discussion
-a048D000000vm3pQAA,,,true,Communication,,,,
 a048D000000vm3qQAA,,,true,Scalability,,a0G8D000000I3IVUA0,,System Design
 a048D000000vm3rQAA,,,true,Technical know how,,a0G8D000000I3IVUA0,,System Design
-a048D000000vm46QAA,,,true,Design Quality,,,,
