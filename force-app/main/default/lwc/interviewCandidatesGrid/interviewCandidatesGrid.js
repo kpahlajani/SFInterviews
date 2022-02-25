@@ -44,7 +44,11 @@ export default class InterviewCandidatesGrid extends LightningElement {
         {
             label: 'Start time',
             fieldName: 'Scheduled_Start_Time',
-            type: 'text',
+            type: 'date',
+            typeAttributes:{
+                hour: "2-digit",
+                minute: "2-digit"
+            },
             sortable: true
         },
         {
@@ -105,9 +109,9 @@ export default class InterviewCandidatesGrid extends LightningElement {
                     candidate.Ongoing_Interview = record.Ongoing_Interview__r.Name;
                 }
                 if((record.Current_Status__c == 'In Progress' || record.Current_Status__c == 'Completed') && record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Actual_Start_Time__c!=null){
-                    candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Actual_Start_Time__c.substring(11,16);
+                    candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Actual_Start_Time__c;
                 } else if(record.Ongoing_Interview__r!=null && record.Ongoing_Interview__r.Scheduled_Start_Time__c!=null){
-                    candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Scheduled_Start_Time__c.substring(11,16);
+                    candidate.Scheduled_Start_Time = record.Ongoing_Interview__r.Scheduled_Start_Time__c;
                 } 
                 candidate.Current_Interviewers__c = record.Current_Interviewers__c;
                 candidates.push(candidate);
