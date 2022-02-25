@@ -5,7 +5,7 @@
     <label>Team Allocation Template</label>
     <referenceTo>Scrum_Team_Template__c</referenceTo>
     <relationshipLabel>Team Allocation Template Items</relationshipLabel>
-    <relationshipName>Team_Allocation_Template_Items1</relationshipName>
+    <relationshipName>Team_Allocation_Template_Items</relationshipName>
     <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>
     <trackTrending>false</trackTrending>
