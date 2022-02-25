@@ -4,7 +4,7 @@ trigger UpdateStartEndTimeOnInterview on Interview__c (before insert, before upd
     
       for(Interview__c interview:Trigger.new)
       {
-          if (interview.Status__c == 'InProgress' || interview.Status__c == 'Scheduled')
+          //if (interview.Status__c == 'InProgress' || interview.Status__c == 'Scheduled')
           	interviewsEligibleForDateTimeUpdates.put(interview.Id,interview);
       }
         System.debug('-----Updating date time--------'+interviewsEligibleForDateTimeUpdates);
@@ -27,15 +27,20 @@ trigger UpdateStartEndTimeOnInterview on Interview__c (before insert, before upd
         {
             interview.Scheduled_Start_Time__c = schedule.From__c;
             interview.Scheduled_End_Time__c = schedule.To__c;
+        }else
+        {
+           interview.Scheduled_Start_Time__c = null;
+           interview.Scheduled_End_Time__c = null;
+           interview.Actual_End_Time__c = schedule.To__c;
         }
         
         if (schedule.Status__c == 'InProgress')
+        {
             interview.Actual_Start_Time__c = schedule.From__c;
+            interview.Actual_End_Time__c = null;
+        }
         
-        if (schedule.Status__c != 'Scheduled')
-           interview.Actual_End_Time__c = schedule.From__c;
-
-
+       
             
         
         interviewsToBeUpdated.add(interview);
