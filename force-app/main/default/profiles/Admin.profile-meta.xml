@@ -52,6 +52,16 @@
     <custom>false</custom>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.Code_Pair_URL__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.Meeting_URL__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Event.Candidate__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -201,7 +211,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>InterviewEventCandidate__c.Code_Pair__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -211,14 +221,14 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>InterviewEventCandidate__c.Google_Meet__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>InterviewEventCandidate__c.Hire_Status__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>InterviewEventCandidate__c.Meeting_URL__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -258,16 +268,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Interview__c.Candidate_Name__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Interview__c.Code_Pair__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Interview__c.Google_Meet__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
