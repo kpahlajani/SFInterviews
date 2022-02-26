@@ -196,7 +196,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
 
     async getInterviewerList() {
         if(this.startDateTime !== undefined && this.endDateTime !== undefined) {
-            this.availableInterviewers = await getAllAvailableInterviewers({availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, eventId : this.recordId,interviewId : null,interviewEventCandidate:this.selectedCandidate});
+            this.availableInterviewers = await getAllAvailableInterviewers({availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, eventId : this.recordId,interviewId : null,interviewEventCandidateId:this.selectedCandidate});
             this.getValues();
         }
     }
@@ -259,8 +259,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
             temp1[i] = option;                                  
         }  
         this.options = temp1;   
-        this.startDateTime = new Date().toISOString();
-        this.endDateTime = new Date(new Date().getTime() + 90*60000).toISOString();  
+        this.startDateTime = new Date(new Date().getTime() + 10*60000).toISOString();
+        this.endDateTime = new Date(startDateTime.getTime() + 90*60000).toISOString();  
         this.getInterviewerList();
     }
 
@@ -297,7 +297,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
         this.startDateTimeValue = temp.StartDateTime;
         this.endDateTimeValue = temp.EndDateTime;
         this.resheduledInterviewId = temp.Id;
-        this.availableInterviewers = await getAllAvailableInterviewers({availabilityCheckFrom : this.startDateTimeValue, availabilityCheckTo : this.endDateTimeValue, eventId : this.recordId,interviewId : temp.Id,interviewEventCandidate:this.selectedCandidate});
+        this.availableInterviewers = await getAllAvailableInterviewers({availabilityCheckFrom : this.startDateTimeValue, availabilityCheckTo : this.endDateTimeValue, eventId : this.recordId,interviewId : temp.Id,interviewEventCandidateId:this.selectedCandidate});
         this.getValues();
     }
 
