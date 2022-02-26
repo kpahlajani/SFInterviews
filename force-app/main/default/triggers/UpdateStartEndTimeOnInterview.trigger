@@ -23,6 +23,8 @@ trigger UpdateStartEndTimeOnInterview on Interview__c (before insert, before upd
     {
         Interview__c interview = interviewsEligibleForDateTimeUpdates.get(interviewId);
         EventInterviewSchedule__c schedule = interviewScheuduleMap.get(interviewId);
+        if (schedule==null)
+            continue;
         if (schedule.Status__c == 'Scheduled')
         {
             interview.Scheduled_Start_Time__c = schedule.From__c;
