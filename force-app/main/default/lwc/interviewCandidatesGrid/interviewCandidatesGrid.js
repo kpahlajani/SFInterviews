@@ -28,6 +28,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
             { label: 'Candidate Name', value: 'Candidate_Name__c' },
             { label: 'Level', value: 'Candidate_Level__c' },
             { label: 'Current Status', value: 'Current_Status__c' },
+            { label: 'Planned Interactions', value: 'Total_Interactions__c' },
+            { label: 'Completed Interactions', value: 'Completed_Intractions__c' },
             { label: 'Interview Round', value: 'Ongoing_Interview' },
             { label: 'Interviewers', value: 'Current_Interviewers__c' },
         ];
@@ -54,7 +56,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
             fieldName: 'ICName',
             type: 'url',
             typeAttributes: {label: { fieldName: 'Candidate_Name__c' }},
-            sortable: true
+            sortable: true,
+            wrapText: true
         },
         {
             label: 'Level',
@@ -66,7 +69,22 @@ export default class InterviewCandidatesGrid extends LightningElement {
             label: 'Current Status',
             fieldName: 'Current_Status__c',
             type: 'text',
-            sortable: true
+            sortable: true,
+            wrapText: true
+        },
+        {
+            label: 'Planned Interactions',
+            fieldName: 'Total_Interactions__c',
+            type: 'text',
+            sortable: true,
+            wrapText: true
+        },
+        {
+            label: 'Completed Interactions',
+            fieldName: 'Completed_Interactions__c',
+            type: 'text',
+            sortable: true,
+            wrapText: true
         },
         {
             label: 'Start time',
@@ -76,20 +94,23 @@ export default class InterviewCandidatesGrid extends LightningElement {
                 hour: "2-digit",
                 minute: "2-digit"
             },
-            sortable: true
+            sortable: true,
+            wrapText: true
         },
         {
             label: 'Interview Round',
             fieldName: 'Ongoing_Interview',
             type: 'text',
             sortable: true,
+            wrapText: true,
             wrapText: true
         },
         {
             label: 'Aggregated Score',
             fieldName: 'Aggregated_Score__c',
             type: 'text',
-            sortable: true
+            sortable: true,
+            wrapText: true
         },
         {
             label: 'Interviewers',
