@@ -9,7 +9,7 @@ trigger AutoAddMembersToEvent on ActivePanel__c (after insert) {
         panelsGettingAdded.put(panelId,eventId);
    }
    
-        List<HiringPanelMember__c> hpms = [Select HiringPanel__c, User__c, Default_Member_Role__c from HiringPanelMember__c where HiringPanel__c IN :panelsGettingAdded.keySet()];
+        List<HiringPanelMember__c> hpms = [Select HiringPanel__c, User__c,User__r.Grade__c, Default_Member_Role__c from HiringPanelMember__c where HiringPanel__c IN :panelsGettingAdded.keySet()];
 		List<Hiring_Panel_Member_Availability__c> pmas = New List<Hiring_Panel_Member_Availability__c>();
     	for(HiringPanelMember__c hpm : hpms)
         {
@@ -18,6 +18,7 @@ trigger AutoAddMembersToEvent on ActivePanel__c (after insert) {
             Hiring_Panel_Member_Availability__c pma = new Hiring_Panel_Member_Availability__c ();
             pma.Available_For_Entire_Event__c = true;
             pma.Hiring_Panel_Member__c = hpm.Id;
+            pma.Panel_Member_Grade__c = hpm.User__r.Grade__c;
             pma.Interview_Event__c = eventId;
             pmas.add(pma);
 		}

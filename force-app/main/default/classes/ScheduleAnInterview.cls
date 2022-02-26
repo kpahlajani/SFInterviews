@@ -5,11 +5,11 @@ public with sharing class ScheduleAnInterview {
     {
         List<Id> availableInterviewers = New List<Id>();
         //Get all the available interviewers for this event along with their default role.
-        List<Hiring_Panel_Member_Availability__c> allAvailableMembersForThisEvent = [Select Id,Hiring_Panel_Member__c, Member_Name__c, Override_role__c  from Hiring_Panel_Member_Availability__c where Interview_Event__c =:eventId];
+        List<Hiring_Panel_Member_Availability__c> allAvailableMembersForThisEvent = [Select Id,Hiring_Panel_Member__c, Member_Name__c,tolabel(Panel_Member_Grade__c), Override_role__c  from Hiring_Panel_Member_Availability__c where Interview_Event__c =:eventId];
         Map<Id, String> memberRoleMap = New Map<Id, String>();
         for (Hiring_Panel_Member_Availability__c hpma : allAvailableMembersForThisEvent)
         {
-            memberRoleMap.put(hpma.Hiring_Panel_Member__c, hpma.Member_Name__c );
+            memberRoleMap.put(hpma.Hiring_Panel_Member__c, hpma.Member_Name__c+'('+hpma.Panel_Member_Grade__c+')' );
         }
         //For all of these interviewers check in EventInterviewSchedule
         List<EventInterviewSchedule__c> currentScheduleSnapshot = [Select Id, Hiring_Panel_Member__c, From__c, To__c, Interview_Event__c , Interview__c	, Status__c from EventInterviewSchedule__c 
@@ -36,7 +36,7 @@ public with sharing class ScheduleAnInterview {
                	throw new SFInterviewException('Interview cannot be scheduled.Interview must be in planning state.');
         }
         InterviewEventCandidate__c iec = [Select Id, InterviewEvent__c, Candidate_Name__c  from InterviewEventCandidate__c where Id=:interviewEventCandidate];
-		List<HiringPanelMember__c > hiringPanelMembersObj = [Select Id, Email__c, User__c, User_Name__c from HiringPanelMember__c  where Id IN :hiringPanelMembers];
+		List<HiringPanelMember__c > hiringPanelMembersObj = [Select Id, Email__c, User__c, User_Name__c, User__r.Grade__c from HiringPanelMember__c  where Id IN :hiringPanelMembers];
         if (hiringPanelMembersObj == null || hiringPanelMembersObj.isEmpty())
         {
            throw new SFInterviewException('Panel member not found');
@@ -92,6 +92,7 @@ public with sharing class ScheduleAnInterview {
            schedule.From__c = availabilityCheckFrom;
            schedule.To__c = availabilityCheckTo;
            schedule.Hiring_Panel_Member__c = hiringPanelMembersObj.get(index).Id;
+           schedule.Panel_Member_Grade__c = hiringPanelMembersObj.get(index).User__r.Grade__c;
            schedule.Interview_Event__c = iec.InterviewEvent__c;
            schedule.Status__c = 'Scheduled';
  		   schedules.add(schedule);
