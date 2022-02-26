@@ -5,7 +5,7 @@ public class SlackAWSCallout {
       // open for demo
 
       return;
-     /*
+/*
       String restAPIURL = 'https://2704u9iaye.execute-api.ap-south-1.amazonaws.com/asyncRecruitProcessor';
       
       HttpRequest httpRequest = new HttpRequest();  
@@ -29,6 +29,6 @@ public class SlackAWSCallout {
             throw e;  
       }  
       System.debug(' ** response ** : ' + response );
-     */
+*/
  }
 }
