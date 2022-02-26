@@ -260,7 +260,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
         }  
         this.options = temp1;   
         this.startDateTime = new Date(new Date().getTime() + 10*60000).toISOString();
-        this.endDateTime = new Date(startDateTime.getTime() + 90*60000).toISOString();  
+        this.endDateTime = new Date(new Date().getTime() + 100*60000).toISOString();  
         this.getInterviewerList();
     }
 
