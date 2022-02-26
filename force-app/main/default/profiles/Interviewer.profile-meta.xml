@@ -217,6 +217,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>InterviewEventCandidate__c.Completed_Interactions__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>InterviewEventCandidate__c.Current_Interviewers__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -238,6 +243,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>InterviewEventCandidate__c.Previous_Interview__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>InterviewEventCandidate__c.Total_Interactions__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
