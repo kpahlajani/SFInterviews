@@ -28,8 +28,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
             { label: 'Candidate Name', value: 'Candidate_Name__c' },
             { label: 'Level', value: 'Candidate_Level__c' },
             { label: 'Current Status', value: 'Current_Status__c' },
-            { label: 'Planned Interactions', value: 'Total_Interactions__c' },
-            { label: 'Completed Interactions', value: 'Completed_Intractions__c' },
+            { label: 'Candidate Progress', value: 'Total_Interactions__c' },
             { label: 'Interview Round', value: 'Ongoing_Interview' },
             { label: 'Interviewers', value: 'Current_Interviewers__c' },
         ];
@@ -73,15 +72,8 @@ export default class InterviewCandidatesGrid extends LightningElement {
             wrapText: true
         },
         {
-            label: 'Planned Interactions',
+            label: 'Candidate Progress',
             fieldName: 'Total_Interactions__c',
-            type: 'text',
-            sortable: true,
-            wrapText: true
-        },
-        {
-            label: 'Completed Interactions',
-            fieldName: 'Completed_Interactions__c',
             type: 'text',
             sortable: true,
             wrapText: true
@@ -152,6 +144,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
                 candidate.Candidate_Name__c = record.Candidate_Name__c;
                 candidate.Candidate_Level__c = record.Candidate_Level__c;
                 candidate.Current_Status__c = record.Current_Status__c;
+                candidate.Total_Interactions__c = 'Completed ' + record.Completed_Interactions__c + ' of ' + record.Total_Interactions__c;
                 candidate.Aggregated_Score__c = record.Aggregated_Score__c;
                 if(record.Ongoing_Interview__r!=null){
                     candidate.Ongoing_Interview = record.Ongoing_Interview__r.Name;
