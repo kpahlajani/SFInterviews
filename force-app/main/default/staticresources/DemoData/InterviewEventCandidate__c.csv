@@ -1,0 +1,11 @@
+Id,Name,InterviewEvent__c,Available_From__c,Available_Till__c,Candidate_Level__c,Candidate__c,Current_Status__c,Ongoing_Interview__c,Previous_Interview__c,InterviewEvent__r.Name,Candidate__r.Name,Ongoing_Interview__r.Name,Previous_Interview__r.Name
+a09P000000D3j9QIAR,IEC-00011,a0BP000000DwRIcMAN,,,2,001P000001shjZCIAY,Scheduled,a0DP000000A14UjMAJ,,Lateral Hiring,Hemanth Sai Kumar Ravuri,Coding Discussion,
+a09P000000D3j9RIAR,IEC-00012,a0BP000000DwRIcMAN,,,3,001P000001shjZDIAY,Scheduled,a0DP000000A14UpMAJ,,Lateral Hiring,Naga Raju Barri,Coding and Problem solving,
+a09P000000D3j9SIAR,IEC-00013,a0BP000000DwRIcMAN,,,2,001P000001shjZEIAY,Waiting,,,Lateral Hiring,Rohit Saraf,,
+a09P000000D3j9TIAR,IEC-00014,a0BP000000DwRIcMAN,,,3,001P000001shjZFIAY,Waiting,,,Lateral Hiring,Nishtha Goel,,
+a09P000000D3j9UIAR,IEC-00015,a0BP000000DwRIcMAN,,,2,001P000001shjZGIAY,Waiting,,,Lateral Hiring,Abhilasha Jain,,
+a09P000000D3j9VIAR,IEC-00016,a0BP000000DwRIcMAN,,,3,001P000001shjZHIAY,Waiting,,,Lateral Hiring,Ridhima Seth,,
+a09P000000D3j9WIAR,IEC-00017,a0BP000000DwRIcMAN,,,2,001P000001shjZIIAY,Waiting,,,Lateral Hiring,Amit Panda,,
+a09P000000D3j9XIAR,IEC-00018,a0BP000000DwRIcMAN,,,3,001P000001shjZJIAY,Waiting,,,Lateral Hiring,Gaurav Kaushik,,
+a09P000000D3j9YIAR,IEC-00019,a0BP000000DwRIcMAN,,,2,001P000001shjZKIAY,Waiting,,,Lateral Hiring,Amit Kumar Gupta,,
+a09P000000D3j9ZIAR,IEC-00020,a0BP000000DwRIcMAN,,,3,001P000001shjZLIAY,Waiting,,,Lateral Hiring,Manful Ram,,
