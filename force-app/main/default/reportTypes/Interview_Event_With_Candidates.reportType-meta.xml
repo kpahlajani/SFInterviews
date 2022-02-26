@@ -166,6 +166,16 @@
             <field>Meeting_URL__c</field>
             <table>InterviewEvent__c.InterviewEventCandidate__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Total_Interactions__c</field>
+            <table>InterviewEvent__c.InterviewEventCandidate__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Completed_Interactions__c</field>
+            <table>InterviewEvent__c.InterviewEventCandidate__r</table>
+        </columns>
         <masterLabel>Interview Event Candidate</masterLabel>
     </sections>
 </ReportType>
