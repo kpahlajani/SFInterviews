@@ -6,7 +6,7 @@ public with sharing class ScheduleAnInterview {
         //interviewId param - for future use  to filter based on round type - eg HR or Recruiter
         List<Id> availableInterviewers = New List<Id>();
         Integer level=0;
-        if(interviewId !=null) {
+        if(interviewEventCandidateId !=null) {
             InterviewEventCandidate__c iec=[Select Candidate_Level__c from InterviewEventCandidate__c WHERE Id=:interviewEventCandidateId LIMIT 1];
             level=Integer.valueOf(iec.Candidate_Level__c);
         }    
