@@ -66,7 +66,7 @@
         {
             "operation": "Upsert",
             "externalId": "Name",
-            "query": "SELECT Id, Name, InterviewEvent__c, Available_From__c, Available_Till__c, Candidate_Level__c, Candidate__c, Current_Status__c, Hire_Status__c, Ongoing_Interview__c, Previous_Interview__c FROM InterviewEventCandidate__c"
+            "query": "SELECT Id, Name, InterviewEvent__c, Available_From__c, Available_Till__c, Candidate_Level__c, Candidate__c, Hire_Status__c, Ongoing_Interview__c, Previous_Interview__c FROM InterviewEventCandidate__c"
         },
         {
             "operation": "Upsert",
