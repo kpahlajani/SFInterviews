@@ -187,6 +187,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Hiring_Panel_Member_Availability__c.Panel_Member_Grade__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Hiring_Panel_Member_Availability__c.Member_Grade_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>     
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Hiring_Panel_Member_Availability__c.To__c</field>
         <readable>true</readable>
     </fieldPermissions>
