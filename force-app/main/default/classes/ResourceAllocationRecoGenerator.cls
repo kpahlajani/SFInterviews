@@ -26,7 +26,7 @@ global class ResourceAllocationRecoGenerator {
         Map<String,ResourceShortage> shortages = new Map<String,ResourceShortage>();
         
         List<Team_Allocation_Template_Item__c> expectedResources = [select tolabel(Level__c) ,Involvement_Percent__c,Count__c from Team_Allocation_Template_Item__c 
-                                                                    where Team_Allocation_Template__c in (select Team_Allocation_Template__c from Scrum_Team__c where Id = :teamId)];
+                                                                    where Team_Allocation_Template__c in (select Team_Allocation_Template__c from Scrum_Team__c where Id = :teamId) order by Involvement_Percent__c];
         
         List<Team_Assignment__c> existingResources=[SELECT tolabel(Hired_Candidate_Level__c),Involvement_Percent__c  FROM Team_Assignment__c where Scrum_Team__c=:teamId]; // group by over neither decimal nor formula working
         
@@ -70,7 +70,7 @@ global class ResourceAllocationRecoGenerator {
         List<List<Recommendation>> outputs = new List<List<Recommendation>>();
          
         List<Hired_Candidate__c> availableResources=[SELECT Id,Name,Candidate__c,Allocation_Status__c,tolabel(Candidate_Level__c),Employee_Name__c FROM Hired_Candidate__c 
-                                                        where Allocation_Status__c in ('Partially Allocated','Unallocated') and Onboarding_Completed__c=true ];    
+                                                        where Allocation_Status__c in ('Partially Allocated','Unallocated') and Onboarding_Completed__c=true order by Allocation_Status__c];    
          
 
         Map<String,List<Hired_Candidate__c>> availableMap = new   Map<String,List<Hired_Candidate__c>>();
