@@ -203,7 +203,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
 
     async getInterviewerList() {
         if(this.startDateTime !== undefined && this.endDateTime !== undefined) {
-            this.availableInterviewers = await getAllAvailableInterviewers({availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, eventId : this.recordId});
+            this.availableInterviewers = await getAllAvailableInterviewers({availabilityCheckFrom : this.startDateTime, availabilityCheckTo : this.endDateTime, eventId : this.recordId,interviewId : null,interviewEventCandidate:this.selectedCandidate});
             this.getValues();
         }
     }
@@ -304,7 +304,7 @@ export default class InterviewCandidatesGrid extends LightningElement {
         this.startDateTimeValue = temp.StartDateTime;
         this.endDateTimeValue = temp.EndDateTime;
         this.resheduledInterviewId = temp.Id;
-        this.availableInterviewers = await getAllAvailableInterviewers({availabilityCheckFrom : this.startDateTimeValue, availabilityCheckTo : this.endDateTimeValue, eventId : this.recordId});
+        this.availableInterviewers = await getAllAvailableInterviewers({availabilityCheckFrom : this.startDateTimeValue, availabilityCheckTo : this.endDateTimeValue, eventId : this.recordId,interviewId : temp.Id,interviewEventCandidate:this.selectedCandidate});
         this.getValues();
     }
 

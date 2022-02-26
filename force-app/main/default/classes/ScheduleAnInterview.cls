@@ -1,11 +1,18 @@
 public with sharing class ScheduleAnInterview {
     
     @AuraEnabled
-    public static Map<Id, String> getAllAvailableInterviewers(DateTime availabilityCheckFrom, DateTime availabilityCheckTo, Id eventId)
+    public static Map<Id, String> getAllAvailableInterviewers(DateTime availabilityCheckFrom, DateTime availabilityCheckTo, Id eventId, Id interviewId,Id interviewEventCandidateId)
     {
+        //interviewId param - for future use  to filter based on round type - eg HR or Recruiter
         List<Id> availableInterviewers = New List<Id>();
+        Integer level=0;
+        if(interviewId !=null) {
+            InterviewEventCandidate__c iec=[Select Candidate_Level__c from InterviewEventCandidate__c WHERE Id=:interviewEventCandidateId LIMIT 1];
+            level=Integer.valueOf(iec.Candidate_Level__c);
+        }    
+
         //Get all the available interviewers for this event along with their default role.
-        List<Hiring_Panel_Member_Availability__c> allAvailableMembersForThisEvent = [Select Id,Hiring_Panel_Member__c, Member_Name__c,tolabel(Panel_Member_Grade__c), Override_role__c  from Hiring_Panel_Member_Availability__c where Interview_Event__c =:eventId];
+        List<Hiring_Panel_Member_Availability__c> allAvailableMembersForThisEvent = [Select Id,Hiring_Panel_Member__c, Member_Name__c,tolabel(Panel_Member_Grade__c), Override_role__c  from Hiring_Panel_Member_Availability__c where Interview_Event__c =:eventId and Member_Grade_Number__c>=:level];
         Map<Id, String> memberRoleMap = New Map<Id, String>();
         for (Hiring_Panel_Member_Availability__c hpma : allAvailableMembersForThisEvent)
         {
@@ -50,7 +57,7 @@ public with sharing class ScheduleAnInterview {
         }
         //Get panel members to be assigned to this interview
 		//Check for the availability of these members
-		Set<Id> allAvailableMembersForThisEvent = getAllAvailableInterviewers(availabilityCheckFrom, availabilityCheckTo, iec.InterviewEvent__c).keySet();
+		Set<Id> allAvailableMembersForThisEvent = getAllAvailableInterviewers(availabilityCheckFrom, availabilityCheckTo, iec.InterviewEvent__c,interview.Id,iec.Id).keySet();
 		// Throw an exception if any of these members are unavailable
 		for (Id panelMemberId : hiringPanelMembers)
         {
@@ -92,7 +99,6 @@ public with sharing class ScheduleAnInterview {
            schedule.From__c = availabilityCheckFrom;
            schedule.To__c = availabilityCheckTo;
            schedule.Hiring_Panel_Member__c = hiringPanelMembersObj.get(index).Id;
-           schedule.Panel_Member_Grade__c = hiringPanelMembersObj.get(index).User__r.Grade__c;
            schedule.Interview_Event__c = iec.InterviewEvent__c;
            schedule.Status__c = 'Scheduled';
  		   schedules.add(schedule);
