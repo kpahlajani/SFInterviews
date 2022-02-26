@@ -271,7 +271,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Interview__c.Handshake_Information__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -281,9 +281,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Interview__c.Problems_Discussed__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -298,10 +298,10 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>QuestionaireTemplate__c.Description__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Questionaire__c.Description__c</field>
         <readable>true</readable>
     </fieldPermissions>
