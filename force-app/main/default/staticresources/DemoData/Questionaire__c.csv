@@ -1,8 +1,8 @@
 Id,Description__c,Interaction_Duration_In_Mins__c,Name,QuestionaireTemplate__c,Sort_Order__c,QuestionaireTemplate__r.Name
-a0GJ000000SLFLgMAP,,90,System Design,a0FJ000000DlgaHMAR,3,LMTS Hiring
-a0GJ000000SLFLhMAP,,60,HM Discussion,a0FJ000000DlgaHMAR,4,LMTS Hiring
-a0GJ000000SLFLiMAP,,90,Coding Discussion,a0FJ000000DlgaIMAR,1,SMTS Hiring
-a0GJ000000SLFLjMAP,Current Project and alignment to core values.,90,HM Discussion,a0FJ000000DlgaIMAR,3,SMTS Hiring
-a0GJ000000SLFLkMAP,,90,LLD + Coding,a0FJ000000DlgaHMAR,2,LMTS Hiring
-a0GJ000000SLFLlMAP,,90,LLD + Coding,a0FJ000000DlgaIMAR,2,SMTS Hiring
-a0GJ000000SLFLmMAP,,90,Coding and Problem solving,a0FJ000000DlgaHMAR,1,LMTS Hiring
+a0GP0000008OBL6MAO,,90,System Design,a0FP00000089w51MAA,3,LMTS Hiring
+a0GP0000008OBL7MAO,,60,HM Discussion,a0FP00000089w51MAA,4,LMTS Hiring
+a0GP0000008OBL8MAO,,90,Coding Discussion,a0FP00000089w52MAA,1,SMTS Hiring
+a0GP0000008OBL9MAO,Current Project and alignment to core values.,90,HM Discussion,a0FP00000089w52MAA,3,SMTS Hiring
+a0GP0000008OBLAMA4,,90,LLD + Coding,a0FP00000089w51MAA,2,LMTS Hiring
+a0GP0000008OBLBMA4,,90,LLD + Coding,a0FP00000089w52MAA,2,SMTS Hiring
+a0GP0000008OBLCMA4,,90,Coding and Problem solving,a0FP00000089w51MAA,1,LMTS Hiring

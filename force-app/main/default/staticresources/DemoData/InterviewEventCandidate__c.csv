@@ -1,6 +1,0 @@
-Id,Name,InterviewEvent__c,Available_From__c,Available_Till__c,Candidate_Level__c,Candidate__c,Current_Status__c,Ongoing_Interview__c,Previous_Interview__c,InterviewEvent__r.Name,Candidate__r.Name,Ongoing_Interview__r.Name,Previous_Interview__r.Name
-a09J000000WBcaiIAD,IEC-00000,a0BJ000000IAGEbMAP,,,2,001J000002jBYU6IAO,Waiting,,,Lateral Hiring,Manful Ram,,
-a09J000000WBcajIAD,IEC-00001,a0BJ000000IAGEbMAP,,,3,001J000002jBYU2IAO,Waiting,,,Lateral Hiring,Ridhima Seth,,
-a09J000000WBcakIAD,IEC-00002,a0BJ000000IAGEbMAP,,,3,001J000002jBYU3IAO,Waiting,,,Lateral Hiring,Amit Panda,,
-a09J000000WBcalIAD,IEC-00003,a0BJ000000IAGEbMAP,,,2,001J000002jBYU4IAO,Waiting,,,Lateral Hiring,Gaurav Kaushik,,
-a09J000000WBcamIAD,IEC-00004,a0BJ000000IAGEbMAP,,,2,001J000002jBYU5IAO,Waiting,,,Lateral Hiring,Amit Kumar Gupta,,
