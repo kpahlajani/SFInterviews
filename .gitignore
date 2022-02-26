@@ -18,6 +18,10 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+force-app/main/default/staticresources/DemoData/MissingParentRecordsReport.csv
+force-app/main/default/staticresources/DemoData/binary_cache
+force-app/main/default/staticresources/DemoData/source/*_source.csv
+force-app/main/default/staticresources/DemoData/target/*_target.csv
 
 # Dependency directories
 node_modules/

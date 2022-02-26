@@ -1,16 +1,13 @@
 Id,Comments__c,Interview__c,Is_Template__c,Name,Proficiency_Level__c,Questionaire__c,Interview__r.Name,Questionaire__r.Name
-a04J000000lfgsdIAA,,,true,Code Quality,,a0GJ000000SLFLmMAP,,Coding and Problem solving
-a04J000000lfgseIAA,,,true,Code Quality,,a0GJ000000SLFLlMAP,,LLD + Coding
-a04J000000lfgsfIAA,,,true,Design Quality,,a0GJ000000SLFLgMAP,,System Design
-a04J000000lfgsgIAA,,,true,Alignment To Core Values,,a0GJ000000SLFLjMAP,,HM Discussion
-a04J000000lfgsmIAA,,,true,Communicaton,,a0GJ000000SLFLjMAP,,HM Discussion
-a04J000000lfgskIAA,,,true,Current Project,,a0GJ000000SLFLjMAP,,HM Discussion
-a04J000000lfgshIAA,,,true,Code Quality,,a0GJ000000SLFLiMAP,,Coding Discussion
-a04J000000lfgsiIAA,,,true,Code Execution,,a0GJ000000SLFLiMAP,,Coding Discussion
-a04J000000lfgsjIAA,,,true,Design Scalability,,a0GJ000000SLFLlMAP,,LLD + Coding
-a04J000000lfgslIAA,,,true,Code execution,,a0GJ000000SLFLmMAP,,Coding and Problem solving
-a04J000000lfgsnIAA,,,true,Scalability,,a0GJ000000SLFLgMAP,,System Design
-a04J000000lfgsoIAA,,,true,Technical know how,,a0GJ000000SLFLgMAP,,System Design
-a04J000000lfgsgIAA,,,true,Alignment To Core Values,,a0GJ000000SLFLhMAP,,HM Discussion
-a04J000000lfgsmIAA,,,true,Communicaton,,a0GJ000000SLFLhMAP,,HM Discussion
-a04J000000lfgskIAA,,,true,Current Project,,a0GJ000000SLFLhMAP,,HM Discussion
+a04P0000006aQaVIAU,,,true,Code Quality,,a0GP0000008OBLCMA4,,Coding and Problem solving
+a04P0000006aQaWIAU,,,true,Code Quality,,a0GP0000008OBLBMA4,,LLD + Coding
+a04P0000006aQaXIAU,,,true,Design Quality,,a0GP0000008OBL6MAO,,System Design
+a04P0000006aQaYIAU,,,true,Alignment To Core Values,,a0GP0000008OBL9MAO,,HM Discussion
+a04P0000006aQaZIAU,,,true,Communicaton,,a0GP0000008OBL9MAO,,HM Discussion
+a04P0000006aQaaIAE,,,true,Current Project,,a0GP0000008OBL9MAO,,HM Discussion
+a04P0000006aQabIAE,,,true,Code Quality,,a0GP0000008OBL8MAO,,Coding Discussion
+a04P0000006aQacIAE,,,true,Code Execution,,a0GP0000008OBL8MAO,,Coding Discussion
+a04P0000006aQadIAE,,,true,Design Scalability,,a0GP0000008OBLBMA4,,LLD + Coding
+a04P0000006aQaeIAE,,,true,Code execution,,a0GP0000008OBLCMA4,,Coding and Problem solving
+a04P0000006aQafIAE,,,true,Scalability,,a0GP0000008OBL6MAO,,System Design
+a04P0000006aQagIAE,,,true,Technical know how,,a0GP0000008OBL6MAO,,System Design
